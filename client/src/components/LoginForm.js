@@ -28,6 +28,18 @@ function LoginForm(props) {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    label="Username"
+                                    value={formObject.username}
+                                    name="username"
+                                    onChange={handleInputChange}
+                                    as="input"
+                                    type="username"
+                                    placeholder="Enter your Username"
+                                    helperText="This will be public!"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
                                     label="Password"
                                     value={formObject.password}
                                     name="password"
