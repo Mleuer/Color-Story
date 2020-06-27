@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Home, Requirements, Forum } from "./pages";
+import { Home, Dashboard } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
@@ -65,11 +65,8 @@ function App() {
                 <Route exact path={["/", "/home"]}>
                   <Home />
                 </Route>
-                <Route exact path={["/requirements"]}>
-                  <Requirements />
-                </Route>
-                <PrivateRoute exact user={user} path={["/forum"]}>
-                  <Forum user={user} />
+                <PrivateRoute exact user={user} path={["/dashboard"]}>
+                  <Dashboard user={user} />
                 </PrivateRoute>
                 <Route exact path={["/login", "/signup"]}>
                   <Auth
