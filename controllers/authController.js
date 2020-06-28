@@ -8,7 +8,7 @@ router.post("/login", passport.authenticate("local"), function (req, res) {
   res.json({
     email: req.user.email,
     username: req.user.username,
-    id: req.user.id
+    id: req.user.id,
   });
 });
 

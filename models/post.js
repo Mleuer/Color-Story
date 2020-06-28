@@ -21,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     // links array
     postLinks: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
       isUrl: true,
     },
     // description (500 character limit)
@@ -31,7 +31,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     // user tags
     postTags: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
     },
     // user-set price
     price: {

@@ -34,11 +34,11 @@ module.exports = function (sequelize, DataTypes) {
       },
       // user bio; length limit of 200 characters
       biography: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         len: [1, 200],
       },
       userLinks: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.STRING,
         isUrl: true,
       },
     },
