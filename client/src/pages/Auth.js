@@ -6,7 +6,7 @@ import LoginForm from "../components/LoginForm";
 
 function Auth(props) {
     const { user, loginUser, signupUser } = props;
-    const initialFormState = { email: "", password: "" };
+    const initialFormState = { email: "", username: "", password: "" };
     const [formObject, setFormObject] = useState(initialFormState)
 
     const location = useLocation();
@@ -19,15 +19,15 @@ function Auth(props) {
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
-        const { email, password } = formObject;
-        loginUser(email, password);
+        const { email, username, password } = formObject;
+        loginUser(email, username, password);
         setFormObject(initialFormState);
     }
 
     const handleSignupSubmit = (event) => {
         event.preventDefault();
-        const { email, password } = formObject;
-        signupUser(email, password);
+        const { email, username, password } = formObject;
+        signupUser(email, username, password);
         setFormObject(initialFormState);
     }
 
