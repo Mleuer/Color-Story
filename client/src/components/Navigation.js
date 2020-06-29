@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     backgroundColor: "pink",
     borderRadius: "24px",
   },
+  
 })
 
 
@@ -37,7 +38,7 @@ function Navigation(props) {
             <PaletteIcon color="black" />
           </IconButton>
           <IconButton component={Link} to="/login">
-            <FavoriteIcon color="red-orange" />
+            <FavoriteIcon style={{ color: "red" }} />
           </IconButton>
           <IconButton component={Link} to="/login">
             <AddCircleOutlineIcon color="black" />
