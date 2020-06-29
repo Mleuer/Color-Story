@@ -1,17 +1,16 @@
-module.exports = (sequelize, Sequelize) => {
+
+module.exports = (sequelize, DataTypes) => {
     const Messages = sequelize.define("Messages", {
         text: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         created_at: {
-            type: 'TIMESTAMP',
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+            type: DataTypes.DATE,
             allowNull: false
         },
         updated_at: {
-            type: 'TIMESTAMP',
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+            type: DataTypes.DATE,
             allowNull: false
         }
 
@@ -30,7 +29,7 @@ module.exports = (sequelize, Sequelize) => {
     };
     Messages.associate = function (models) {
         Messages.belongsToMany(models.User, {
-            through: MessageRecipient,
+            through: "UserConversation",
             foreignKey: 'message_id',   // recipient
             otherKey: 'user_id'     // recipient
         });
