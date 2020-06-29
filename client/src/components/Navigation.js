@@ -2,6 +2,7 @@ import React from "react";
 import { Button, AppBar, Toolbar } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
+import { HomeIcon } from '@material-ui/icons/Home';
 
 const useStyles = makeStyles ({
   bar: {
@@ -19,7 +20,7 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <Button component={Link} to="/home" color="inherit">Home</Button>
+          <HomeIcon component={Link} to="/home" color="primary"></HomeIcon>
           <Button component={Link} to="/dashboard" color="inherit">Dashboard</Button>
 
           {user.email ?
