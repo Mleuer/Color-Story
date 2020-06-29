@@ -78,6 +78,13 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "cascade",
     });
   };
+  User.associate = function (models) {
+    // Associating User with Conversation
+    // When an User is deleted, also delete any associated Conversation
+    User.hasMany(models.Conversation, {
+      onDelete: "cascade",
+    });
+  };
 
   return User;
 };
