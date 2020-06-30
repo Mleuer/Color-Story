@@ -6,7 +6,17 @@ module.exports = function (sequelize, DataTypes) {
   const User = sequelize.define(
     "User",
     {
-      // The email cannot be null, and must be a proper email before creation
+      // user's first name
+      firstName: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      // user's last name
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      // email; cannot be null and must be a proper email before creation
       email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -15,14 +25,14 @@ module.exports = function (sequelize, DataTypes) {
           isEmail: true,
         },
       },
-      // username (required for login/signup)
+      // username
       username: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         len: [3, 25],
       },
-      // The password cannot be null
+      // password; cannot be null
       password: {
         type: DataTypes.STRING,
         allowNull: false,

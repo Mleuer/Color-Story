@@ -17,14 +17,35 @@ function SignupForm(props) {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    label="FirstName"
+                                    value={formObject.firstName}
+                                    name="firstName"
+                                    onChange={handleInputChange}
+                                    as="input"
+                                    type="text"
+                                    placeholder="First Name"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    label="LastName"
+                                    value={formObject.lastName}
+                                    name="lastName"
+                                    onChange={handleInputChange}
+                                    as="input"
+                                    type="text"
+                                    placeholder="Last Name"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
                                     label="Email"
                                     value={formObject.email}
                                     name="email"
                                     onChange={handleInputChange}
                                     as="input"
                                     type="email"
-                                    placeholder="Enter your Email"
-                                    helperText="This will be public!"
+                                    placeholder="Email"
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -34,9 +55,8 @@ function SignupForm(props) {
                                     name="username"
                                     onChange={handleInputChange}
                                     as="input"
-                                    type="username"
-                                    placeholder="Enter your Username"
-                                    helperText="This will be public!"
+                                    type="text"
+                                    placeholder="Username"
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -47,8 +67,7 @@ function SignupForm(props) {
                                     onChange={handleInputChange}
                                     as="input"
                                     type="password"
-                                    placeholder="Enter your password"
-                                    helperText="This will be your password (we won't share it with anyone!)"
+                                    placeholder="Password"
                                 />
                             </Grid>
                             <Grid item xs={12}>

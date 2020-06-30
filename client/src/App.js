@@ -16,8 +16,10 @@ function App() {
   const [user, setUser] = useState({});
   const [error, setError] = useState("")
 
-  function loginUser(email, username, password) {
+  function loginUser(firstName, lastName, email, username, password) {
     const data = {
+      firstName: firstName,
+      lastName: lastName,
       email: email,
       username: username,
       password: password
@@ -28,8 +30,10 @@ function App() {
     })
   }
 
-  function signupUser(email, username, password) {
+  function signupUser(firstName, lastName, email, username, password) {
     const data = {
+      firstName: firstName,
+      lastName: lastName,
       email: email,
       username: username,
       password: password
