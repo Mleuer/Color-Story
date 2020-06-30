@@ -24,6 +24,7 @@ function LoginForm(props) {
                                     as="input"
                                     type="text"
                                     placeholder="Email or Username"
+                                    helperText="enter your email address or username"
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -35,6 +36,7 @@ function LoginForm(props) {
                                     as="input"
                                     type="password"
                                     placeholder="Password"
+                                    helperText="enter your password"
                                 />
                             </Grid>
                             <Grid item xs={12}>

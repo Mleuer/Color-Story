@@ -43,7 +43,7 @@ function App() {
     API.Auth.signup(data).then(res => {
       setUser(res.data)
     }).catch(err => {
-      setError("Email already taken")
+      setError("Please try again and ensure that input fits the requirements.")
     })
   }
 

@@ -46,6 +46,7 @@ function SignupForm(props) {
                                     as="input"
                                     type="email"
                                     placeholder="Email"
+                                    helperText="enter your email address; must be unique and your own"
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -57,6 +58,7 @@ function SignupForm(props) {
                                     as="input"
                                     type="text"
                                     placeholder="Username"
+                                    helperText="must be unique and 3-25 characters; letters (upper/lower) and numbers (0-9) only"
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -68,6 +70,7 @@ function SignupForm(props) {
                                     as="input"
                                     type="password"
                                     placeholder="Password"
+                                    helperText="must be at least 8 characters long, and something that you will remember"
                                 />
                             </Grid>
                             <Grid item xs={12}>

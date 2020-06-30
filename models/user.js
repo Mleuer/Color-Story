@@ -15,17 +15,21 @@ module.exports = function (sequelize, DataTypes) {
           isEmail: true,
         },
       },
-      // username (required for login/signup)
+      // username; validation ensures that it can only have letters (upper/lower) and numbers (0-9)
       username: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         len: [3, 25],
+        validate: {
+          is: /^[a-zA-Z0-9]*$/i,
+        }
       },
-      // The password cannot be null
+      // password; cannot be null and must be at least 8 characters long
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        len: [8, 120]
       },
       // user's profile pic taken from a Cloudinary URL
       profilePic: {
@@ -35,7 +39,7 @@ module.exports = function (sequelize, DataTypes) {
       // user bio; length limit of 200 characters
       biography: {
         type: DataTypes.STRING,
-        len: [1, 200],
+        len: [1, 500],
       },
       userLinks: {
         type: DataTypes.STRING,
