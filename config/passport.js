@@ -8,7 +8,7 @@ passport.use(
   new LocalStrategy(
     // Our user will sign in using an email OR a username
     {
-      usernameField: "userLogin"
+      usernameField: "email"
     },
     function(username, password, done) {
       var criteria = (username.indexOf('@') === -1) ? {username: username} : {email: username};

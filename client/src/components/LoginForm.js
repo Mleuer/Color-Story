@@ -18,8 +18,8 @@ function LoginForm(props) {
                             <Grid item xs={12}>
                                 <TextField
                                     label="Email or Username"
-                                    value={formObject.userLogin}
-                                    name="userLogin"
+                                    value={formObject.email}
+                                    name="email"
                                     onChange={handleInputChange}
                                     as="input"
                                     type="text"
