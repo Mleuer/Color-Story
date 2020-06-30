@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, AppBar, Toolbar } from '@material-ui/core';
+import { Button, AppBar, Toolbar } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import HomeIcon from '@material-ui/icons/Home';
@@ -11,14 +11,13 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import CreateIcon from '@material-ui/icons/Create';
 
+
 const useStyles = makeStyles({
   bar: {
     backgroundColor: "pink",
     borderRadius: "24px",
   },
-  
-})
-
+});
 
 
 function Navigation(props) {
@@ -44,14 +43,17 @@ function Navigation(props) {
             <AddCircleOutlineIcon color="black" />
           </IconButton>
 
-
-          {user.email ?
+          {user.email ? (
             <>
-              {/* <IconButton component={Link} to="/home" onClick={logoutUser} color="inherit">
-                <VpnKeyIcon color="black" />
-              </IconButton> */}
+              <Button component={Link} to="/dashboard" color="inherit">
+                Dashboard
+              </Button>
+
+              <Button component={Link} to="/home" onClick={logoutUser} color="inherit">
+                Logout
+              </Button>
             </>
-            :
+          ) : (
             <>
               <IconButton component={Link} to="/login">
                 <VpnKeyIcon color="black" />
@@ -60,11 +62,11 @@ function Navigation(props) {
                 <CreateIcon color="black" />
               </IconButton>
             </>
-          }
+          )}
         </Toolbar>
       </AppBar>
     </>
-  )
+  );
 }
 
 export default Navigation;
