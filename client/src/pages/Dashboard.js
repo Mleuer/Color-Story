@@ -7,6 +7,7 @@ function Dashboard() {
 
   const [state, setState] = useState({
     title: "",
+    imageUrl: "",
     colorCategory: "",
     postLinks: [],
     description: "",
@@ -23,8 +24,9 @@ function Dashboard() {
         uploadPreset: "ftjygjpy",
       },
       (error, result) => {
+        console.log(result);
         if(result.event === "success") {
-          setState({ ...state, imageUrl: result.secure_url });
+          setState({ ...state, imageUrl: result.info.secure_url });
         } 
       }
     );
