@@ -17,7 +17,7 @@ function SignupForm(props) {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
-                                    label="FirstName"
+                                    label="First Name"
                                     value={formObject.firstName}
                                     name="firstName"
                                     onChange={handleInputChange}
@@ -28,7 +28,7 @@ function SignupForm(props) {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
-                                    label="LastName"
+                                    label="Last Name"
                                     value={formObject.lastName}
                                     name="lastName"
                                     onChange={handleInputChange}

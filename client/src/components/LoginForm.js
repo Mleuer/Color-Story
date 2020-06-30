@@ -23,7 +23,7 @@ function LoginForm(props) {
                                     onChange={handleInputChange}
                                     as="input"
                                     type="email"
-                                    placeholder="Enter your Email"
+                                    placeholder="Email"
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -34,7 +34,7 @@ function LoginForm(props) {
                                     onChange={handleInputChange}
                                     as="input"
                                     type="password"
-                                    placeholder="Enter your password"
+                                    placeholder="Password"
                                 />
                             </Grid>
                             <Grid item xs={12}>
