@@ -16,13 +16,14 @@ function App() {
   const [user, setUser] = useState({});
   const [error, setError] = useState("")
 
-  function loginUser(firstName, lastName, email, username, password) {
+  function loginUser(firstName, lastName, email, username, password, userLogin) {
     const data = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       username: username,
-      password: password
+      password: password,
+      userLogin: userLogin
     }
     API.Auth.login(data).then(res => {
       setUser(res.data)
@@ -30,13 +31,14 @@ function App() {
     })
   }
 
-  function signupUser(firstName, lastName, email, username, password) {
+  function signupUser(firstName, lastName, email, username, password, userLogin) {
     const data = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       username: username,
-      password: password
+      password: password,
+      userLogin: userLogin
     }
     API.Auth.signup(data).then(res => {
       setUser(res.data)
