@@ -17,6 +17,10 @@ const useStyles = makeStyles({
     backgroundColor: "pink",
     borderRadius: "24px",
   },
+  bar_labels: {
+    fontSize: "15px",
+    paddingLeft: "2px",
+  },
 });
 
 
@@ -27,28 +31,31 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
+            <IconButton component={Link} to="/home">
+              <HomeIcon style={{color: "black"}} /><span className={classes.bar_labels}>home</span>
+            </IconButton>
           {user.email ? (
             <>
               <IconButton component={Link} to="/profile">
-                <FaceIcon color="black" />
+                <FaceIcon style={{color: "black"}} /><span className={classes.bar_labels}>profile</span>
               </IconButton>
               <IconButton component={Link} to="/dashboard">
-                <PaletteIcon color="black" />
+                <PaletteIcon style={{color: "black"}} /><span className={classes.bar_labels}>dashboard</span>
               </IconButton>
-              <Button component={Link} to="/home" onClick={logoutUser} color="inherit">
-                Logout
-              </Button>
+              <IconButton component={Link} to="/favorites">
+                <FavoriteIcon style={{color: "red"}} /><span className={classes.bar_labels}>favorites</span>
+              </IconButton>
+              <IconButton component={Link} to="/home" onClick={logoutUser}>
+                <VpnKeyIcon style={{color: "black"}} /><span className={classes.bar_labels}>logout</span>
+              </IconButton>
             </>
           ) : (
             <>
-              <IconButton component={Link} to="/home">
-                <HomeIcon color="black" />
-              </IconButton>
               <IconButton component={Link} to="/login">
-                <VpnKeyIcon color="black" />
+                <VpnKeyIcon style={{color: "black"}} /><span className={classes.bar_labels}>login</span>
               </IconButton>
               <IconButton component={Link} to="/signup">
-                <CreateIcon color="black" />
+                <CreateIcon style={{color: "black"}} /><span className={classes.bar_labels}>signup</span>
               </IconButton>
             </>
           )}
