@@ -17,13 +17,13 @@ function LoginForm(props) {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
-                                    label="Email"
-                                    value={formObject.email}
-                                    name="email"
+                                    label="Email or Username"
+                                    value={formObject.username}
+                                    name="username"
                                     onChange={handleInputChange}
                                     as="input"
-                                    type="email"
-                                    placeholder="Email"
+                                    type="text"
+                                    placeholder="Email or Username"
                                 />
                             </Grid>
                             <Grid item xs={12}>
