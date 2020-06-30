@@ -54,7 +54,7 @@ function App() {
   return (
     <>
       <Router>
-        <Container>
+        <Container maxWidth="md">
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Navigation user={user} logoutUser={logoutUser} />
