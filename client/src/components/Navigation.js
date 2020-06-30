@@ -27,34 +27,23 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <IconButton component={Link} to="/home">
-            <HomeIcon color="black" />
-          </IconButton>
-          <IconButton component={Link} to="/profile">
-            <FaceIcon color="black" />
-          </IconButton>
-          <IconButton component={Link} to="/dashboard">
-            <PaletteIcon color="black" />
-          </IconButton>
-          <IconButton component={Link} to="/login">
-            <FavoriteIcon style={{ color: "red" }} />
-          </IconButton>
-          <IconButton component={Link} to="/login">
-            <AddCircleOutlineIcon color="black" />
-          </IconButton>
-
           {user.email ? (
             <>
-              <Button component={Link} to="/dashboard" color="inherit">
-                Dashboard
-              </Button>
-
+              <IconButton component={Link} to="/profile">
+                <FaceIcon color="black" />
+              </IconButton>
+              <IconButton component={Link} to="/dashboard">
+                <PaletteIcon color="black" />
+              </IconButton>
               <Button component={Link} to="/home" onClick={logoutUser} color="inherit">
                 Logout
               </Button>
             </>
           ) : (
             <>
+              <IconButton component={Link} to="/home">
+                <HomeIcon color="black" />
+              </IconButton>
               <IconButton component={Link} to="/login">
                 <VpnKeyIcon color="black" />
               </IconButton>
