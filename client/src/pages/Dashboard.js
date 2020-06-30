@@ -24,10 +24,11 @@ function Dashboard() {
         uploadPreset: "ftjygjpy",
       },
       (error, result) => {
-        console.log(result);
         if(result.event === "success") {
           setState({ ...state, imageUrl: result.info.secure_url });
-        } 
+        }else if(result.event === "abort"){
+          setState({ ...state, imageUrl: "" });
+        }
       }
     );
   }
