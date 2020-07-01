@@ -74,7 +74,7 @@ function App() {
                   <Home />
                 </Route>
                 <PrivateRoute exact user={user} path={["/dashboard"]}>
-                  <Dashboard user={user} />
+                  <Dashboard user={user} setError={setError}/>
                 </PrivateRoute>
                 <Route exact path={["/login", "/signup"]}>
                   <Auth
