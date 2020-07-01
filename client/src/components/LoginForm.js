@@ -1,8 +1,22 @@
 import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid, Button, TextField, Paper, Typography } from '@material-ui/core';
+
+const useStyles = makeStyles({
+    inputField: {
+        width: "100%"
+    },
+    signupButton: {
+        backgroundColor: "#4d3b58",
+        "&:hover": {
+            backgroundColor: "#c9c4cc"
+        }
+    },
+})
 
 function LoginForm(props) {
     const { formObject, handleFormSubmit, handleInputChange } = props;
+    const classes = useStyles();
 
     return (
         <>
@@ -17,30 +31,30 @@ function LoginForm(props) {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    className={classes.inputField}
                                     label="Email or Username"
                                     value={formObject.email}
                                     name="email"
                                     onChange={handleInputChange}
                                     as="input"
                                     type="text"
-                                    placeholder="Email or Username"
                                     helperText="enter your email address or username"
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    className={classes.inputField}
                                     label="Password"
                                     value={formObject.password}
                                     name="password"
                                     onChange={handleInputChange}
                                     as="input"
                                     type="password"
-                                    placeholder="Password"
                                     helperText="enter your password"
                                 />
                             </Grid>
                             <Grid item xs={12}>
-                                <Button variant="contained" color="primary" type="submit" onClick={handleFormSubmit}>
+                                <Button className={classes.signupButton} variant="contained" color="primary" type="submit" onClick={handleFormSubmit}>
                                     Login
                                 </Button>
                             </Grid>
