@@ -10,10 +10,9 @@ module.exports = (sequelize, Sequelize) => {
     //Got this set up from a slackoverflow we might want to run it by David to make sure it'll work the way we want it to..
     //conversation has userId
     Conversation.associate = function (models) {
-        Conversation.belongsTo(models.User,
+        Conversation.belongsToMany(models.User,
             {
-                foreignKey: 'user_id',    // recipient
-                otherKey: 'id'              // user
+                through: "UserConversation"
             });
     };
     //conversation has messageId

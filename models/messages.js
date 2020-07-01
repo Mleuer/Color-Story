@@ -20,18 +20,11 @@ module.exports = (sequelize, DataTypes) => {
     //Got this set up from a slackoverflow we might want to run it by David to make sure it'll work the way we want it to..
     //Messages link to many Users and Conversations
     Messages.associate = function (models) {
-        Messages.hasMany(models.Conversation,
-            {
-                sourceKey: 'id',          // message table
-                foreignKey: 'message_id'  // recipient table
-            }
+        Messages.belongsTo(models.Conversation,
         );
     };
     Messages.associate = function (models) {
-        Messages.belongsToMany(models.User, {
-            through: "UserConversation",
-            foreignKey: 'message_id',   // recipient
-            otherKey: 'user_id'     // recipient
+        Messages.belongsTo(models.User, {
         });
     };
 
