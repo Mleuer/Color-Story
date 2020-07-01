@@ -17,25 +17,14 @@ function LoginForm(props) {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
-                                    label="Email"
+                                    label="Email or Username"
                                     value={formObject.email}
                                     name="email"
                                     onChange={handleInputChange}
                                     as="input"
-                                    type="email"
-                                    placeholder="Enter your Email"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    label="Username"
-                                    value={formObject.username}
-                                    name="username"
-                                    onChange={handleInputChange}
-                                    as="input"
-                                    type="username"
-                                    placeholder="Enter your Username"
-                                    helperText="This will be public!"
+                                    type="text"
+                                    placeholder="Email or Username"
+                                    helperText="enter your email address or username"
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -46,7 +35,8 @@ function LoginForm(props) {
                                     onChange={handleInputChange}
                                     as="input"
                                     type="password"
-                                    placeholder="Enter your password"
+                                    placeholder="Password"
+                                    helperText="enter your password"
                                 />
                             </Grid>
                             <Grid item xs={12}>
