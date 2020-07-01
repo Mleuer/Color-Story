@@ -1,7 +1,7 @@
 import React from "react";
-import { Container, Paper, Typography, Grid, Button } from "@material-ui/core";
+import { Container, Paper, Typography, Grid, Button, ButtonGroup } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
-import Buttons from "../components/Buttons";
+import ColorButtons from "../components/ColorButtons";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,49 +22,79 @@ function Home() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
+            <Grid justify="center" container>
+                <ButtonGroup>
+                    <ColorButtons color="red">
+                    </ColorButtons>
+                    <ColorButtons color="orange">
+                    </ColorButtons>
+                    <ColorButtons color="yellow">
+                    </ColorButtons>
+                </ButtonGroup>
+                <ButtonGroup>
+                    <ColorButtons color="green">
+                    </ColorButtons>
+                    <ColorButtons color="blue">
+                    </ColorButtons>
+                    <ColorButtons color="purple">
+                    </ColorButtons>
+                </ButtonGroup>
+                <ButtonGroup>
+                    <ColorButtons color="black">
+                    </ColorButtons>
+                    <ColorButtons color="white">
+                    </ColorButtons>
+                    <ColorButtons color="yellow">
+                    </ColorButtons>
+                </ButtonGroup>
+            </Grid>
 
-            <Grid justify="center" container>
+
+
+
+
+            {/* <Grid justify="center" container>
                 <Grid item direction="row">
-                    <Buttons color="red">
-                    </Buttons>
+                    <ColorButtons color="red">
+                    </ColorButtons>
                 </Grid>
                 <Grid item direction="row">
-                    <Buttons color="orange">
-                    </Buttons>
+                    <ColorButtons color="orange">
+                    </ColorButtons>
                 </Grid>
                 <Grid item direction="row">
-                    <Buttons color="yellow">
-                    </Buttons>
-                </Grid>
-            </Grid>
-            <Grid justify="center" container>
-                <Grid item direction="row">
-                    <Buttons color="green">
-                    </Buttons>
-                </Grid>
-                <Grid item direction="row">
-                    <Buttons color="blue">
-                    </Buttons>
-                </Grid>
-                <Grid item direction="row">
-                    <Buttons color="purple">
-                    </Buttons>
+                    <ColorButtons color="yellow">
+                    </ColorButtons>
                 </Grid>
             </Grid>
             <Grid justify="center" container>
                 <Grid item direction="row">
-                    <Buttons color="black">
-                    </Buttons>
+                    <ColorButtons color="green">
+                    </ColorButtons>
                 </Grid>
                 <Grid item direction="row">
-                    <Buttons color="white">
-                    </Buttons>
+                    <ColorButtons color="blue">
+                    </ColorButtons>
                 </Grid>
                 <Grid item direction="row">
-                    <Buttons>
-                    </Buttons>
+                    <ColorButtons color="purple">
+                    </ColorButtons>
                 </Grid>
             </Grid>
+            <Grid justify="center" container>
+                <Grid item direction="row">
+                    <ColorButtons color="black">
+                    </ColorButtons>
+                </Grid>
+                <Grid item direction="row">
+                    <ColorButtons color="white">
+                    </ColorButtons>
+                </Grid>
+                <Grid item direction="row">
+                    <ColorButtons>
+                    </ColorButtons>
+                </Grid>
+            </Grid> */}
 
         </div>
     )
