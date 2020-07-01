@@ -9,51 +9,69 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
-    button: {
-        paddingLeft: "4px",
-        paddingRight: "4px"
+    colorButton: {
+        marginTop: "10px"
     },
-    row: {
-        marginTop: ".5px"
-    }
+    // buttonBox: {
+    //     // padding: "20px",
+    //     border: "black solid",
+    //     paddingTop: "40px",
+    //     paddingBottom: "40px"
+    // }
 }));
 
 function Home() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <Grid justify="center" container>
-                <ButtonGroup>
-                    <ColorButtons color="red">
-                    </ColorButtons>
-                    <ColorButtons color="orange">
-                    </ColorButtons>
-                    <ColorButtons color="yellow">
-                    </ColorButtons>
-                </ButtonGroup>
-                <ButtonGroup>
-                    <ColorButtons color="green">
-                    </ColorButtons>
-                    <ColorButtons color="blue">
-                    </ColorButtons>
-                    <ColorButtons color="purple">
-                    </ColorButtons>
-                </ButtonGroup>
-                <ButtonGroup>
-                    <ColorButtons color="black">
-                    </ColorButtons>
-                    <ColorButtons color="white">
-                    </ColorButtons>
-                    <ColorButtons color="yellow">
-                    </ColorButtons>
-                </ButtonGroup>
-            </Grid>
+            <Container  maxWidth="xs" >
+                <Grid container direction="row" alignItems="center" justify="center" spacing={1}>
+
+                    <Grid item xs={3}>
+                        <ColorButtons color="#ff3300" />
+                    </Grid>
+                    <Grid item xs={3}>
+                        <ColorButtons color="#ff5e1a" />
+                    </Grid>
+                    <Grid item xs={3}>
+                        <ColorButtons color="yellow" />
+                    </Grid>
+                </Grid>
+                <Grid container direction="row" alignItems="center" justify="center" spacing={1}>
+                    <Grid item xs={3}>
+                        <ColorButtons color="green" />
+                    </Grid>
+                    <Grid item xs={3}>
+                        <ColorButtons color="turquoise" />
+                    </Grid>
+                    <Grid item xs={3}>
+                        <ColorButtons color="lavender" />
+                    </Grid>
+                </Grid>
+                <Grid container direction="row" alignItems="center" justify="center" spacing={1}>
+                    <Grid item xs={3}>
+                        <ColorButtons color="black" />
+                    </Grid>
+                    <Grid item xs={3}>
+                        <ColorButtons border="black solid" color="white" />
+                    </Grid>
+                    <Grid item xs={3}>
+                        <ColorButtons color="red" />
+                    </Grid>
+                </Grid>
+              
+            </Container>
+            
+
+
+            {/* </Grid> */ }
 
 
 
 
 
-            {/* <Grid justify="center" container>
+
+    {/* <Grid justify="center" container>
                 <Grid item direction="row">
                     <ColorButtons color="red">
                     </ColorButtons>
@@ -96,7 +114,7 @@ function Home() {
                 </Grid>
             </Grid> */}
 
-        </div>
+        </div >
     )
 };
 
