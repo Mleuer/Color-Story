@@ -4,29 +4,25 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 
-function Buttons(props) {
+function ColorButtons(props) {
     const useStyles = makeStyles({
         Button: {
             backgroundColor: props.color,
-            border: "solid",
+            border: props.border,
             borderRadius: "50%",
             height: 100,
             width: 100,
+            "&:hover": {
+                backgroundColor: props.color
+            },
         }
     });
 
     const classes = useStyles();
     return (
-        <Container maxWidth="sm">
-            <Grid container>
-                <Grid item xs={12}>
-                    <Button className={classes.Button}>
-                    </Button>
-                </Grid>
-            </Grid>
-        </Container>
-
+        <Button disableFocusRipple={true} disableRipple={true} className={classes.Button}>
+        </Button>
     )
 }
 
-export default Buttons;
+export default ColorButtons;

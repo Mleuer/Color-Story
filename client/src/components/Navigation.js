@@ -16,7 +16,8 @@ const useStyles = makeStyles({
   bar: {
     backgroundColor: "#AFA6AB",
     borderRadius: "24px",
-    paddingTop: "15px"
+    paddingTop: "15px",
+    border: "black solid 4px "
   },
   bar_labels: {
     fontSize: "15px",
@@ -64,7 +65,7 @@ function Navigation(props) {
               </>
             )}
           <Typography variant="h2" align="center" gutterBottom className={classes.font}>
-            Color Story
+            
                             </Typography>
         </Toolbar>
       </AppBar>

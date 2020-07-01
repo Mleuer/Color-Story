@@ -11,10 +11,20 @@ import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import API from './utils/API';
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles({
+  outline: {
+    border: "black solid",
+    borderRadius: "24px",
+    padding: "20px",
+  }
+});
 
 function App() {
   const [user, setUser] = useState({});
   const [error, setError] = useState("")
+  const classes = useStyles();
 
   function loginUser(firstName, lastName, email, username, password, userLogin) {
     const data = {
@@ -60,7 +70,7 @@ function App() {
   return (
     <>
       <Router>
-        <Container maxWidth="md">
+        <Container className={classes.outline} maxWidth="md">
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Navigation user={user} logoutUser={logoutUser} />
