@@ -14,7 +14,7 @@ import CreateIcon from '@material-ui/icons/Create';
 
 const useStyles = makeStyles({
   bar: {
-    backgroundColor: "#AFA6AB",
+    backgroundColor: "#FFCCCC",
     borderRadius: "24px",
     paddingTop: "15px",
     border: "black solid 4px "
@@ -65,7 +65,7 @@ function Navigation(props) {
               </>
             )}
           <Typography variant="h2" align="center" gutterBottom className={classes.font}>
-            
+            Color Story
                             </Typography>
         </Toolbar>
       </AppBar>
