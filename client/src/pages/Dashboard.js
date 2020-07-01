@@ -12,6 +12,28 @@ import {
 import CurrencyTextField from "@unicef/material-ui-currency-textfield";
 import API from "../utils/API";
 import PhotoUrl from "../components/PhotoUrl";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  inputField: {
+      width: "100%",
+  },
+  linkField: {
+    width: "33%",
+  },
+  colCatSelect: {
+    width: "12%",
+  },
+  dashboardButtons: {
+      backgroundColor: "#4d3b58",
+      color: "white",
+      width: "20%",
+      "&:hover": {
+          backgroundColor: "#c9c4cc",
+          color: "black"
+      }
+  },
+})
 
 function Dashboard(props) {
   const [state, setState] = useState({
@@ -71,65 +93,41 @@ function Dashboard(props) {
     setMessage("");
   }
 
+  const classes = useStyles();
+
   return (
     <>
       <Container>
         <form noValidate autoComplete="off">
+
+          <Grid spacing={3}>
+
           <Grid item sm={4}>
-            <TextField
-              name="title"
-              value={state.title}
-              id="title-input"
-              onChange={handleChange}
-              label="Post Title"
-              helperText="*required"
-            />
+            <TextField className={classes.inputField} name="title" value={state.title} id="title-input" onChange={handleChange} label="Post Title" helperText="*required" />
           </Grid>
 
           <Grid item sm={4}>
-            <TextField
-              name="description"
-              value={state.description}
-              onChange={handleChange}
-              id="description-input"
-              label="Post Description"
-              helperText="*optional"
-            />
+            <TextField className={classes.inputField} name="description" value={state.description} onChange={handleChange} id="description-input" label="Post Description" helperText="*optional" />
           </Grid>
 
           <Grid item sm={12}>
-            <TextField
-              name="postLink"
-              value={state.postLinks}
-              onChange={handleChange}
-              id="link-input"
-              label="External Link"
-              helperText="*optional"
-            />
+            <TextField name="postLink" className={classes.linkField} value={state.postLinks} onChange={handleChange} id="link-input" label="External Link" helperText="*optional" />
           </Grid>
 
+          <br></br>
+
           <Grid item sm={12}>
-            <CurrencyTextField
-              label="Amount"
-              variant="standard"
-              name="price"
-              value={price}
-              currencySymbol="$"
-              outputFormat="number"
+            <CurrencyTextField className={classes.linkField} label="Amount" variant="standard" name="price" value={price} currencySymbol="$" outputFormat="number"
               // onBlur={handleChange}
               onChange={(event, value) => setPrice(value)}
             />
           </Grid>
 
+          <br></br>
+
           <Grid item sm={12}>
             <InputLabel id="color-category">Color Category</InputLabel>
-            <Select
-              placeholderText="Color Category"
-              name="colorCategory"
-              value={state.colorCategory}
-              onChange={handleChange}
-              id="color-category"
-            >
+            <Select className={classes.colCatSelect} placeholderText="Color Category" name="colorCategory" value={state.colorCategory} onChange={handleChange} id="color-category">
               <MenuItem value={"red"}>Red</MenuItem>
               <MenuItem value={"orange"}>Orange</MenuItem>
               <MenuItem value={"yellow"}>Yellow</MenuItem>
@@ -138,21 +136,25 @@ function Dashboard(props) {
               <MenuItem value={"purple"}>Purple</MenuItem>
               <MenuItem value={"black"}>Black</MenuItem>
               <MenuItem value={"white"}>White</MenuItem>
+              <MenuItem value={"multicolor"}>Multi-Color</MenuItem>
             </Select>
           </Grid>
 
+          <br></br>
+
           <Grid item sm={12}>
-            <Button onClick={uploadImage} variant="contained">
-              Upload Image
-            </Button>
+            <Button className={classes.dashboardButtons} onClick={uploadImage} variant="contained" color="primary">Upload Image</Button>
             {message && <PhotoUrl message={message} clearMessage={clearMessage} />}
           </Grid>
 
+          <br></br>
+
           <Grid item sm={12}>
-            <Button onClick={handleSubmit} variant="contained" color="primary">
-              Create Post
-            </Button>
+            <Button className={classes.dashboardButtons} onClick={handleSubmit} variant="contained" color="primary">Create Post</Button>
           </Grid>
+
+          </Grid>
+
         </form>
       </Container>
     </>

@@ -8,8 +8,11 @@ const useStyles = makeStyles({
     },
     signupButton: {
         backgroundColor: "#4d3b58",
+        color: "white",
+        width: "20%",
         "&:hover": {
-            backgroundColor: "#c9c4cc"
+            backgroundColor: "#c9c4cc",
+            color: "black"
         }
     },
 })
