@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@unicef/material-ui-currency-textfield": "^0.8.6",
     "bcryptjs": "2.4.3",
     "cloudinary-core": "^2.9.0",
     "cloudinary-react": "^1.5.1",

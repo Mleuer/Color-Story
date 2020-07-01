@@ -20,7 +20,7 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
     },
     // links array
-    postLinks: {
+    postLink: {
       type: DataTypes.STRING,
       isUrl: true,
     },
