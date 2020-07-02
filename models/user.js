@@ -25,6 +25,10 @@ module.exports = function (sequelize, DataTypes) {
           is: /^[a-zA-Z0-9]*$/i,
         }
       },
+      //Full Name
+      name: {
+        type: DataTypes.STRING
+      },
       // password; cannot be null and must be at least 8 characters long
       password: {
         type: DataTypes.STRING,

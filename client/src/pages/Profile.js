@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Avatar, makeStyles, Container, Fab, Grid, Typography, CardContent } from "@material-ui/core";
+import { Avatar, makeStyles, Fab, Grid, Typography, CardContent } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
@@ -11,11 +11,15 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import ButtonRow from "../components/ButtonRow";
+import API from "../utils/API"
 
-function Profile() {
+function Profile(props) {
 
     const [state, setState] = useState({
-        User: [],
+        name: "",
+        biography: "",
+        userLinks: "",
+        profilePic: ""
     });
     const [open, setOpen] = useState(false);
 
@@ -27,19 +31,39 @@ function Profile() {
         setOpen(false);
     };
 
-    // useEffect(() => {
-    //     API.User.getById()
-    //         .then((res) => {
+    const handleSave = () => {
+        setOpen(false);
+        API.User.update(props.user.id, state)
 
-    //             var data = res;
+    };
 
+    const handleEdit = (e) => {
+        console.log(e.target.name)
 
+        setState({ ...state, [e.target.name]: e.target.value })
+    }
 
+    useEffect(() => {
+        API.User.getById(props.user.id)
+            .then((res) => {
+                // console.log(res.data)
 
-    //             setState({ ...state, });
-    //         })
-    //         .catch((err) => console.log(err));
-    // }, []);
+                let dataName = res.data.name;
+                let dataBiography = res.data.biography;
+                let dataUserLinks = res.data.userLinks;
+                let dataProfilePic = res.data.profilePic;
+
+                setState({
+                    ...state,
+                    name: dataName,
+                    biography: dataBiography,
+                    userLinks: dataUserLinks,
+                    profilePic: dataProfilePic
+
+                });
+            })
+            .catch((err) => console.log(err));
+    }, []);
 
     function uploadImage(event) {
         event.preventDefault();
@@ -59,17 +83,11 @@ function Profile() {
     }
     const handleImageLoaded = (event) => {
 
-
-
-
-        setState({ loaded: true });
     };
 
     const preventDefault = (event) => {
         event.preventDefault();
     }
-
-
 
     const useStyles = makeStyles({
         avatar: {
@@ -79,32 +97,36 @@ function Profile() {
         }
 
     })
-
+    // console.log("this is our state", state)
+    // console.log("these are our props", props)
     const classes = useStyles();
     return (
 
         <>
             <Grid container direction="row" alignItems="center" justify="center">
                 <Grid xs={6}>
-                    <Avatar onClick={uploadImage} alt={state.name} src={state.imageUrl} className={classes.avatar} />
+                    <Avatar alt={state.name} src={state.profilePic} className={classes.avatar} />
                 </Grid>
                 <Grid xs={6}>
                     <CardContent>
                         <Typography gutterBottom variant="h3" component="h2">
-                            Name
-          </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Color Story
+                            {state.name}
                         </Typography>
+                        <h3>Bio</h3>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {state.biography}
+                        </Typography>
+                        <h3>Website</h3>
                         <Typography>
                             <Link href="#" onClick={preventDefault}>
-                                Website
-  </Link>
+                                {state.userLinks}
+                            </Link>
                         </Typography>
+                        <h3>Blog</h3>
                         <Typography>
                             <Link href="#" onClick={preventDefault}>
                                 Blog
-  </Link>
+                             </Link>
                         </Typography>
                     </CardContent>
                 </Grid>
@@ -120,30 +142,40 @@ function Profile() {
                 <DialogTitle id="form-dialog-title">Edit Profile</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Add Your color Story
+                        Add Your Color Story
           </DialogContentText>
+                    <Avatar
+                        onClick={uploadImage}
+                        alt={state.name}
+                        src={state.profilePic} />
                     <TextField
+                        onChange={handleEdit}
+                        name="name"
                         autoFocus
                         margin="dense"
                         id="name"
                         label="Name"
-                        type="Name"
+                        type="name"
                         fullWidth
                     />
                     <TextField
+                        onChange={handleEdit}
+                        name="userLinks"
                         autoFocus
                         margin="dense"
-                        id="link"
-                        label="Website Link"
-                        type="Website Link"
+                        id="userLinks"
+                        label="Link"
+                        type="userLinks"
                         fullWidth
                     />
                     <TextField
+                        onChange={handleEdit}
+                        name="biography"
                         autoFocus
                         margin="dense"
-                        id="description"
-                        label="Description"
-                        type="Description"
+                        id="biography"
+                        label="Bio"
+                        type="biography"
                         fullWidth
                     />
                 </DialogContent>
@@ -151,7 +183,7 @@ function Profile() {
                     <Button onClick={handleClose} color="primary">
                         Cancel
           </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleSave} color="primary">
                         Done
           </Button>
                 </DialogActions>
