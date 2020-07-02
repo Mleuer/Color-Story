@@ -137,7 +137,7 @@ function Profile(props) {
             <Typography>
               <Link href="#" onClick={preventDefault}>
                 Blog
-              </Link>
+                             </Link>
             </Typography>
           </CardContent>
         </Grid>
