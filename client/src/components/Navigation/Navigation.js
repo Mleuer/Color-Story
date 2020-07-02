@@ -35,24 +35,24 @@ function Navigation(props) {
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
           <IconButton  component={Link} to="/home">
-            <HomeIcon style={{ color: "black" }} /><span className={classes.bar_labels}>home</span>
+            <HomeIcon style={{ color: "black" }} /><span className={classes.bar_labels}></span>
           </IconButton>
           {user.email ? (
             <>
               <IconButton component={Link} to="/profile">
-                <FaceIcon style={{ color: "black" }} /><span className={classes.bar_labels}>profile</span>
+                <FaceIcon style={{ color: "black" }} /><span className={classes.bar_labels}></span>
               </IconButton>
               <IconButton component={Link} to="/home" onClick={logoutUser}>
-                <VpnKeyIcon style={{ color: "black" }} /><span className={classes.bar_labels}>logout</span>
+                <VpnKeyIcon style={{ color: "black" }} /><span className={classes.bar_labels}></span>
               </IconButton>
             </>
           ) : (
               <>
                 <IconButton component={Link} to="/login">
-                  <VpnKeyIcon style={{ color: "black" }} /><span className={classes.bar_labels}>login</span>
+                  <VpnKeyIcon style={{ color: "black" }} /><span className={classes.bar_labels}></span>
                 </IconButton>
                 <IconButton component={Link} to="/signup">
-                  <CreateIcon style={{ color: "black" }} /><span className={classes.bar_labels}>signup</span>
+                  <CreateIcon style={{ color: "black" }} /><span className={classes.bar_labels}></span>
                 </IconButton>
               </>
             )} 

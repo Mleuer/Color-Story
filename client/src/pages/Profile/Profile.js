@@ -12,7 +12,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import ButtonRow from "../components/ButtonRow";
+import ButtonRow from "../../components/ButtonRow";
+import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -84,8 +85,8 @@ function Profile() {
 
   return (
     <>
-      <Grid container direction="row" alignItems="center" justify="center">
-        <Grid xs={6}>
+      <Grid container direction="column" alignItems="center" justify="center">
+        <Grid item xs={12}>
           <Avatar
             onClick={uploadImage}
             alt={state.name}
