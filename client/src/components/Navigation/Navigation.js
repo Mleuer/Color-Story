@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, AppBar, Toolbar, Typography } from "@material-ui/core";
+import { Button, AppBar, Toolbar, Typography, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import HomeIcon from '@material-ui/icons/Home';
@@ -11,7 +11,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import CreateIcon from '@material-ui/icons/Create';
 import "./style.css"
-
+import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles({
   bar: {
@@ -37,34 +37,39 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <IconButton  component={Link} to="/home">
-            <HomeIcon style={{ color: "black" }} /><span className={classes.bar_labels}>home</span>
-          </IconButton>
-          {user.email ? (
-            <>
-              <IconButton component={Link} to="/profile">
-                <FaceIcon style={{ color: "black" }} /><span className={classes.bar_labels}>profile</span>
+          <Select IconComponent={HomeIcon}>
+            <Grid direction="column">
+              <IconButton component={Link} to="/home">
+                <HomeIcon style={{ color: "black" }} /><span className={classes.bar_labels}>home</span>
               </IconButton>
-              <IconButton component={Link} to="/dashboard">
-                <PaletteIcon style={{ color: "black" }} /><span className={classes.bar_labels}>dashboard</span>
-              </IconButton>
-              <IconButton component={Link} to="/favorites">
-                <FavoriteIcon style={{ color: "red" }} /><span className={classes.bar_labels}>favorites</span>
-              </IconButton>
-              <IconButton component={Link} to="/home" onClick={logoutUser}>
-                <VpnKeyIcon style={{ color: "black" }} /><span className={classes.bar_labels}>logout</span>
-              </IconButton>
-            </>
-          ) : (
-              <>
-                <IconButton component={Link} to="/login">
-                  <VpnKeyIcon style={{ color: "black" }} /><span className={classes.bar_labels}>login</span>
-                </IconButton>
-                <IconButton component={Link} to="/signup">
-                  <CreateIcon style={{ color: "black" }} /><span className={classes.bar_labels}>signup</span>
-                </IconButton>
-              </>
-            )} 
+              {user.email ? (
+                <>
+                  <IconButton component={Link} to="/profile">
+                    <FaceIcon style={{ color: "black" }} /><span className={classes.bar_labels}>profile</span>
+                  </IconButton>
+                  <IconButton component={Link} to="/dashboard">
+                    <PaletteIcon style={{ color: "black" }} /><span className={classes.bar_labels}>dashboard</span>
+                  </IconButton>
+                  <IconButton component={Link} to="/favorites">
+                    <FavoriteIcon style={{ color: "red" }} /><span className={classes.bar_labels}>favorites</span>
+                  </IconButton>
+                  <IconButton component={Link} to="/home" onClick={logoutUser}>
+                    <VpnKeyIcon style={{ color: "black" }} /><span className={classes.bar_labels}>logout</span>
+                  </IconButton>
+                </>
+              ) : (
+                  <>
+                    <IconButton component={Link} to="/login">
+                      <VpnKeyIcon style={{ color: "black" }} /><span className={classes.bar_labels}>login</span>
+                    </IconButton>
+                    <IconButton component={Link} to="/signup">
+                      <CreateIcon style={{ color: "black" }} /><span className={classes.bar_labels}>signup</span>
+                    </IconButton>
+                  </>
+                )}
+            </Grid>
+          </Select>
+
           <Typography variant="h2" align="center" gutterBottom className={classes.font}>
             Color Story
                             </Typography>

@@ -8,7 +8,7 @@ function Welcome() {
     
     return (
         <div>
-            <Typography variant="h1">
+            <Typography variant="h6">
                 Welcome            
             </Typography>
             <p>
