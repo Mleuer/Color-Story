@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Grid, Container } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -17,7 +18,7 @@ function SignupButton(props) {
     const classes = useStyles();
 
     return (
-        <Button disableFocusRipple={true} disableRipple={true} className={classes.Button}>Sign In
+        <Button disableFocusRipple={true} disableRipple={true} className={classes.Button} component={Link} to="/signup">Sign Up
         </Button>
     )
 }

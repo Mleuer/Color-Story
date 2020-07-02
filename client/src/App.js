@@ -27,14 +27,13 @@ function App() {
   const [error, setError] = useState("")
   const classes = useStyles();
 
-  function loginUser(firstName, lastName, email, username, password, userLogin) {
+  function loginUser(firstName, lastName, email, username, password) {
     const data = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       username: username,
-      password: password,
-      userLogin: userLogin
+      password: password
     }
     API.Auth.login(data).then(res => {
       setUser(res.data)
@@ -42,14 +41,13 @@ function App() {
     })
   }
 
-  function signupUser(firstName, lastName, email, username, password, userLogin) {
+  function signupUser(firstName, lastName, email, username, password) {
     const data = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       username: username,
-      password: password,
-      userLogin: userLogin
+      password: password
     }
     API.Auth.signup(data).then(res => {
       setUser(res.data)
