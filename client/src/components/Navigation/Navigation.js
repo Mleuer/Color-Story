@@ -32,42 +32,46 @@ function Navigation(props) {
   return (
     <>
       <AppBar position="static" className={classes.bar}>
-        <Toolbar>
-          <IconButton component={Link} to="/home">
-            <HomeIcon style={{ color: "black" }} />
-            <span className={classes.bar_labels}></span>
-          </IconButton>
-          {user.email ? (
-            <>
-              <IconButton component={Link} to="/profile">
-                <FaceIcon style={{ color: "black" }} />
-                <span className={classes.bar_labels}></span>
+        
+      <Toolbar>
+          <Select IconComponent={HomeIcon} anchorE1={null} Icon>
+            {/* <Select anchorEl={anchorEl} IconComponent={HomeIcon}> */}
+            <Grid direction="column">
+              <IconButton component={Link} to="/home">
+                <HomeIcon style={{ color: "black" }} /><span className={classes.bar_labels}>home</span>
               </IconButton>
-              <IconButton component={Link} to="/home" onClick={logoutUser}>
-                <VpnKeyIcon style={{ color: "black" }} />
-                <span className={classes.bar_labels}></span>
-              </IconButton>
-            </>
-          ) : (
-            <>
-              <IconButton component={Link} to="/login">
-                <VpnKeyIcon style={{ color: "black" }} />
-                <span className={classes.bar_labels}></span>
-              </IconButton>
-              <IconButton component={Link} to="/signup">
-                <CreateIcon style={{ color: "black" }} />
-                <span className={classes.bar_labels}></span>
-              </IconButton>
-            </>
-          )}
-          <Typography
-            variant="h2"
-            align="center"
-            gutterBottom
-            className={classes.font}
-          >
+              {user.email ? (
+                <>
+                  <IconButton component={Link} to="/profile">
+                    <FaceIcon style={{ color: "black" }} /><span className={classes.bar_labels}>profile</span>
+                  </IconButton>
+                  <IconButton component={Link} to="/dashboard">
+                    <PaletteIcon style={{ color: "black" }} /><span className={classes.bar_labels}>dashboard</span>
+                  </IconButton>
+                  <IconButton component={Link} to="/favorites">
+                    <FavoriteIcon style={{ color: "red" }} /><span className={classes.bar_labels}>favorites</span>
+                  </IconButton>
+                  <IconButton component={Link} to="/home" onClick={logoutUser}>
+                    <VpnKeyIcon style={{ color: "black" }} /><span className={classes.bar_labels}>logout</span>
+                  </IconButton>
+                </>
+              ) : (
+                  <>
+                    <IconButton component={Link} to="/login">
+                      <VpnKeyIcon style={{ color: "black" }} /><span className={classes.bar_labels}>login</span>
+                    </IconButton>
+                    <IconButton component={Link} to="/signup">
+                      <CreateIcon style={{ color: "black" }} /><span className={classes.bar_labels}>signup</span>
+                    </IconButton>
+                  </>
+                )}
+            </Grid>
+          </Select>
+          {/* </Select> */}
+
+          <Typography variant="h2" align="center" gutterBottom className={classes.font}>
             Color Story
-          </Typography>
+                            </Typography>
         </Toolbar>
       </AppBar>
     </>
