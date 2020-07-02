@@ -1,7 +1,10 @@
- @media (max-width: 600px) {
-   .makeStyles-outline-1 .makeStyles-bar-2 {
-     background-color: green;
-   }
- }
 
- 
+ @media (max-width: 600px) {
+  .makeStyles-outline-1 .makeStyles-bar-2 .makeStyles-font-4 {
+      font-size: 50px;
+      align-items: center;
+      text-align: center;
+      margin-top: 20px;
+  }
+}
+
