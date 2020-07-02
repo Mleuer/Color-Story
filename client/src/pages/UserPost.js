@@ -15,7 +15,11 @@ import PhotoUrl from "../components/PhotoUrl";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  inputField: {
+  titleField: {
+    width: "100%",
+    marginBottom: "20px",
+  },
+  descField: {
     width: "100%",
   },
   linkField: {
@@ -27,7 +31,7 @@ const useStyles = makeStyles({
   colCatSelect: {
     width: "50%",
   },
-  dashboardButtons: {
+  userPostButtons: {
     backgroundColor: "#4d3b58",
     color: "white",
     width: "50%",
@@ -38,7 +42,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Dashboard(props) {
+function UserPost(props) {
   const [state, setState] = useState({
     title: "",
     imageUrl: "",
@@ -105,25 +109,28 @@ function Dashboard(props) {
           <Grid spacing={3}>
             <Grid item xs={12}>
               <TextField
-                className={classes.inputField}
+                className={classes.titleField}
                 name="title"
                 value={state.title}
                 id="title-input"
                 onChange={handleChange}
                 label="Post Title"
-                helperText="*required"
+                helperText="*required; 25 character limit"
               />
             </Grid>
 
             <Grid item xs={12}>
               <TextField
-                className={classes.inputField}
+                multiline
+                variant="outlined"
+                rows={3}
+                className={classes.descField}
                 name="description"
                 value={state.description}
                 onChange={handleChange}
                 id="description-input"
                 label="Post Description"
-                helperText="*optional"
+                helperText="*optional; 1000 character limit"
               />
             </Grid>
 
@@ -183,7 +190,7 @@ function Dashboard(props) {
 
             <Grid item sm={12}>
               <Button
-                className={classes.dashboardButtons}
+                className={classes.userPostButtons}
                 onClick={uploadImage}
                 variant="contained"
                 color="primary"
@@ -199,7 +206,7 @@ function Dashboard(props) {
 
             <Grid item sm={12}>
               <Button
-                className={classes.dashboardButtons}
+                className={classes.userPostButtons}
                 onClick={handleSubmit}
                 variant="contained"
                 color="primary"
@@ -214,4 +221,4 @@ function Dashboard(props) {
   );
 }
 
-export default Dashboard;
+export default UserPost;

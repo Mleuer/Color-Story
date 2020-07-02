@@ -43,12 +43,15 @@ module.exports = function (sequelize, DataTypes) {
       // user bio; length limit of 200 characters
       biography: {
         type: DataTypes.STRING,
-        len: [1, 500],
+        len: [1, 1000],
       },
       userLinks: {
         type: DataTypes.STRING,
         isUrl: true,
       },
+      likedPosts: {
+        type: DataTypes.STRING,
+      }
     },
     {
       // This forces any default 'User' to exclude the password when we query them;
