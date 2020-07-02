@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Paper, Typography, Grid } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
-
+import "./style.css";
 
 
 function Welcome() {
