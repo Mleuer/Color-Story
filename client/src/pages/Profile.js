@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Avatar, makeStyles, Container, Fab, Grid } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { Avatar, makeStyles, Container, Fab, Grid, Typography, CardContent } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
@@ -64,6 +65,10 @@ function Profile() {
         setState({ loaded: true });
     };
 
+    const preventDefault = (event) => {
+        event.preventDefault();
+    }
+
 
 
     const useStyles = makeStyles({
@@ -79,15 +84,34 @@ function Profile() {
     return (
 
         <>
-
-
-            <Container />
-            <ButtonRow />
             <Grid container direction="row" alignItems="center" justify="center">
-                <Avatar onClick={uploadImage} alt={state.name} src={state.imageUrl} className={classes.avatar} />
+                <Grid xs={6}>
+                    <Avatar onClick={uploadImage} alt={state.name} src={state.imageUrl} className={classes.avatar} />
+                </Grid>
+                <Grid xs={6}>
+                    <CardContent>
+                        <Typography gutterBottom variant="h3" component="h2">
+                            Name
+          </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Color Story
+                        </Typography>
+                        <Typography>
+                            <Link href="#" onClick={preventDefault}>
+                                Website
+  </Link>
+                        </Typography>
+                        <Typography>
+                            <Link href="#" onClick={preventDefault}>
+                                Blog
+  </Link>
+                        </Typography>
+                    </CardContent>
+                </Grid>
             </Grid>
+
             <Fab color="primary" aria-label="add">
-                <AddIcon />
+                <AddIcon component={Link} to="/dashboard" />
             </Fab>
             <Fab color="secondary" aria-label="edit">
                 <EditIcon onClick={handleClickOpen} />
@@ -109,7 +133,7 @@ function Profile() {
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="name"
+                        id="link"
                         label="Website Link"
                         type="Website Link"
                         fullWidth
@@ -117,7 +141,7 @@ function Profile() {
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="name"
+                        id="description"
                         label="Description"
                         type="Description"
                         fullWidth
@@ -133,7 +157,7 @@ function Profile() {
                 </DialogActions>
             </Dialog>
 
-
+            <ButtonRow />
         </>
     )
 }
