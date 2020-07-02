@@ -27,7 +27,7 @@ module.exports = function (sequelize, DataTypes) {
     // description (500 character limit)
     description: {
       type: DataTypes.TEXT,
-      len: [1, 500],
+      len: [1, 1000],
     },
     // user tags
     postTags: {
@@ -38,6 +38,11 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       isInt: true,
     },
+    // number of times other users like a particular post;
+    // maybe this should be changed to STRING so that we can record which user(s) like the post...
+    userLikes: {
+      type: DataTypes.INTEGER,
+    }
   });
 
   Post.associate = function (models) {
