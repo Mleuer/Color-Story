@@ -6,6 +6,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import ButtonRow from "../components/ButtonRow";
 
 const useStyles = makeStyles({
   navRoot: {
@@ -110,40 +111,8 @@ function ColorWall() {
 
   return (
     <>
-      <Card className={classes.navRoot} variant="outlined">
-        <CardContent>
-          <IconButton>
-            <FiberManualRecordIcon style={{ color: "red" }} />
-          </IconButton>
-          <IconButton>
-            <FiberManualRecordIcon style={{ color: "orange" }} />
-          </IconButton>
-          <IconButton>
-            <FiberManualRecordIcon style={{ color: "yellow" }} />
-          </IconButton>
-          <IconButton>
-            <FiberManualRecordIcon style={{ color: "green" }} />
-          </IconButton>
-          <IconButton>
-            <FiberManualRecordIcon style={{ color: "blue" }} />
-          </IconButton>
-          <IconButton>
-            <FiberManualRecordIcon style={{ color: "purple" }} />
-          </IconButton>
-          <IconButton>
-            <FiberManualRecordIcon style={{ color: "black" }} />
-          </IconButton>
-          <IconButton>
-            <FiberManualRecordIcon style={{ color: "white" }} />
-          </IconButton>
-          <IconButton>
-            <FiberManualRecordIcon style={{ color: "white" }} />
-          </IconButton>
-        </CardContent>
-      </Card>
-
+    <ButtonRow />
       <br></br>
-      
       <div className={classes.root}>
         <section className={classes.photos}>
             {tileData.map((tile) => (

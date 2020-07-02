@@ -9,6 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import ButtonRow from "../components/ButtonRow";
 
 function Profile() {
 
@@ -79,6 +80,7 @@ function Profile() {
 
 
             <Container />
+            <ButtonRow />
             <Avatar onClick={uploadImage} alt={state.name} src={state.imageUrl} className={classes.avatar} />
             <Fab color="primary" aria-label="add">
                 <AddIcon />
