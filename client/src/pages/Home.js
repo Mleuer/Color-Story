@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Paper, Typography, Grid, Button, ButtonGroup } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import ColorButtons from "../components/ColorButtons";
@@ -27,32 +27,32 @@ function Home() {
                     <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="#ff3300" />
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="#ff5e1a" />
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="yellow" />
                     </Grid>
                 </Grid>
                 <Grid container direction="row" alignItems="center" justify="center" spacing={1}>
-                    <Grid item xs={3}>
+                    <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="green" />
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="turquoise" />
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="#B57FD2" />
                     </Grid>
                 </Grid>
                 <Grid container direction="row" alignItems="center" justify="center" spacing={1}>
-                    <Grid item xs={3}>
+                    <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="black" />
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons border="black solid" color="white" />
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="red" />
                     </Grid>
                 </Grid>

@@ -19,15 +19,18 @@ const useStyles = makeStyles({
     width: "100%",
   },
   linkField: {
-    width: "33%",
+    width: "100%",
+  },
+  amountField: {
+    width: "50%",
   },
   colCatSelect: {
-    width: "12%",
+    width: "50%",
   },
   dashboardButtons: {
     backgroundColor: "#4d3b58",
     color: "white",
-    width: "20%",
+    width: "50%",
     "&:hover": {
       backgroundColor: "#c9c4cc",
       color: "black",
@@ -97,10 +100,10 @@ function Dashboard(props) {
 
   return (
     <>
-      <Container>
+      <Container maxWidth="xs">
         <form noValidate autoComplete="off">
           <Grid spacing={3}>
-            <Grid item sm={4}>
+            <Grid item xs={12}>
               <TextField
                 className={classes.inputField}
                 name="title"
@@ -112,7 +115,7 @@ function Dashboard(props) {
               />
             </Grid>
 
-            <Grid item sm={4}>
+            <Grid item xs={12}>
               <TextField
                 className={classes.inputField}
                 name="description"
@@ -140,7 +143,7 @@ function Dashboard(props) {
 
             <Grid item sm={12}>
               <CurrencyTextField
-                className={classes.linkField}
+                className={classes.amountField}
                 label="Amount"
                 variant="standard"
                 name="price"

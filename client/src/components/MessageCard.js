@@ -5,15 +5,15 @@ import { Card, CardContent, Typography } from "@material-ui/core";
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
-    border: "3px solid #38303d",
-    backgroundColor: "#e8e4ea",
+    border: "3px solid #665151",
+    backgroundColor: "#cca3a3",
     boxShadow: "1px 1px 8px gray",
     margin: "20px 0px",
   },
   title: {
     fontSize: 30,
     fontWeight: "bold",
-    color: "#38303d",
+    color: "#665151",
   },
   date: {
     fontSize: 15,
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     color: "black",
   },
   divider: {
-    border: "1px solid #38303d",
+    border: "1px solid #665151",
     borderRadius: "5px",
   },
 });
