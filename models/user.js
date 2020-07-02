@@ -6,6 +6,16 @@ module.exports = function (sequelize, DataTypes) {
   const User = sequelize.define(
     "User",
     {
+      // first name
+      firstName: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      // last name
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       // The email cannot be null, and must be a proper email before creation
       email: {
         type: DataTypes.STRING,
@@ -24,10 +34,6 @@ module.exports = function (sequelize, DataTypes) {
         validate: {
           is: /^[a-zA-Z0-9]*$/i,
         }
-      },
-      //Full Name
-      name: {
-        type: DataTypes.STRING
       },
       // password; cannot be null and must be at least 8 characters long
       password: {
