@@ -10,14 +10,15 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import CreateIcon from '@material-ui/icons/Create';
-
+import "./style.css"
+import Burger from "../HamburgerMenu/HamburgerMenu";
 
 const useStyles = makeStyles({
   bar: {
     backgroundColor: "#FFCCCC",
     borderRadius: "24px",
     paddingTop: "15px",
-    border: "black solid 4px "
+    border: "black solid 4px"
   },
   bar_labels: {
     fontSize: "15px",
@@ -28,15 +29,16 @@ const useStyles = makeStyles({
   }
 });
 
-
 function Navigation(props) {
   const { user, logoutUser } = props;
   const classes = useStyles();
+
   return (
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <IconButton component={Link} to="/home">
+          <Burger />
+          <IconButton  component={Link} to="/home">
             <HomeIcon style={{ color: "black" }} /><span className={classes.bar_labels}>home</span>
           </IconButton>
           {user.email ? (
@@ -63,7 +65,7 @@ function Navigation(props) {
                   <CreateIcon style={{ color: "black" }} /><span className={classes.bar_labels}>signup</span>
                 </IconButton>
               </>
-            )}
+            )} 
           <Typography variant="h2" align="center" gutterBottom className={classes.font}>
             Color Story
                             </Typography>
