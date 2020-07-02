@@ -1,13 +1,18 @@
 import React from "react";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { Button, AppBar, Toolbar, Typography, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import HomeIcon from "@material-ui/icons/Home";
-import IconButton from "@material-ui/core/IconButton";
-import FaceIcon from "@material-ui/icons/Face";
-import VpnKeyIcon from "@material-ui/icons/VpnKey";
-import CreateIcon from "@material-ui/icons/Create";
-import "./style.css";
+import { makeStyles } from '@material-ui/core/styles';
+import HomeIcon from '@material-ui/icons/Home';
+import IconButton from '@material-ui/core/IconButton';
+import FaceIcon from '@material-ui/icons/Face';
+import PaletteIcon from '@material-ui/icons/Palette';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import CreateIcon from '@material-ui/icons/Create';
+import "./style.css"
+import Select from '@material-ui/core/Select';
+import Menu from '@material-ui/core/Menu';
 
 const useStyles = makeStyles({
   bar: {
