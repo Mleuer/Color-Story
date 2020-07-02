@@ -1,10 +1,6 @@
-
- @media (max-width: 600px) {
-  .makeStyles-outline-1 .makeStyles-bar-2 .makeStyles-font-4 {
-      font-size: 50px;
-      align-items: center;
-      text-align: center;
-      margin-top: 20px;
+@media (max-width: 600px) {
+  .makeStyles-outline-1 .MuiTypography-h2 {
+    font-size: 30px;
+    padding-left: 20px;
   }
 }
-
