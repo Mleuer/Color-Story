@@ -11,7 +11,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import CreateIcon from '@material-ui/icons/Create';
 import "./style.css"
-import Burger from "../HamburgerMenu/HamburgerMenu";
+
 
 const useStyles = makeStyles({
   bar: {
@@ -37,7 +37,6 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <Burger />
           <IconButton  component={Link} to="/home">
             <HomeIcon style={{ color: "black" }} /><span className={classes.bar_labels}>home</span>
           </IconButton>
