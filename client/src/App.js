@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Home, Dashboard, Profile, ColorWall } from "./pages";
+import { Home, UserPost, Profile, ColorWall } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
@@ -86,8 +86,8 @@ function App() {
                 <Route exact path={["/colorwall"]}>
                   <ColorWall />
                 </Route>
-                <PrivateRoute exact user={user} path={["/dashboard"]}>
-                  <Dashboard user={user} setError={setError}/>
+                <PrivateRoute exact user={user} path={["/userpost"]}>
+                  <UserPost user={user} setError={setError}/>
                 </PrivateRoute>
                 <PrivateRoute exact user={user} path={["/profile"]}>
                   <Profile user={user} />
