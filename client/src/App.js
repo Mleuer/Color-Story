@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import API from './utils/API';
 import { makeStyles } from "@material-ui/core";
 
+
 const useStyles = makeStyles({
   outline: {
     border: "black solid",
@@ -78,6 +79,7 @@ function App() {
             <Grid item xs={12}>
               {error && <Error error={error} clearError={clearError} />}
             </Grid>
+            
             <Grid item xs={12}>
               <Switch>
                 <Route exact path={["/", "/home"]}>

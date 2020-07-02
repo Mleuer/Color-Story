@@ -3,16 +3,9 @@ import { Container, Paper, Typography, Grid } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 
 
-// const useStyles = makeStyles((theme) => ({
-
-//     welcomeHeader: {
-//         fontFamily: 
-//     },
-
-// }));
 
 function Welcome() {
-    // const classes = useStyles();
+    
     return (
         <div>
             <Typography variant="h1">
