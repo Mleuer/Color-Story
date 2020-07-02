@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Avatar, makeStyles, Container, Fab } from "@material-ui/core";
+import { Avatar, makeStyles, Container, Fab, Grid } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
@@ -69,8 +69,10 @@ function Profile() {
     const useStyles = makeStyles({
         avatar: {
             height: "400px",
-            width: "400px"
+            width: "400px",
+            marginTop: "20px"
         }
+
     })
 
     const classes = useStyles();
@@ -81,7 +83,9 @@ function Profile() {
 
             <Container />
             <ButtonRow />
-            <Avatar onClick={uploadImage} alt={state.name} src={state.imageUrl} className={classes.avatar} />
+            <Grid container direction="row" alignItems="center" justify="center">
+                <Avatar onClick={uploadImage} alt={state.name} src={state.imageUrl} className={classes.avatar} />
+            </Grid>
             <Fab color="primary" aria-label="add">
                 <AddIcon />
             </Fab>
