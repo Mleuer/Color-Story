@@ -12,6 +12,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import CreateIcon from '@material-ui/icons/Create';
 import "./style.css"
 import Select from '@material-ui/core/Select';
+import Menu from '@material-ui/core/Menu';
 
 const useStyles = makeStyles({
   bar: {
@@ -37,7 +38,8 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <Select IconComponent={HomeIcon}>
+          <Select IconComponent={HomeIcon} anchorE1={null} Icon>
+            {/* <Select anchorEl={anchorEl} IconComponent={HomeIcon}> */}
             <Grid direction="column">
               <IconButton component={Link} to="/home">
                 <HomeIcon style={{ color: "black" }} /><span className={classes.bar_labels}>home</span>
@@ -69,6 +71,7 @@ function Navigation(props) {
                 )}
             </Grid>
           </Select>
+          {/* </Select> */}
 
           <Typography variant="h2" align="center" gutterBottom className={classes.font}>
             Color Story

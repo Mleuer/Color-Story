@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Paper, Typography, Grid, Button, ButtonGroup } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import ColorButtons from "../components/ColorButtons";
-import Welcome from "../components/Welcome";
+import Welcome from "../components/Welcome/Welcome";
 
 const useStyles = makeStyles((theme) => ({
 
