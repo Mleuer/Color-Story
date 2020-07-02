@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import ColorButtons from "../components/ColorButtons";
 import Welcome from "../components/Welcome";
+import LoginButton from "../components/LoginButton";
+import SignupButton from "../components/SignupButton";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -23,7 +25,7 @@ function Home() {
                 <Grid container direction="row" alignItems="center" justify="center" spacing={1}>
 
                     <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#ff3300"/>
+                        <ColorButtons color="#ff3300" />
                     </Grid>
                     <Grid item xs={3}>
                         <ColorButtons color="#ff5e1a" />
@@ -57,6 +59,11 @@ function Home() {
                 <Welcome>
 
                 </Welcome>
+                <Grid container direction="row" justify="space-evenly">
+                    <LoginButton />
+                    <SignupButton />
+                </Grid>
+
             </Container>
 
         </div>
