@@ -81,7 +81,7 @@ function App() {
             <Grid item xs={12}>
               <Switch>
                 <Route exact path={["/", "/home"]}>
-                  <Home />
+                  <Home user={user}/>
                 </Route>
                 <Route exact path={["/colorwall"]}>
                   <ColorWall />
