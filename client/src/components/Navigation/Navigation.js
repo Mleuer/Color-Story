@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   font: {
     fontFamily: "Petit Formal Script, cursive",
     marginLeft: "15px"
-  },
+  }
 });
 
 function Navigation(props) {
@@ -41,40 +41,8 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          {/* <TemporaryDrawer></TemporaryDrawer> */}
-           <Select IconComponent={SettingsIcon} anchorE1={null} Icon>
-             <Grid direction="column">
-              <IconButton component={Link} to="/home">
-                <HomeIcon style={{ color: "black" }} />
-                <span className={classes.bar_labels}>home</span>
-              </IconButton>
-              {user.email ? (
-                <>
-                  <IconButton component={Link} to="/profile">
-                    <FaceIcon style={{ color: "black" }} />
-                    <span className={classes.bar_labels}>profile</span>
-                  </IconButton>
-                  <IconButton component={Link} to="/home" onClick={logoutUser}>
-                    <VpnKeyIcon style={{ color: "black" }} />
-                    <span className={classes.bar_labels}>logout</span>
-                  </IconButton>
-                </>
-              ) : (
-                <>
-                  <IconButton component={Link} to="/login">
-                    <VpnKeyIcon style={{ color: "black" }} />
-                    <span className={classes.bar_labels}>login</span>
-                  </IconButton>
-                  <IconButton component={Link} to="/signup">
-                    <CreateIcon style={{ color: "black" }} />
-                    <span className={classes.bar_labels}>signup</span>
-                  </IconButton>
-                </>
-              )}
-            </Grid>
-          </Select> 
-       
-
+          <TemporaryDrawer>
+          </TemporaryDrawer>
           <Typography
             variant="h2"
             align="center"
