@@ -14,7 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles({
   list: {
-    width: 250,
+    width: 10,
   },
   fullList: {
     width: 'auto',
@@ -69,7 +69,7 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      {['butts'].map((anchor) => (
+      {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>

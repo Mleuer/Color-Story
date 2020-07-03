@@ -41,10 +41,9 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <TemporaryDrawer></TemporaryDrawer>
-          {/* <Select IconComponent={SettingsIcon} anchorE1={null} Icon>
-            {/* <Select anchorEl={anchorEl} IconComponent={HomeIcon}> */}
-            {/* <Grid direction="column">
+          {/* <TemporaryDrawer></TemporaryDrawer> */}
+           <Select IconComponent={SettingsIcon} anchorE1={null} Icon>
+             <Grid direction="column">
               <IconButton component={Link} to="/home">
                 <HomeIcon style={{ color: "black" }} />
                 <span className={classes.bar_labels}>home</span>
@@ -73,8 +72,8 @@ function Navigation(props) {
                 </>
               )}
             </Grid>
-          </Select> */} 
-          {/* </Select> */}
+          </Select> 
+       
 
           <Typography
             variant="h2"
