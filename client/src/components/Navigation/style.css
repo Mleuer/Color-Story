@@ -1,7 +1,6 @@
- @media (max-width: 600px) {
-   .makeStyles-outline-1 .makeStyles-bar-2 {
-     background-color: green;
-   }
- }
-
- 
+@media (max-width: 600px) {
+  .makeStyles-outline-1 .MuiTypography-h2 {
+    font-size: 30px;
+    padding-left: 20px;
+  }
+}
