@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Avatar, makeStyles, Fab, Grid, Typography, CardContent } from "@material-ui/core";
+import {
+  Avatar,
+  makeStyles,
+  Fab,
+  Grid,
+  Typography,
+  CardContent,
+} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
@@ -12,7 +19,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import ButtonRow from "../../components/ButtonRow";
-import API from "../../utils/API"
+import API from "../../utils/API";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -36,14 +43,14 @@ function Profile(props) {
     name: "",
     biography: "",
     userLinks: "",
-    profilePic: ""
+    profilePic: "",
   });
 
   const [userInput, setUserInput] = useState({
     name: "",
     biography: "",
     userLinks: "",
-    profilePic: ""
+    profilePic: "",
   });
   const getUserInfo = () => {
     API.User.getById(props.user.id)
@@ -60,12 +67,11 @@ function Profile(props) {
           name: dataName,
           biography: dataBiography,
           userLinks: dataUserLinks,
-          profilePic: dataProfilePic
-
+          profilePic: dataProfilePic,
         });
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   const [open, setOpen] = useState(false);
 
@@ -80,13 +86,12 @@ function Profile(props) {
 
   const handleSave = () => {
     setOpen(false);
-    API.User.update(props.user.id, state)
-
+    API.User.update(props.user.id, state);
   };
   const handleEdit = (e) => {
     // console.log(e.target.name)
-    setState({ ...state, [e.target.name]: e.target.value })
-  }
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
 
   useEffect(() => {
     getUserInfo();
@@ -121,7 +126,8 @@ function Profile(props) {
           <Avatar
             alt={state.name}
             src={state.profilePic}
-            className={classes.avatar} />
+            className={classes.avatar}
+          />
         </Grid>
         <Grid xs={6}>
           <CardContent>
@@ -134,9 +140,9 @@ function Profile(props) {
             </Typography>
             <h3>Website</h3>
             <Typography>
-              <Link href="#" onClick={preventDefault}>
+              <a target="__blank" href={state.userLinks}>
                 {state.userLinks}
-              </Link>
+              </a>
             </Typography>
           </CardContent>
         </Grid>
@@ -171,12 +177,11 @@ function Profile(props) {
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="form-dialog-title">
+        aria-labelledby="form-dialog-title"
+      >
         <DialogTitle id="form-dialog-title">Edit Profile</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Add Your Color Story
-          </DialogContentText>
+          <DialogContentText>Add Your Color Story</DialogContentText>
           <Avatar
             onClick={uploadImage}
             name="profilePic"
@@ -207,6 +212,9 @@ function Profile(props) {
             fullWidth
           />
           <TextField
+            multiline
+            variant="outlined"
+            rows={3}
             onChange={handleEdit}
             name="biography"
             value={state.biography}
