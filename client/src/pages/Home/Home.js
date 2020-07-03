@@ -2,19 +2,18 @@ import React from "react";
 import { Container, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
-import ColorButtons from "../components/ColorButtons";
-import Welcome from "../components/Welcome/Welcome";
-import LoginButton from "../components/LoginButton";
-import SignupButton from "../components/SignupButton";
+import ColorButtons from "../../components/ColorButtons";
+import Welcome from "../../components/Welcome/Welcome";
+import LoginButton from "../../components/LoginButton";
+import SignupButton from "../../components/SignupButton";
+import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
 
     root: {
         flexGrow: 1,
     },
-    colorButton: {
-        marginTop: "10px"
-    },
+    
 }));
 
 function Home() {
@@ -22,7 +21,7 @@ function Home() {
     return (
         <div className={classes.root}>
             <Container maxWidth="xs" >
-                <Grid container direction="row" alignItems="center" justify="center" spacing={1}>
+                <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
 
                     <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="#ff3300" />
@@ -34,7 +33,7 @@ function Home() {
                         <ColorButtons color="yellow" />
                     </Grid>
                 </Grid>
-                <Grid container direction="row" alignItems="center" justify="center" spacing={1}>
+                <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
                     <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="green" />
                     </Grid>
@@ -45,7 +44,7 @@ function Home() {
                         <ColorButtons color="#B57FD2" />
                     </Grid>
                 </Grid>
-                <Grid container direction="row" alignItems="center" justify="center" spacing={1}>
+                <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
                     <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="black" />
                     </Grid>
