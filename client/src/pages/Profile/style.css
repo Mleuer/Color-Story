@@ -1,5 +1,5 @@
 @media (max-width: 600px) {
-    .makeStyles-avatar-7 .MuiAvatar-circle .MuiAvatar-root {
+    .MuiGrid-item .MuiGrid-grid-xs-12 .makeStyles-avatar-29 {
         width: 300px;
         height: 300px;
     }
