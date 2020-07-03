@@ -16,7 +16,9 @@ const useStyles = makeStyles((theme) => ({
     
 }));
 
-function Home() {
+function Home(props) {
+    const user = props.user;
+
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -58,11 +60,12 @@ function Home() {
                 <Welcome>
 
                 </Welcome>
+                {user.email ? (<> </>) : (
                 <Grid container direction="row" justify="space-evenly">
                     <LoginButton />
                     <SignupButton />
                 </Grid>
-
+                )}
             </Container>
 
         </div>

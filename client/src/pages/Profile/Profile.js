@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Avatar, makeStyles, Fab, Grid, Typography, CardContent } from "@material-ui/core";
+import {
+  Avatar,
+  makeStyles,
+  Fab,
+  Grid,
+  Typography,
+  CardContent,
+} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
@@ -12,7 +19,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import ButtonRow from "../../components/ButtonRow";
-import API from "../../utils/API"
+import API from "../../utils/API";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -36,30 +43,16 @@ function Profile(props) {
     name: "",
     biography: "",
     userLinks: "",
-    profilePic: ""
+    profilePic: "",
   });
-  const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleSave = () => {
-    setOpen(false);
-    API.User.update(props.user.id, state)
-
-  };
-  const handleEdit = (e) => {
-    // console.log(e.target.name)
-
-    setState({ ...state, [e.target.name]: e.target.value })
-  }
-
-  useEffect(() => {
+  const [userInput, setUserInput] = useState({
+    name: "",
+    biography: "",
+    userLinks: "",
+    profilePic: "",
+  });
+  const getUserInfo = () => {
     API.User.getById(props.user.id)
       .then((res) => {
         // console.log(res.data)
@@ -74,11 +67,34 @@ function Profile(props) {
           name: dataName,
           biography: dataBiography,
           userLinks: dataUserLinks,
-          profilePic: dataProfilePic
-
+          profilePic: dataProfilePic,
         });
       })
       .catch((err) => console.log(err));
+  };
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    getUserInfo();
+  };
+
+  const handleSave = () => {
+    setOpen(false);
+    API.User.update(props.user.id, state);
+  };
+  const handleEdit = (e) => {
+    // console.log(e.target.name)
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    getUserInfo();
   }, []);
 
   function uploadImage(event) {
@@ -90,17 +106,11 @@ function Profile(props) {
       },
       (error, result) => {
         if (result.event === "success") {
-          setState({ ...state, imageUrl: result.info.secure_url });
-        } else if (result.event === "abort") {
-          setState({ ...state, imageUrl: "" });
+          setState({ ...state, profilePic: result.info.secure_url });
         }
       }
     );
   }
-
-  const handleImageLoaded = (event) => {
-
-  };
 
   const preventDefault = (event) => {
     event.preventDefault();
@@ -116,7 +126,8 @@ function Profile(props) {
           <Avatar
             alt={state.name}
             src={state.profilePic}
-            className={classes.avatar} />
+            className={classes.avatar}
+          />
         </Grid>
         <Grid xs={6}>
           <CardContent>
@@ -129,15 +140,9 @@ function Profile(props) {
             </Typography>
             <h3>Website</h3>
             <Typography>
-              <Link href="#" onClick={preventDefault}>
+              <a target="__blank" href={state.userLinks}>
                 {state.userLinks}
-              </Link>
-            </Typography>
-            <h3>Blog</h3>
-            <Typography>
-              <Link href="#" onClick={preventDefault}>
-                Blog
-                             </Link>
+              </a>
             </Typography>
           </CardContent>
         </Grid>
@@ -172,19 +177,22 @@ function Profile(props) {
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="form-dialog-title">
+        aria-labelledby="form-dialog-title"
+      >
         <DialogTitle id="form-dialog-title">Edit Profile</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Add Your Color Story
-          </DialogContentText>
+          <DialogContentText>Add Your Color Story</DialogContentText>
           <Avatar
             onClick={uploadImage}
+            name="profilePic"
+            value={state.profilePic}
             alt={state.name}
-            src={state.profilePic} />
+            src={state.profilePic}
+          />
           <TextField
             onChange={handleEdit}
             name="name"
+            value={state.name}
             autoFocus
             margin="dense"
             id="name"
@@ -195,6 +203,7 @@ function Profile(props) {
           <TextField
             onChange={handleEdit}
             name="userLinks"
+            value={state.userLinks}
             autoFocus
             margin="dense"
             id="userLinks"
@@ -203,8 +212,12 @@ function Profile(props) {
             fullWidth
           />
           <TextField
+            multiline
+            variant="outlined"
+            rows={3}
             onChange={handleEdit}
             name="biography"
+            value={state.biography}
             autoFocus
             margin="dense"
             id="biography"
