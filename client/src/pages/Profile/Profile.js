@@ -38,28 +38,14 @@ function Profile(props) {
     userLinks: "",
     profilePic: ""
   });
-  const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleSave = () => {
-    setOpen(false);
-    API.User.update(props.user.id, state)
-
-  };
-  const handleEdit = (e) => {
-    // console.log(e.target.name)
-
-    setState({ ...state, [e.target.name]: e.target.value })
-  }
-
-  useEffect(() => {
+  const [userInput, setUserInput] = useState({
+    name: "",
+    biography: "",
+    userLinks: "",
+    profilePic: ""
+  });
+  const getUserInfo = () => {
     API.User.getById(props.user.id)
       .then((res) => {
         // console.log(res.data)
@@ -79,6 +65,31 @@ function Profile(props) {
         });
       })
       .catch((err) => console.log(err));
+  }
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    getUserInfo();
+  };
+
+  const handleSave = () => {
+    setOpen(false);
+    API.User.update(props.user.id, state)
+
+  };
+  const handleEdit = (e) => {
+    // console.log(e.target.name)
+    setState({ ...state, [e.target.name]: e.target.value })
+  }
+
+  useEffect(() => {
+    getUserInfo();
   }, []);
 
   function uploadImage(event) {
@@ -90,17 +101,11 @@ function Profile(props) {
       },
       (error, result) => {
         if (result.event === "success") {
-          setState({ ...state, imageUrl: result.info.secure_url });
-        } else if (result.event === "abort") {
-          setState({ ...state, imageUrl: "" });
+          setState({ ...state, profilePic: result.info.secure_url });
         }
       }
     );
   }
-
-  const handleImageLoaded = (event) => {
-
-  };
 
   const preventDefault = (event) => {
     event.preventDefault();
@@ -132,12 +137,6 @@ function Profile(props) {
               <Link href="#" onClick={preventDefault}>
                 {state.userLinks}
               </Link>
-            </Typography>
-            <h3>Blog</h3>
-            <Typography>
-              <Link href="#" onClick={preventDefault}>
-                Blog
-                             </Link>
             </Typography>
           </CardContent>
         </Grid>
@@ -180,11 +179,15 @@ function Profile(props) {
           </DialogContentText>
           <Avatar
             onClick={uploadImage}
+            name="profilePic"
+            value={state.profilePic}
             alt={state.name}
-            src={state.profilePic} />
+            src={state.profilePic}
+          />
           <TextField
             onChange={handleEdit}
             name="name"
+            value={state.name}
             autoFocus
             margin="dense"
             id="name"
@@ -195,6 +198,7 @@ function Profile(props) {
           <TextField
             onChange={handleEdit}
             name="userLinks"
+            value={state.userLinks}
             autoFocus
             margin="dense"
             id="userLinks"
@@ -205,6 +209,7 @@ function Profile(props) {
           <TextField
             onChange={handleEdit}
             name="biography"
+            value={state.biography}
             autoFocus
             margin="dense"
             id="biography"
