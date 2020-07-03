@@ -24,7 +24,7 @@ function ButtonRow(props) {
     "purple",
     "black",
     "white",
-    "white"
+    "gray"
   ];
 
   return (
@@ -32,7 +32,7 @@ function ButtonRow(props) {
       <Card className={classes.navRoot} variant="outlined">
         <CardContent>
           {colors.map((color) => (
-            <IconButton onClick={() => props.handleClick(color)}>
+            <IconButton key={`${color}-btn`} onClick={() => props.handleClick(color)}>
               <FiberManualRecordIcon
                 style={{ color: color }}
               />
