@@ -3,7 +3,7 @@ import { Button, AppBar, Toolbar, Typography, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import HomeIcon from "@material-ui/icons/Home";
-import SettingsIcon from '@material-ui/icons/Settings';
+import SettingsIcon from "@material-ui/icons/Settings";
 import IconButton from "@material-ui/core/IconButton";
 import FaceIcon from "@material-ui/icons/Face";
 import PaletteIcon from "@material-ui/icons/Palette";
@@ -29,8 +29,8 @@ const useStyles = makeStyles({
   },
   font: {
     fontFamily: "Petit Formal Script, cursive",
-    marginLeft: "15px"
-  }
+    marginLeft: "15px",
+  },
 });
 
 function Navigation(props) {
@@ -41,8 +41,10 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <TemporaryDrawer>
-          </TemporaryDrawer>
+          <TemporaryDrawer
+            user={user}
+            logoutUser={logoutUser}
+          ></TemporaryDrawer>
           <Typography
             variant="h2"
             align="center"
