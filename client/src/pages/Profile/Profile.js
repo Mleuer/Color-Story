@@ -18,7 +18,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import ButtonRow from "../../components/ButtonRow";
 import API from "../../utils/API";
 import "./style.css";
 
@@ -46,12 +45,8 @@ function Profile(props) {
     profilePic: "",
   });
 
-  const [userInput, setUserInput] = useState({
-    name: "",
-    biography: "",
-    userLinks: "",
-    profilePic: "",
-  });
+  const [open, setOpen] = useState(false);
+
   const getUserInfo = () => {
     API.User.getById(props.user.id)
       .then((res) => {
@@ -72,8 +67,6 @@ function Profile(props) {
       })
       .catch((err) => console.log(err));
   };
-
-  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -115,8 +108,7 @@ function Profile(props) {
   const preventDefault = (event) => {
     event.preventDefault();
   };
-  // console.log("this is our state", state)
-  // console.log("these are our props", props)
+
   const classes = useStyles();
 
   return (
