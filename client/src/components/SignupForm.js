@@ -46,6 +46,7 @@ function SignupForm(props) {
                 onChange={handleInputChange}
                 as="input"
                 type="text"
+                helperText="*required"
               />
             </Grid>
             <Grid item xs={12}>
@@ -57,6 +58,7 @@ function SignupForm(props) {
                 onChange={handleInputChange}
                 as="input"
                 type="text"
+                helperText="*required"
               />
             </Grid>
             <Grid item xs={12}>
@@ -68,7 +70,7 @@ function SignupForm(props) {
                 onChange={handleInputChange}
                 as="input"
                 type="email"
-                helperText="enter your email address; must be unique and your own"
+                helperText="*required; enter your email address; must be unique and your own"
               />
             </Grid>
             <Grid item xs={12}>
@@ -80,7 +82,7 @@ function SignupForm(props) {
                 onChange={handleInputChange}
                 as="input"
                 type="text"
-                helperText="unique and 3-25 characters; letters (upper/lower) and numbers (0-9) only"
+                helperText="*required; unique and 3-25 characters; letters (upper/lower) and numbers (0-9) only"
               />
             </Grid>
             <Grid item xs={12}>
@@ -92,7 +94,7 @@ function SignupForm(props) {
                 onChange={handleInputChange}
                 as="input"
                 type="password"
-                helperText="must be at least 8 characters long, and something that you will remember"
+                helperText="*required; must be at least 8 characters, and something that you will remember"
               />
             </Grid>
             <Grid item xs={12}>
