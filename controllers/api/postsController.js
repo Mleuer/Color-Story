@@ -5,7 +5,7 @@ const isAuthenticated = require("../../config/middleware/isAuthenticated");
 /**
  * Post - Read All
  */
-router.get("/", isAuthenticated, function (req, res) {
+router.get("/", function (req, res) {
   db.Post.findAll({include: db.User})
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
@@ -14,7 +14,7 @@ router.get("/", isAuthenticated, function (req, res) {
 /**
  * Post - Read One
  */
-router.get("/:id", isAuthenticated, function (req, res) {
+router.get("/:id", function (req, res) {
   db.Post.findById(req.params.id)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
