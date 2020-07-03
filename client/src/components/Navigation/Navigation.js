@@ -14,6 +14,7 @@ import CreateIcon from "@material-ui/icons/Create";
 import "./style.css";
 import Select from "@material-ui/core/Select";
 import Menu from "@material-ui/core/Menu";
+import TemporaryDrawer from "../TempDrawer";
 
 const useStyles = makeStyles({
   bar: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles({
   font: {
     fontFamily: "Petit Formal Script, cursive",
     marginLeft: "15px"
-  },
+  }
 });
 
 function Navigation(props) {
@@ -40,40 +41,8 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <Select IconComponent={SettingsIcon} anchorE1={null} Icon>
-            {/* <Select anchorEl={anchorEl} IconComponent={HomeIcon}> */}
-            <Grid direction="column">
-              <IconButton component={Link} to="/home">
-                <HomeIcon style={{ color: "black" }} />
-                <span className={classes.bar_labels}>home</span>
-              </IconButton>
-              {user.email ? (
-                <>
-                  <IconButton component={Link} to="/profile">
-                    <FaceIcon style={{ color: "black" }} />
-                    <span className={classes.bar_labels}>profile</span>
-                  </IconButton>
-                  <IconButton component={Link} to="/home" onClick={logoutUser}>
-                    <VpnKeyIcon style={{ color: "black" }} />
-                    <span className={classes.bar_labels}>logout</span>
-                  </IconButton>
-                </>
-              ) : (
-                <>
-                  <IconButton component={Link} to="/login">
-                    <VpnKeyIcon style={{ color: "black" }} />
-                    <span className={classes.bar_labels}>login</span>
-                  </IconButton>
-                  <IconButton component={Link} to="/signup">
-                    <CreateIcon style={{ color: "black" }} />
-                    <span className={classes.bar_labels}>signup</span>
-                  </IconButton>
-                </>
-              )}
-            </Grid>
-          </Select>
-          {/* </Select> */}
-
+          <TemporaryDrawer>
+          </TemporaryDrawer>
           <Typography
             variant="h2"
             align="center"
