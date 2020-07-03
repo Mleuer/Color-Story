@@ -238,7 +238,6 @@ function Profile(props) {
       <Grid container direction="row">
         <Grid xs={12}>
           <br></br>
-          <ButtonRow />
         </Grid>
       </Grid>
     </>
