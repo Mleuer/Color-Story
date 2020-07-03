@@ -54,7 +54,7 @@ function Profile(props) {
 
   };
   const handleEdit = (e) => {
-    console.log(e.target.name)
+    // console.log(e.target.name)
 
     setState({ ...state, [e.target.name]: e.target.value })
   }
@@ -64,7 +64,7 @@ function Profile(props) {
       .then((res) => {
         // console.log(res.data)
 
-        let dataName = res.data.name;
+        let dataName = res.data.firstName + " " + res.data.lastName;
         let dataBiography = res.data.biography;
         let dataUserLinks = res.data.userLinks;
         let dataProfilePic = res.data.profilePic;
