@@ -14,6 +14,7 @@ import CreateIcon from "@material-ui/icons/Create";
 import "./style.css";
 import Select from "@material-ui/core/Select";
 import Menu from "@material-ui/core/Menu";
+import TemporaryDrawer from "../TempDrawer";
 
 const useStyles = makeStyles({
   bar: {
@@ -40,9 +41,10 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <Select IconComponent={SettingsIcon} anchorE1={null} Icon>
+          <TemporaryDrawer></TemporaryDrawer>
+          {/* <Select IconComponent={SettingsIcon} anchorE1={null} Icon>
             {/* <Select anchorEl={anchorEl} IconComponent={HomeIcon}> */}
-            <Grid direction="column">
+            {/* <Grid direction="column">
               <IconButton component={Link} to="/home">
                 <HomeIcon style={{ color: "black" }} />
                 <span className={classes.bar_labels}>home</span>
@@ -71,7 +73,7 @@ function Navigation(props) {
                 </>
               )}
             </Grid>
-          </Select>
+          </Select> */} 
           {/* </Select> */}
 
           <Typography
