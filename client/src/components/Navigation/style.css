@@ -3,4 +3,7 @@
     font-size: 30px;
     padding-left: 20px;
   }
+  .MuiGrid-grid-xs-12 .makeStyles-bar-2 .MuiToolbar-gutters {
+    padding-left: 0px;
+  }
 }

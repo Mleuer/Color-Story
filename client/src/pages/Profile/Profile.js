@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
       backgroundColor: "#FFCCCC",
-      
     },
   },
   extendedIcon: {
@@ -139,7 +138,7 @@ function Profile(props) {
       </Grid>
 
       <Grid container direction="row">
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <div className={classes.root}>
             <Fab
               color="primary"
