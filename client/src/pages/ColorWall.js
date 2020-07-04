@@ -81,8 +81,8 @@ function ColorWall() {
   // ===========================================
   // FOR THE MODAL/DIALOG BOX:
   // ===========================================
-  const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(displayedPosts);
+  const [selectedValue, setSelectedValue] = useState(displayedPosts);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = (value) => {
     setOpen(true);
@@ -93,6 +93,11 @@ function ColorWall() {
     setOpen(false);
     setSelectedValue(value);
   };
+
+  const addLike = (post) => {
+    post.userLikes += 1;
+
+  }
   // ===========================================
 
   return (
@@ -152,8 +157,9 @@ function ColorWall() {
                     </Typography>
                   </CardContent>
                   <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
+                    <IconButton onClick={() => addLike(tile)} aria-label="Add like">
+                      <FavoriteIcon/>
+                      <>{tile.userLikes}</>
                     </IconButton>
                   </CardActions>
                 </Card>
