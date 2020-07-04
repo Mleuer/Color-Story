@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
+      backgroundColor: "#FFCCCC",
     },
   },
   extendedIcon: {
@@ -117,8 +118,8 @@ function Profile(props) {
             className={classes.avatar}
           />
         </Grid>
-        <Grid xs={6}>
-          <CardContent>
+        <Grid xs={12}>
+          <Grid item direction="row">
             <Typography gutterBottom variant="h3" component="h2">
               {state.name}
             </Typography>
@@ -132,12 +133,12 @@ function Profile(props) {
                 {state.userLinks}
               </a>
             </Typography>
-          </CardContent>
+          </Grid>
         </Grid>
       </Grid>
 
       <Grid container direction="row">
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <div className={classes.root}>
             <Fab
               color="primary"

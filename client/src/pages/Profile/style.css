@@ -1,6 +1,14 @@
 @media (max-width: 600px) {
-    .MuiGrid-item .MuiGrid-grid-xs-12 .makeStyles-avatar-29 {
+    .MuiGrid-item .MuiGrid-grid-xs-12 .makeStyles-avatar-30 {
         width: 300px;
         height: 300px;
     }
+    .MuiGrid-item .MuiGrid-grid-xs-6 .MuiCardContent-root {
+        align-items: center;
+        padding-top: 16px;
+        padding-left: 0px;
+    }
+    /* .makeStyles-outline-1 .MuiGrid-grid-xs-12 .makeStyles-root-10 {
+        justify-items: center;
+    } */
 }
