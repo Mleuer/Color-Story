@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 function Profile(props) {
   const [state, setState] = useState({
     name: "",
+    username: "",
     biography: "",
     userLinks: "",
     profilePic: "",
@@ -54,6 +55,7 @@ function Profile(props) {
         // console.log(res.data)
 
         let dataName = res.data.firstName + " " + res.data.lastName;
+        let dataUsername = res.data.username;
         let dataBiography = res.data.biography;
         let dataUserLinks = res.data.userLinks;
         let dataProfilePic = res.data.profilePic;
@@ -61,6 +63,7 @@ function Profile(props) {
         setState({
           ...state,
           name: dataName,
+          username: dataUsername,
           biography: dataBiography,
           userLinks: dataUserLinks,
           profilePic: dataProfilePic,
@@ -121,8 +124,12 @@ function Profile(props) {
         <Grid xs={12}>
           <Grid item direction="row">
             <Typography gutterBottom variant="h3" component="h2">
-              {state.name}
+              {state.username}
             </Typography>
+            <Typography gutterBottom variant="h6" component="h2">
+              ({state.name})
+            </Typography>
+
             <h3>Bio</h3>
             <Typography variant="body2" color="textSecondary" component="p">
               {state.biography}
@@ -177,17 +184,6 @@ function Profile(props) {
             value={state.profilePic}
             alt={state.name}
             src={state.profilePic}
-          />
-          <TextField
-            onChange={handleEdit}
-            name="name"
-            value={state.name}
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Name"
-            type="name"
-            fullWidth
           />
           <TextField
             onChange={handleEdit}
