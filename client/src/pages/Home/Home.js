@@ -40,7 +40,7 @@ function Home(props) {
                         <ColorButtons color="green" />
                     </Grid>
                     <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="turquoise" />
+                        <ColorButtons color="cyan" />
                     </Grid>
                     <Grid item xs={3} component={Link} to="/colorwall">
                         <ColorButtons color="#B57FD2" />
@@ -54,7 +54,7 @@ function Home(props) {
                         <ColorButtons border="black solid" color="white" />
                     </Grid>
                     <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="red" />
+                        <ColorButtons color="gray" />
                     </Grid>
                 </Grid>
                 <Welcome>

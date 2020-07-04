@@ -105,10 +105,6 @@ function Profile(props) {
     );
   }
 
-  const preventDefault = (event) => {
-    event.preventDefault();
-  };
-
   const classes = useStyles();
 
   return (

@@ -3,22 +3,44 @@ import { makeStyles } from "@material-ui/core/styles";
 import ButtonRow from "../components/ButtonRow";
 import API from "../utils/API";
 
+// ====================================================================
+// FOR THE MODAL/DIALOG BOX:
+// ====================================================================
+import Dialog from "@material-ui/core/Dialog";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+// ====================================================================
+
 const useStyles = makeStyles({
-  navRoot: {
-    minWidth: 275,
-    textAlign: "center",
-    backgroundColor: "lightgray",
-    border: "2px solid black",
-    paddingTop: "8px",
-  },
-  gridList: {
-    width: "100%",
-    transform: "translateZ(0)",
-  },
+  // =================================
+  // FOR THE MODAL/DIALOG BOX:
+  // =================================
   root: {
+    width: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: "56.25%",
+  },
+  avatar: {
+    backgroundColor: "black",
+  },
+  userPageLink: {
+    textDecoration: "none",
+    color: "white",
+  },
+  // =================================
+  imageSection: {
     width: "100%",
   },
-  photos: {
+  imgColumns: {
     lineHeight: 0,
     WebkitColumnCount: 3,
     WebkitColumnGap: "0px",
@@ -27,82 +49,18 @@ const useStyles = makeStyles({
     columnCount: 3,
     columnGap: "0px",
   },
-  photoImg: {
+  imgStyle: {
     width: "100%",
     height: "auto",
+    "&:hover": {
+      opacity: "0.5",
+    },
   },
 });
 
-// const tileData = [
-//   {
-//     img:
-//       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-//     id: "1"
-//   },
-//   {
-//     img:
-//       "https://cdn.pixabay.com/photo/2012/08/27/14/19/evening-55067__340.png",
-//     id: "2"
-//   },
-//   {
-//     img:
-//       "https://lh3.googleusercontent.com/IeNJWoKYx1waOhfWF6TiuSiWBLfqLb18lmZYXSgsH1fvb8v1IYiZr5aYWe0Gxu-pVZX3",
-//     id: "3"
-//   },
-//   {
-//     img:
-//       "https://cdn.pixabay.com/photo/2017/03/26/12/13/countryside-2175353_960_720.jpg",
-//     id: "4"
-//   },
-//   {
-//     img:
-//       "https://www.politicalmetaphors.com/wp-content/uploads/2015/04/blog-shapes-square-windows.jpg",
-//     id: "5"
-//   },
-//   {
-//     img:
-//       "https://upload.wikimedia.org/wikipedia/commons/f/f5/Poster-sized_portrait_of_Barack_Obama.jpg",
-//     id: "6"
-//   },
-//   {
-//     img:
-//       "https://i.pinimg.com/736x/5f/b4/8f/5fb48fabe3a4c1c8ac1c91783e6e421b.jpg",
-//     id: "7"
-//   },
-//   {
-//     img:
-//       "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171__340.jpg",
-//     id: "8"
-//   },
-//   {
-//     img:
-//       "https://4.bp.blogspot.com/-1b-2wntvYw8/XYUg5u8n_VI/AAAAAAAAN4I/_2UaXoHLxc8JgVBYAJ6PwaJczs55Q3ChwCLcBGAsYHQ/w914-h514-p-k-no-nu/sunset-stars-landscape-scenery-uhdpaper.com-4K-4.753-wp.thumbnail.jpg",
-//     id: "9"
-//   },
-//   {
-//     img:
-//       "https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/b6/e6/58/b6e65814-08ba-d444-989e-ce13e60637f1/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/246x0w.png",
-//     id: "10"
-//   },
-//   {
-//     img:
-//       "https://bidunart.com/wp-content/uploads/2019/12/Portrait197a-1280x640.jpg",
-//     id: "11"
-//   },
-//   {
-//     img:
-//       "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSIkaxjjTj1f9Rd53kWYADRiul0PjbhqRuyag&usqp=CAU",
-//     id: "12"
-//   },
-//   {
-//     img:
-//       "https://vanishingportrait.com/wp-content/uploads/2019/05/tiffanytrenda-vanishingportrait-identity.jpg",
-//     id: "13"
-//   },
-// ];
-
 function ColorWall() {
   const classes = useStyles();
+
   const [posts, setPosts] = useState([]);
   const [color, setColor] = useState("");
 
@@ -120,19 +78,87 @@ function ColorWall() {
   const filteredPosts = posts.filter((post) => post.colorCategory === color);
   let displayedPosts = color ? filteredPosts : posts;
 
+  // ===========================================
+  // FOR THE MODAL/DIALOG BOX:
+  // ===========================================
+  const [open, setOpen] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState(displayedPosts);
+
+  const handleClickOpen = (value) => {
+    setOpen(true);
+    setSelectedValue(value);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
+  // ===========================================
+
   return (
     <>
       <ButtonRow handleClick={handleClick} />
       <br></br>
-      <div className={classes.root}>
-        <section className={classes.photos}>
+      <div className={classes.imageSection}>
+        <section className={classes.imgColumns}>
           {displayedPosts.map((tile) => (
-            <img
-              key={tile.id}
-              className={classes.photoImg}
-              src={tile.imageUrl}
-              alt={tile.title}
-            ></img>
+            <div key={`${tile.id}-imgWithModal`}>
+              <img
+                onClick={handleClickOpen}
+                className={classes.imgStyle}
+                src={tile.imageUrl}
+                alt={tile.title}
+                value={tile.id}
+              ></img>
+              <Dialog
+                onClose={handleClose}
+                aria-labelledby="simple-dialog-title"
+                open={open}
+                selectedValue={selectedValue}
+              >
+                <Card className={classes.root}>
+                  <CardHeader
+                    avatar={
+                      <Avatar aria-label="user" className={classes.avatar}>
+                        <a
+                          className={classes.userPageLink}
+                          href={tile.postLink}
+                        >{`${tile.User.firstName.charAt(
+                          0
+                        )}${tile.User.lastName.charAt(0)}`}</a>
+                      </Avatar>
+                    }
+                    title={tile.title}
+                    subheader={tile.createdAt.slice(0, 10)}
+                  />
+                  <CardMedia className={classes.media} image={tile.imageUrl} />
+                  <CardContent>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {tile.description}
+                    </Typography>
+                    <hr></hr>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      <a target="__blank" href={tile.postLink}>
+                        {tile.postLink}
+                      </a>
+                    </Typography>
+                  </CardContent>
+                  <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                      <FavoriteIcon />
+                    </IconButton>
+                  </CardActions>
+                </Card>
+              </Dialog>
+            </div>
           ))}
         </section>
       </div>
