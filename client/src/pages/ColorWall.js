@@ -150,6 +150,34 @@ function ColorWall() {
                 image={openedPost.imageUrl}
               />
               <CardContent>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="h4"
+                >
+                  <span>
+                    posted by:{" "}
+                    <a
+                      href={
+                        openedPost.User !== undefined
+                          ? `/users/${openedPost.User.id}`
+                          : ""
+                      }
+                    >
+                      {openedPost.User !== undefined
+                        ? openedPost.User.username
+                        : ""}
+                    </a>
+                  </span>
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="h4"
+                >
+                  <span>posted on: {openedPost.createdAt !== undefined ? (openedPost.createdAt.slice(0, 10)) : ("")}</span>
+                </Typography>
+                <hr></hr>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {openedPost.description}
                 </Typography>
