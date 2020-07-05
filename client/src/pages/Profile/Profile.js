@@ -5,8 +5,7 @@ import {
   makeStyles,
   Fab,
   Grid,
-  Typography,
-  CardContent,
+  Typography
 } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
@@ -44,6 +43,7 @@ function Profile(props) {
     username: "",
     biography: "",
     userLinks: "",
+    email: "",
     profilePic: "",
   });
 
@@ -58,6 +58,7 @@ function Profile(props) {
         let dataUsername = res.data.username;
         let dataBiography = res.data.biography;
         let dataUserLinks = res.data.userLinks;
+        let dataEmail = res.data.email;
         let dataProfilePic = res.data.profilePic;
 
         setState({
@@ -66,6 +67,7 @@ function Profile(props) {
           username: dataUsername,
           biography: dataBiography,
           userLinks: dataUserLinks,
+          email: dataEmail,
           profilePic: dataProfilePic,
         });
       })
@@ -138,6 +140,12 @@ function Profile(props) {
             <Typography>
               <a target="__blank" href={state.userLinks}>
                 {state.userLinks}
+              </a>
+            </Typography>
+            <h3>Email</h3>
+            <Typography>
+              <a href={`mailto:${state.email}`}>
+                {state.email}
               </a>
             </Typography>
           </Grid>

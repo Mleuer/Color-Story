@@ -87,13 +87,13 @@ export default function TemporaryDrawer(props) {
               <ListItemIcon>
                 <VpnKeyIcon />
               </ListItemIcon>
-              <ListItemText primary="Login" />
+              <ListItemText primary="Log In" />
             </ListItem>
             <ListItem button component={Link} to="/signup">
               <ListItemIcon>
                 <CreateIcon />
               </ListItemIcon>
-              <ListItemText primary="Signup" />
+              <ListItemText primary="Sign Up" />
             </ListItem>
           </>
         )}
