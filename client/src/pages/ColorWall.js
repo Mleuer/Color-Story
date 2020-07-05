@@ -81,17 +81,24 @@ function ColorWall() {
   // ===========================================
   // FOR THE MODAL/DIALOG BOX:
   // ===========================================
-  const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(displayedPosts);
+  const [selectedValue, setSelectedValue] = useState(displayedPosts);
+  const [open, setOpen] = useState(false);
+  const [openedPost, setOpenedPost] = useState({});
 
   const handleClickOpen = (value) => {
     setOpen(true);
-    setSelectedValue(value);
+    setSelectedValue(value.target.src);
+    setOpenedPost(posts.find((post) => post.imageUrl === value.target.src));
   };
 
   const handleClose = (value) => {
     setOpen(false);
     setSelectedValue(value);
+    setOpenedPost({});
+  };
+
+  const addLike = (post) => {
+    post.userLikes += 1;
   };
   // ===========================================
 
@@ -110,56 +117,60 @@ function ColorWall() {
                 alt={tile.title}
                 value={tile.id}
               ></img>
-              <Dialog
-                onClose={handleClose}
-                aria-labelledby="simple-dialog-title"
-                open={open}
-                selectedValue={selectedValue}
-              >
-                <Card className={classes.root}>
-                  <CardHeader
-                    avatar={
-                      <Avatar aria-label="user" className={classes.avatar}>
-                        <a
-                          className={classes.userPageLink}
-                          href={tile.postLink}
-                        >{`${tile.User.firstName.charAt(
-                          0
-                        )}${tile.User.lastName.charAt(0)}`}</a>
-                      </Avatar>
-                    }
-                    title={tile.title}
-                    subheader={tile.createdAt.slice(0, 10)}
-                  />
-                  <CardMedia className={classes.media} image={tile.imageUrl} />
-                  <CardContent>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      {tile.description}
-                    </Typography>
-                    <hr></hr>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      <a target="__blank" href={tile.postLink}>
-                        {tile.postLink}
-                      </a>
-                    </Typography>
-                  </CardContent>
-                  <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
-                    </IconButton>
-                  </CardActions>
-                </Card>
-              </Dialog>
             </div>
           ))}
+            <Dialog
+              onClose={handleClose}
+              aria-labelledby="simple-dialog-title"
+              open={open}
+              selectedValue={selectedValue}
+            >
+              <Card className={classes.root}>
+                <CardHeader
+                  avatar={
+                    <Avatar aria-label="user" className={classes.avatar}>
+                      <a
+                        className={classes.userPageLink}
+                        href={openedPost.postLink}
+                  ></a>
+                    </Avatar>
+                  }
+                  title={openedPost.title}
+                />
+                <CardMedia
+                  className={classes.media}
+                  image={openedPost.imageUrl}
+                />
+                <CardContent>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {openedPost.description}
+                  </Typography>
+                  <hr></hr>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    <a target="__blank" href={openedPost.postLink}>
+                      {openedPost.postLink}
+                    </a>
+                  </Typography>
+                </CardContent>
+                <CardActions disableSpacing>
+                  <IconButton
+                    onClick={() => addLike(openedPost)}
+                    aria-label="Add like"
+                  >
+                    <FavoriteIcon />
+                    <>{openedPost.userLikes}</>
+                  </IconButton>
+                </CardActions>
+              </Card>
+            </Dialog>
         </section>
       </div>
     </>

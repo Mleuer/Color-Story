@@ -42,6 +42,7 @@ module.exports = function (sequelize, DataTypes) {
     // maybe this should be changed to STRING so that we can record which user(s) like the post...
     userLikes: {
       type: DataTypes.INTEGER,
+      defaultValue: 0
     }
   });
 
