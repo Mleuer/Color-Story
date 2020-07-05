@@ -119,9 +119,6 @@ function ColorWall() {
               ></img>
             </div>
           ))}
-          {!openedPost ? (
-            <></>
-          ) : (
             <Dialog
               onClose={handleClose}
               aria-labelledby="simple-dialog-title"
@@ -135,7 +132,7 @@ function ColorWall() {
                       <a
                         className={classes.userPageLink}
                         href={openedPost.postLink}
-                        ></a>
+                  ></a>
                     </Avatar>
                   }
                   title={openedPost.title}
@@ -174,7 +171,6 @@ function ColorWall() {
                 </CardActions>
               </Card>
             </Dialog>
-          )}
         </section>
       </div>
     </>
