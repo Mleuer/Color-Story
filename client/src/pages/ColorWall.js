@@ -81,19 +81,18 @@ function ColorWall() {
   // ===========================================
   // FOR THE MODAL/DIALOG BOX:
   // ===========================================
-  const [selectedValue, setSelectedValue] = useState(displayedPosts);
   const [open, setOpen] = useState(false);
   const [openedPost, setOpenedPost] = useState({});
 
   const handleClickOpen = (value) => {
-    setOpen(true);
-    setSelectedValue(value.target.src);
     setOpenedPost(posts.find((post) => post.imageUrl === value.target.src));
+    if (openedPost.User !== undefined) {
+      setOpen(true);
+    }
   };
 
-  const handleClose = (value) => {
+  const handleClose = () => {
     setOpen(false);
-    setSelectedValue(value);
     setOpenedPost({});
   };
 
@@ -119,58 +118,68 @@ function ColorWall() {
               ></img>
             </div>
           ))}
-            <Dialog
-              onClose={handleClose}
-              aria-labelledby="simple-dialog-title"
-              open={open}
-              selectedValue={selectedValue}
-            >
-              <Card className={classes.root}>
-                <CardHeader
-                  avatar={
-                    <Avatar aria-label="user" className={classes.avatar}>
-                      <a
-                        className={classes.userPageLink}
-                        href={openedPost.postLink}
-                  ></a>
-                    </Avatar>
-                  }
-                  title={openedPost.title}
-                />
-                <CardMedia
-                  className={classes.media}
-                  image={openedPost.imageUrl}
-                />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    {openedPost.description}
-                  </Typography>
-                  <hr></hr>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    <a target="__blank" href={openedPost.postLink}>
-                      {openedPost.postLink}
+          <Dialog
+            onClose={handleClose}
+            aria-labelledby="simple-dialog-title"
+            open={open}
+          >
+            <Card className={classes.root}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="user" className={classes.avatar}>
+                    <a
+                      className={classes.userPageLink}
+                      href={
+                        openedPost.User !== undefined
+                          ? `/users/${openedPost.User.id}`
+                          : ""
+                      }
+                    >
+                      {openedPost.User !== undefined
+                        ? `${openedPost.User.firstName.charAt(
+                            0
+                          )}${openedPost.User.lastName.charAt(0)}`
+                        : ""}
                     </a>
-                  </Typography>
-                </CardContent>
-                <CardActions disableSpacing>
-                  <IconButton
-                    onClick={() => addLike(openedPost)}
-                    aria-label="Add like"
-                  >
-                    <FavoriteIcon />
-                    <>{openedPost.userLikes}</>
-                  </IconButton>
-                </CardActions>
-              </Card>
-            </Dialog>
+                  </Avatar>
+                }
+                title={openedPost.title}
+              />
+              <CardMedia
+                className={classes.media}
+                image={openedPost.imageUrl}
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {openedPost.description}
+                </Typography>
+                <hr></hr>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <span>website: </span>
+                  <a target="__blank" href={openedPost.postLink}>
+                    {openedPost.postLink}
+                  </a>
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <span>
+                    price:{" "}
+                    <span style={{ fontWeight: "bold" }}>
+                      ${openedPost.price}
+                    </span>
+                  </span>
+                </Typography>
+              </CardContent>
+              <CardActions disableSpacing>
+                <IconButton
+                  onClick={() => addLike(openedPost)}
+                  aria-label="Add like"
+                >
+                  <FavoriteIcon style={{ color: "red" }} />
+                  <>{openedPost.userLikes}</>
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Dialog>
         </section>
       </div>
     </>
