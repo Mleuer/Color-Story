@@ -26,35 +26,35 @@ function Home(props) {
                 <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
 
                     <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#ff3300" />
+                        <ColorButtons color="#f22c4a" />
                     </Grid>
                     <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#ff5e1a" />
+                        <ColorButtons color="#f97116" />
                     </Grid>
                     <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="yellow" />
-                    </Grid>
-                </Grid>
-                <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="green" />
-                    </Grid>
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="cyan" />
-                    </Grid>
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#B57FD2" />
+                        <ColorButtons color="#f9d916" />
                     </Grid>
                 </Grid>
                 <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
                     <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="black" />
+                        <ColorButtons color="#0fd43a" />
                     </Grid>
                     <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons border="black solid" color="white" />
+                        <ColorButtons color="#37c6e5" />
                     </Grid>
                     <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="gray" />
+                        <ColorButtons color="#4c24f9" />
+                    </Grid>
+                </Grid>
+                <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
+                    <Grid item xs={3} component={Link} to="/colorwall">
+                        <ColorButtons color="#b876f0" />
+                    </Grid>
+                    <Grid item xs={3} component={Link} to="/colorwall">
+                        <ColorButtons color="#2d2a2f" />
+                    </Grid>
+                    <Grid item xs={3} component={Link} to="/colorwall">
+                        <ColorButtons border="black solid" color="#fcfcfc" />
                     </Grid>
                 </Grid>
                 <Welcome>
