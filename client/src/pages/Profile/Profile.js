@@ -217,6 +217,7 @@ function Profile(props) {
             label="Bio"
             type="biography"
             fullWidth
+            helperText="1000 character limit"
           />
         </DialogContent>
         <DialogActions>
