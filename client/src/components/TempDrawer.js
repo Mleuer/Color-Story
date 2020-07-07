@@ -13,6 +13,8 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import CreateIcon from "@material-ui/icons/Create";
 import { Link } from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles({
   list: {
@@ -109,9 +111,11 @@ export default function TemporaryDrawer(props) {
 
   return (
     <div>
-      {["☆"].map((anchor) => (
+      {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <IconButton onClick={toggleDrawer(anchor, true)}>
+            <MenuIcon />
+          </IconButton>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
