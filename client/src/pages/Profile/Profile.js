@@ -29,6 +29,16 @@ const useStyles = makeStyles((theme) => ({
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
+  profileLink: {
+    backgroundColor: "black",
+    color: "white",
+    padding: "5px",
+    borderRadius: "5px",
+    textDecoration: "none",
+    "&:hover": {
+      color: "lightblue",
+    },
+  }
 }));
 
 function Profile(props) {
@@ -132,13 +142,13 @@ function Profile(props) {
             </Typography>
             <h3>Website</h3>
             <Typography>
-              <a target="__blank" href={state.userLinks}>
+              <a className={classes.profileLink} target="__blank" href={state.userLinks}>
                 {state.userLinks}
               </a>
             </Typography>
             <h3>Email</h3>
             <Typography>
-              <a href={`mailto:${state.email}`}>{state.email}</a>
+              <a className={classes.profileLink} href={`mailto:${state.email}`}>{state.email}</a>
             </Typography>
           </Grid>
         </Grid>
