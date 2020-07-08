@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Container,
@@ -21,6 +22,15 @@ const useStyles = makeStyles({
       color: "black",
     },
   },
+  authLink: {
+    marginLeft: "10px",
+    color: "purple",
+    textDecoration: "none",
+    fontWeight: "bold",
+    "&:hover": {
+      color: "#c9c4cc",
+    }
+  }
 });
 
 function LoginForm(props) {
@@ -74,6 +84,13 @@ function LoginForm(props) {
             </Grid>
           </Grid>
         </form>
+        <br></br>
+        <Typography variant="body2" component="p" gutterBottom>
+          don't have an account yet?
+          <span className={classes.authLink} component={Link} to="/signup">
+            sign up →
+          </span>
+        </Typography>
       </Container>
     </>
   );
