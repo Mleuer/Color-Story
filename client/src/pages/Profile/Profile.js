@@ -14,6 +14,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import API from "../../utils/API";
 import "./style.css";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -29,6 +30,14 @@ const useStyles = makeStyles((theme) => ({
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
+  },
+  
+  paper: {
+    minHeight: "400px",
+  },
+  font: {
+    fontFamily: "Petit Formal Script, cursive",
+    fontSize: "30px",
   },
 
   profileLink: {
@@ -192,31 +201,7 @@ function Profile(props) {
         </Grid>
       </Grid>
 
-      <Grid container direction="row">
-        <Grid item xs={12}>
-          <div className={classes.root}>
-            <Fab
-              color="primary"
-              aria-label="add"
-              component={Link}
-              to="/userpost"
-            >
-              <AddIcon />
-            </Fab>
-            <Fab color="primary" aria-label="edit" onClick={handleClickOpen}>
-              <EditIcon />
-            </Fab>
-            <Fab
-              color="secondary"
-              aria-label="like"
-              component={Link}
-              to="/favorites"
-            >
-              <FavoriteIcon />
-            </Fab>
-          </div>
-        </Grid>
-      </Grid>
+
 
       <Dialog
         open={open}
@@ -272,6 +257,66 @@ function Profile(props) {
       <Grid container direction="row">
         <Grid xs={12}>
           <br></br>
+        </Grid>
+      </Grid>
+
+      <Grid container direction="row" spacing={3}>
+
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>
+            <Grid item direction="column">
+              <Typography>
+                <h3 className={classes.font}>My Color Story</h3>
+              </Typography>
+            </Grid>
+            <Grid item>
+              {state.biography}
+            </Grid>
+          </Paper>
+        </Grid>
+
+        {/* links and buttons paper */}
+
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>
+            <Grid item direction="column">
+              <h3 className={classes.font}>Website:</h3>
+              <Typography>
+                <a target="__blank" href={state.userLinks}>
+                  {state.userLinks}
+                </a>
+              </Typography>
+              <h3 className={classes.font}>Email:</h3>
+              <Typography>
+                <a href={`mailto:${state.email}`}>{state.email}</a>
+              </Typography>
+            </Grid>
+            <Grid container direction="row">
+              <Grid item xs={12}>
+                <div className={classes.root}>
+                  <Fab
+                    color="primary"
+                    aria-label="add"
+                    component={Link}
+                    to="/userpost"
+                  >
+                    <AddIcon />
+                  </Fab>
+                  <Fab color="primary" aria-label="edit" onClick={handleClickOpen}>
+                    <EditIcon />
+                  </Fab>
+                  <Fab
+                    color="secondary"
+                    aria-label="like"
+                    component={Link}
+                    to="/favorites"
+                  >
+                    <FavoriteIcon />
+                  </Fab>
+                </div>
+              </Grid>
+            </Grid>
+          </Paper>
         </Grid>
       </Grid>
       <Grid container direction="row">
