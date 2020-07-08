@@ -22,6 +22,9 @@ const useStyles = makeStyles({
   fullList: {
     width: "auto",
   },
+  font: {
+    fontSize: "50px",
+  }
 });
 
 export default function TemporaryDrawer(props) {
@@ -113,7 +116,7 @@ export default function TemporaryDrawer(props) {
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <IconButton onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon />
+            <MenuIcon className={classes.font}/>
           </IconButton>
           <Drawer
             anchor={anchor}
