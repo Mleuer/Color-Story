@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
-import ColorButtons from "../ColorButtons";
+import ColorButtons from "../ColorButtons/ColorButtons";
 import { Link } from "react-router-dom";
 import "./style.css";
 
@@ -22,25 +22,6 @@ const useStyles = makeStyles((theme) => ({
 function ColorGrid() {
     const classes = useStyles();
     return (
-<<<<<<< HEAD
-        <Grid container justify="space-evenly" className={classes.outline}>
-            <Grid item className={classes.button} component={Link} to="/colorwall">
-                <ColorButtons color="#f22c4a" />
-            </Grid>
-            <Grid item className={classes.button}component={Link} to="/colorwall">
-                <ColorButtons color="#f97116" />
-            </Grid>
-            <Grid item className={classes.button} component={Link} to="/colorwall">
-                <ColorButtons color="#f9d916" />
-            </Grid>
-
-
-            <Grid item className={classes.button} component={Link} to="/colorwall">
-                <ColorButtons color="#0fd43a" />
-            </Grid>
-            <Grid item className={classes.button} component={Link} to="/colorwall">
-                <ColorButtons color="#37c6e5" />
-=======
         <Grid container justify="space-evenly" xs={12} className={classes.outline}>
 
             <Grid item direction="row">
@@ -53,7 +34,6 @@ function ColorGrid() {
                 <Grid item className={classes.button} component={Link} to="/colorwall">
                     <ColorButtons color="#f9d916" />
                 </Grid>
->>>>>>> eb4427bbffa335b680bb7d6f70c0bec0a1c00808
             </Grid>
             <Grid item direction="row">
                 <Grid item className={classes.button} component={Link} to="/colorwall">
