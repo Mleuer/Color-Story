@@ -1,8 +1,6 @@
 import React from "react";
 import { Container, Grid } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
-import ColorButtons from "../../components/ColorButtons";
 import Welcome from "../../components/Welcome/Welcome";
 import LoginButton from "../../components/LoginButton";
 import SignupButton from "../../components/SignupButton";
