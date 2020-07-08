@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import "./style.css";
 
 function ColorButtons(props) {
   const useStyles = makeStyles({
