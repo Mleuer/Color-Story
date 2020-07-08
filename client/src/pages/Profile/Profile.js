@@ -32,7 +32,12 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     minHeight: "400px",
-  }
+  },
+  font: {
+    fontFamily: "Petit Formal Script, cursive",
+    fontSize: "30px",
+  },
+
 }));
 
 function Profile(props) {
@@ -194,15 +199,19 @@ function Profile(props) {
           <br></br>
         </Grid>
       </Grid>
-      {/* bio paper */}
-      <Grid container spacing={3}>
+
+      <Grid container direction="row" spacing={3}>
 
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-            <h3>Bio</h3>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Grid item direction="column">
+              <Typography>
+                <h3 className={classes.font}>My Color Story</h3>
+              </Typography>
+            </Grid>
+            <Grid item>
               {state.biography}
-            </Typography>
+            </Grid>
           </Paper>
         </Grid>
 
@@ -210,16 +219,18 @@ function Profile(props) {
 
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-            <h3>Website</h3>
-            <Typography>
-              <a target="__blank" href={state.userLinks}>
-                {state.userLinks}
-              </a>
-            </Typography>
-            <h3>Email</h3>
-            <Typography>
-              <a href={`mailto:${state.email}`}>{state.email}</a>
-            </Typography>
+            <Grid item direction="column">
+              <h3 className={classes.font}>Website:</h3>
+              <Typography>
+                <a target="__blank" href={state.userLinks}>
+                  {state.userLinks}
+                </a>
+              </Typography>
+              <h3 className={classes.font}>Email:</h3>
+              <Typography>
+                <a href={`mailto:${state.email}`}>{state.email}</a>
+              </Typography>
+            </Grid>
             <Grid container direction="row">
               <Grid item xs={12}>
                 <div className={classes.root}>
