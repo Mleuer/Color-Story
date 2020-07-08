@@ -109,6 +109,9 @@ module.exports = function (sequelize, DataTypes) {
       through: "UserConversation",
       onDelete: "cascade",
     });
+
+    User.hasMany(models.Like);
+
   };
 
   return User;

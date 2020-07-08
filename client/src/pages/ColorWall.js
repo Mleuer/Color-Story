@@ -13,7 +13,6 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-// ====================================================================
 
 const useStyles = makeStyles({
   root: {
@@ -92,7 +91,9 @@ const useStyles = makeStyles({
 });
 
 function ColorWall(props) {
+
   const user = props.user;
+
   const classes = useStyles();
 
   const [posts, setPosts] = useState([]);
@@ -125,10 +126,11 @@ function ColorWall(props) {
     setOpenedPost({});
   };
 
-  const addLike = (post) => {
-    post.userLikes += 1;
+  const addLike = () => {
+    API.Like.create({postId: openedPost.id}).then(result => {
+        console.log(result);
+    })
   };
-  // ===========================================
 
   return (
     <>
@@ -269,15 +271,16 @@ function ColorWall(props) {
                   </span>
                 </Typography>
               </CardContent>
-              <CardActions disableSpacing>
+              {user.email ? (<CardActions disableSpacing>
                 <IconButton
-                  onClick={() => addLike(openedPost)}
+                  onClick={() => addLike()}
                   aria-label="Add like"
                 >
                   <FavoriteIcon style={{ color: "red" }} />
-                  <>{openedPost.userLikes}</>
                 </IconButton>
-              </CardActions>
+              </CardActions>) : (
+                <p>Sign in to Like This Post</p>
+              )}
             </Card>
           </Dialog>
         </section>

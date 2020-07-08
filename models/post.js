@@ -40,10 +40,6 @@ module.exports = function (sequelize, DataTypes) {
     },
     // number of times other users like a particular post;
     // maybe this should be changed to STRING so that we can record which user(s) like the post...
-    userLikes: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    }
   });
 
   Post.associate = function (models) {
@@ -54,6 +50,8 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
       },
     });
+
+    Post.hasMany(models.Like);
   };
 
   return Post;
