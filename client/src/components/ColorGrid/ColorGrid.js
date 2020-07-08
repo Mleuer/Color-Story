@@ -20,9 +20,7 @@ const useStyles = makeStyles((theme) => ({
 function ColorGrid() {
     const classes = useStyles();
     return (
-        <Grid container justify="space-evenly" xs={12} className={classes.outline}>
-
-
+        <Grid container justify="space-evenly" className={classes.outline}>
             <Grid item className={classes.button} component={Link} to="/colorwall">
                 <ColorButtons color="#f22c4a" />
             </Grid>
