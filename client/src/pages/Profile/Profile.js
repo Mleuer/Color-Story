@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
-  
+
   paper: {
     minHeight: "400px",
   },
@@ -176,32 +176,15 @@ function Profile(props) {
         </Grid>
         <Grid xs={12}>
           <Grid item direction="row">
-            <Typography gutterBottom variant="h3" component="h2">
+            <Typography gutterBottom variant="h3" component="h2" align="center">
               {state.username}
             </Typography>
-            <Typography gutterBottom variant="h6" component="h2">
+            <Typography gutterBottom variant="h6" component="h2" align="center">
               ({state.name})
-            </Typography>
-
-            <h3>Bio</h3>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {state.biography}
-            </Typography>
-            <h3>Website</h3>
-            <Typography>
-              <a className={classes.profileLink} target="__blank" href={state.userLinks}>
-                {state.userLinks}
-              </a>
-            </Typography>
-            <h3>Email</h3>
-            <Typography>
-              <a className={classes.profileLink} href={`mailto:${state.email}`}>{state.email}</a>
             </Typography>
           </Grid>
         </Grid>
       </Grid>
-
-
 
       <Dialog
         open={open}
@@ -261,34 +244,42 @@ function Profile(props) {
       </Grid>
 
       <Grid container direction="row" spacing={3}>
-
         <Grid item xs={6}>
           <Paper className={classes.paper}>
             <Grid item direction="column">
-              <Typography>
-                <h3 className={classes.font}>My Color Story</h3>
+              <Typography variant="h3" className={classes.font}>
+                My Color Story
               </Typography>
             </Grid>
             <Grid item>
-              {state.biography}
+              <Typography variant="body2" color="textSecondary" component="p">
+                {state.biography}
+              </Typography>
             </Grid>
           </Paper>
         </Grid>
-
-        {/* links and buttons paper */}
 
         <Grid item xs={6}>
           <Paper className={classes.paper}>
             <Grid item direction="column">
               <h3 className={classes.font}>Website:</h3>
               <Typography>
-                <a target="__blank" href={state.userLinks}>
+                <a
+                  className={classes.profileLink}
+                  target="__blank"
+                  href={state.userLinks}
+                >
                   {state.userLinks}
                 </a>
               </Typography>
               <h3 className={classes.font}>Email:</h3>
               <Typography>
-                <a href={`mailto:${state.email}`}>{state.email}</a>
+                <a
+                  className={classes.profileLink}
+                  href={`mailto:${state.email}`}
+                >
+                  {state.email}
+                </a>
               </Typography>
             </Grid>
             <Grid container direction="row">
@@ -302,7 +293,11 @@ function Profile(props) {
                   >
                     <AddIcon />
                   </Fab>
-                  <Fab color="primary" aria-label="edit" onClick={handleClickOpen}>
+                  <Fab
+                    color="primary"
+                    aria-label="edit"
+                    onClick={handleClickOpen}
+                  >
                     <EditIcon />
                   </Fab>
                   <Fab
