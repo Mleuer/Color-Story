@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "lightblue",
     },
-  }
+  },
   imageSection: {
     width: "100%",
   },
