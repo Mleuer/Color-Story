@@ -7,6 +7,7 @@ import Welcome from "../../components/Welcome/Welcome";
 import LoginButton from "../../components/LoginButton";
 import SignupButton from "../../components/SignupButton";
 import "./style.css";
+import ColorGrid from "../../components/ColorGrid/ColorGrid";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -17,7 +18,11 @@ const useStyles = makeStyles((theme) => ({
         border: "black solid",
         borderRadius: "24px",
         padding: "20px",
-    }
+    },
+    space: {
+        marginTop: "4px",
+        marginBottom: "4px",
+    },
 }));
 
 function Home(props) {
@@ -27,42 +32,7 @@ function Home(props) {
     return (
         <div className={classes.root}>
             <Container maxWidth="xs" >
-                <Grid container className={classes.outline}>
-                    <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
-
-                        <Grid item xs={3} component={Link} to="/colorwall">
-                            <ColorButtons color="#f22c4a" />
-                        </Grid>
-                        <Grid item xs={3} component={Link} to="/colorwall">
-                            <ColorButtons color="#f97116" />
-                        </Grid>
-                        <Grid item xs={3} component={Link} to="/colorwall">
-                            <ColorButtons color="#f9d916" />
-                        </Grid>
-                    </Grid>
-                    <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
-                        <Grid item xs={3} component={Link} to="/colorwall">
-                            <ColorButtons color="#0fd43a" />
-                        </Grid>
-                        <Grid item xs={3} component={Link} to="/colorwall">
-                            <ColorButtons color="#37c6e5" />
-                        </Grid>
-                        <Grid item xs={3} component={Link} to="/colorwall">
-                            <ColorButtons color="#4c24f9" />
-                        </Grid>
-                    </Grid>
-                    <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
-                        <Grid item xs={3} component={Link} to="/colorwall">
-                            <ColorButtons color="#b876f0" />
-                        </Grid>
-                        <Grid item xs={3} component={Link} to="/colorwall">
-                            <ColorButtons color="#2d2a2f" />
-                        </Grid>
-                        <Grid item xs={3} component={Link} to="/colorwall">
-                            <ColorButtons border="black solid" color="#fcfcfc" />
-                        </Grid>
-                    </Grid>
-                </Grid>
+                <ColorGrid />
                 <Welcome>
 
                 </Welcome>
