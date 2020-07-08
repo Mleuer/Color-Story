@@ -13,6 +13,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import API from "../../utils/API";
 import "./style.css";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -29,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
+  paper: {
+    minHeight: "400px",
+  }
 }));
 
 function Profile(props) {
@@ -126,49 +130,13 @@ function Profile(props) {
               ({state.name})
             </Typography>
 
-            <h3>Bio</h3>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {state.biography}
-            </Typography>
-            <h3>Website</h3>
-            <Typography>
-              <a target="__blank" href={state.userLinks}>
-                {state.userLinks}
-              </a>
-            </Typography>
-            <h3>Email</h3>
-            <Typography>
-              <a href={`mailto:${state.email}`}>{state.email}</a>
-            </Typography>
+
+
           </Grid>
         </Grid>
       </Grid>
 
-      <Grid container direction="row">
-        <Grid item xs={12}>
-          <div className={classes.root}>
-            <Fab
-              color="primary"
-              aria-label="add"
-              component={Link}
-              to="/userpost"
-            >
-              <AddIcon />
-            </Fab>
-            <Fab color="primary" aria-label="edit" onClick={handleClickOpen}>
-              <EditIcon />
-            </Fab>
-            <Fab
-              color="secondary"
-              aria-label="like"
-              component={Link}
-              to="/favorites"
-            >
-              <FavoriteIcon />
-            </Fab>
-          </div>
-        </Grid>
-      </Grid>
+
 
       <Dialog
         open={open}
@@ -226,6 +194,61 @@ function Profile(props) {
           <br></br>
         </Grid>
       </Grid>
+      {/* bio paper */}
+      <Grid container spacing={3}>
+
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>
+            <h3>Bio</h3>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {state.biography}
+            </Typography>
+          </Paper>
+        </Grid>
+
+        {/* links and buttons paper */}
+
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>
+            <h3>Website</h3>
+            <Typography>
+              <a target="__blank" href={state.userLinks}>
+                {state.userLinks}
+              </a>
+            </Typography>
+            <h3>Email</h3>
+            <Typography>
+              <a href={`mailto:${state.email}`}>{state.email}</a>
+            </Typography>
+            <Grid container direction="row">
+              <Grid item xs={12}>
+                <div className={classes.root}>
+                  <Fab
+                    color="primary"
+                    aria-label="add"
+                    component={Link}
+                    to="/userpost"
+                  >
+                    <AddIcon />
+                  </Fab>
+                  <Fab color="primary" aria-label="edit" onClick={handleClickOpen}>
+                    <EditIcon />
+                  </Fab>
+                  <Fab
+                    color="secondary"
+                    aria-label="like"
+                    component={Link}
+                    to="/favorites"
+                  >
+                    <FavoriteIcon />
+                  </Fab>
+                </div>
+              </Grid>
+            </Grid>
+          </Paper>
+        </Grid>
+      </Grid>
+
     </>
   );
 }
