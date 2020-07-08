@@ -2,22 +2,25 @@ import React from "react";
 import { Typography } from "@material-ui/core";
 import "./style.css";
 import { makeStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
   welcome: {
     marginTop: "40px",
     marginBottom: "40px",
+    marginLeft: "8px",
   },
 });
 
 function Welcome() {
   const classes = useStyles();
-  
+
   return (
     <div>
-      <Typography className={classes.welcome} variant="h1">Welcome</Typography>
-
-      <Typography justify="center" variant="subtitle1">
+      <Grid item>
+        <Typography alignItems="center" className={classes.welcome} variant="h1">Welcome</Typography>
+      </Grid>
+      <Typography className={classes.welcome} justify="center" variant="subtitle1">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever
         since the 1500s, when an unknown printer took a galley of type and
