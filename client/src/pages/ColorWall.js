@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import ButtonRow from "../components/ButtonRow";
 import API from "../utils/API";
 import Dialog from "@material-ui/core/Dialog";
@@ -25,9 +26,12 @@ const useStyles = makeStyles({
   avatar: {
     backgroundColor: "black",
   },
-  userPageLink: {
+  modalInitialsLogo: {
     textDecoration: "none",
     color: "white",
+    "&:hover": {
+      color: "lightblue",
+    },
   },
   imageSection: {
     width: "100%",
@@ -48,9 +52,47 @@ const useStyles = makeStyles({
       opacity: "0.5",
     },
   },
+  modalUsernameLink: {
+    backgroundColor: "black",
+    color: "white",
+    padding: "3px",
+    borderRadius: "5px",
+    textDecoration: "none",
+    "&:hover": {
+      color: "lightblue",
+    },
+  },
+  modalPostLink: {
+    backgroundColor: "black",
+    color: "white",
+    padding: "3px",
+    borderRadius: "5px",
+    textDecoration: "none",
+    "&:hover": {
+      color: "lightblue",
+    },
+  },
+  noPostsNote: {
+    marginBottom: "20px",
+    textAlign: "center",
+    fontSize: "15px",
+  },
+  noPostsLink: {
+    backgroundColor: "#4d3b58",
+    color: "white",
+    padding: "10px",
+    borderRadius: "5px",
+    textDecoration: "none",
+    fontSize: "18px",
+    "&:hover": {
+      color: "black",
+      backgroundColor: "#c9c4cc"
+    },
+  },
 });
 
-function ColorWall() {
+function ColorWall(props) {
+  const user = props.user;
   const classes = useStyles();
 
   const [posts, setPosts] = useState([]);
@@ -92,19 +134,56 @@ function ColorWall() {
     <>
       <ButtonRow handleClick={handleClick} />
       <br></br>
+      {displayedPosts.length < 1 ? (
+        <div className={classes.noPostsNote}>
+          <Typography
+            className={classes.noPostsNote}
+            variant="body2"
+            color="textSecondary"
+            component="p"
+          >
+            no posts found for this category...
+          </Typography>
+          <Typography
+            className={classes.noPostsNote}
+            variant="body2"
+            color="textSecondary"
+            component="p"
+          >
+            want to add an image to the Color Wall?
+          </Typography>
+          <br></br>
+          <Typography
+            className={classes.noPostsLink}
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            component={Link}
+            to={user.email ? "/userpost" : "/signup"}
+          >
+            create post →
+          </Typography>
+        </div>
+      ) : (
+        <></>
+      )}
       <div className={classes.imageSection}>
         <section className={classes.imgColumns}>
-          {displayedPosts.map((tile) => (
-            <div key={`${tile.id}-imgWithModal`}>
-              <img
-                onClick={handleClickOpen}
-                className={classes.imgStyle}
-                src={tile.imageUrl}
-                alt={tile.title}
-                value={tile.id}
-              ></img>
-            </div>
-          ))}
+          {displayedPosts.length > 0 ? (
+            displayedPosts.map((tile) => (
+              <div key={`${tile.id}-imgWithModal`}>
+                <img
+                  onClick={handleClickOpen}
+                  className={classes.imgStyle}
+                  src={tile.imageUrl}
+                  alt={tile.title}
+                  value={tile.id}
+                ></img>
+              </div>
+            ))
+          ) : (
+            <></>
+          )}
           <Dialog
             onClose={handleClose}
             aria-labelledby="simple-dialog-title"
@@ -115,7 +194,7 @@ function ColorWall() {
                 avatar={
                   <Avatar aria-label="user" className={classes.avatar}>
                     <a
-                      className={classes.userPageLink}
+                      className={classes.modalInitialsLogo}
                       href={
                         openedPost.User !== undefined
                           ? `/users/${openedPost.User.id}`
@@ -146,6 +225,7 @@ function ColorWall() {
                   <span>
                     posted by{" "}
                     <a
+                      className={classes.modalUsernameLink}
                       href={
                         openedPost.User !== undefined
                           ? `/users/${openedPost.User.id}`
@@ -169,10 +249,17 @@ function ColorWall() {
                 <hr></hr>
                 <Typography variant="body2" color="textSecondary" component="p">
                   <span>website: </span>
-                  <a target="__blank" href={openedPost.postLink}>
-                    {openedPost.postLink}
+                  <a
+                    className={classes.modalPostLink}
+                    target="__blank"
+                    href={openedPost.postLink}
+                  >
+                    {openedPost.postLink
+                      ? openedPost.postLink.split("//").pop().split("/")[0]
+                      : "website"}
                   </a>
                 </Typography>
+                <br></br>
                 <Typography variant="body2" color="textSecondary" component="p">
                   <span>
                     price:{" "}
