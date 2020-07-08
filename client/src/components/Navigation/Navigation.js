@@ -2,7 +2,7 @@ import React from "react";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "./style.css";
-
+import Grid from '@material-ui/core/Grid';
 import TemporaryDrawer from "../TempDrawer";
 
 const useStyles = makeStyles({
@@ -30,18 +30,22 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <TemporaryDrawer
-            user={user}
-            logoutUser={logoutUser}
-          ></TemporaryDrawer>
-          <Typography
-            variant="h2"
-            align="center"
-            gutterBottom
-            className={classes.font}
-          >
-            Color Story
+          <Grid item direction="row" xs={2}>
+            <TemporaryDrawer
+              user={user}
+              logoutUser={logoutUser}
+            ></TemporaryDrawer>
+          </Grid>
+          <Grid item direction="row" xs={9}>
+            <Typography
+              variant="h2"
+              align="center"
+              gutterBottom
+              className={classes.font}
+            >
+              Color Story
           </Typography>
+          </Grid>
         </Toolbar>
       </AppBar>
     </>

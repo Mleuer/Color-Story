@@ -6,8 +6,10 @@
   .MuiGrid-grid-xs-12 .makeStyles-bar-2 .MuiToolbar-gutters {
     padding-left: 0px;
   }
-
+  .makeStyles-font-4 {
+    padding-right: 0px;
+  }
 }
 .makeStyles-bar-2 {
-  align-items: center;
+  padding-right: 60px;
 }
