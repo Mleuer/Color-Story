@@ -84,7 +84,7 @@ function App() {
                   <Home user={user}/>
                 </Route>
                 <Route exact path={["/colorwall"]}>
-                  <ColorWall />
+                  <ColorWall user={user}/>
                 </Route>
                 <PrivateRoute exact user={user} path={["/userpost"]}>
                   <UserPost user={user} setError={setError}/>

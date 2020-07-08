@@ -94,5 +94,13 @@ export default {
         update: function (id, data) {
             return _update(id, "users", data);
         }
+    },
+    Like: {
+        getAll: function () {
+            return _getAll("likes");
+        },
+        create: function (data) {
+            return _create("likes", data);
+        }
     }
 }
