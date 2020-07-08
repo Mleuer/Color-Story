@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonRow from "../components/ButtonRow";
 import API from "../utils/API";
-
-// ====================================================================
-// FOR THE MODAL/DIALOG BOX:
-// ====================================================================
 import Dialog from "@material-ui/core/Dialog";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -19,9 +15,6 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 // ====================================================================
 
 const useStyles = makeStyles({
-  // =================================
-  // FOR THE MODAL/DIALOG BOX:
-  // =================================
   root: {
     width: 345,
   },
@@ -36,7 +29,6 @@ const useStyles = makeStyles({
     textDecoration: "none",
     color: "white",
   },
-  // =================================
   imageSection: {
     width: "100%",
   },
@@ -78,17 +70,12 @@ function ColorWall() {
   const filteredPosts = posts.filter((post) => post.colorCategory === color);
   let displayedPosts = color ? filteredPosts : posts;
 
-  // ===========================================
-  // FOR THE MODAL/DIALOG BOX:
-  // ===========================================
   const [open, setOpen] = useState(false);
   const [openedPost, setOpenedPost] = useState({});
 
   const handleClickOpen = (value) => {
     setOpenedPost(posts.find((post) => post.imageUrl === value.target.src));
-    if (openedPost.User !== undefined) {
-      setOpen(true);
-    }
+    setOpen(true);
   };
 
   const handleClose = () => {
@@ -148,6 +135,7 @@ function ColorWall() {
               <CardMedia
                 className={classes.media}
                 image={openedPost.imageUrl}
+                title={openedPost.title}
               />
               <CardContent>
                 <Typography
@@ -156,7 +144,7 @@ function ColorWall() {
                   component="h4"
                 >
                   <span>
-                    posted by:{" "}
+                    posted by{" "}
                     <a
                       href={
                         openedPost.User !== undefined
@@ -167,15 +155,12 @@ function ColorWall() {
                       {openedPost.User !== undefined
                         ? openedPost.User.username
                         : ""}
-                    </a>
+                    </a>{" "}
+                    on{" "}
+                    {openedPost.createdAt !== undefined
+                      ? openedPost.createdAt.slice(0, 10)
+                      : ""}
                   </span>
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="h4"
-                >
-                  <span>posted on: {openedPost.createdAt !== undefined ? (openedPost.createdAt.slice(0, 10)) : ("")}</span>
                 </Typography>
                 <hr></hr>
                 <Typography variant="body2" color="textSecondary" component="p">

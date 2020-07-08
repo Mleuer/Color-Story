@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  Avatar,
-  makeStyles,
-  Fab,
-  Grid,
-  Typography
-} from "@material-ui/core";
+import { Avatar, makeStyles, Fab, Grid, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
@@ -144,9 +138,7 @@ function Profile(props) {
             </Typography>
             <h3>Email</h3>
             <Typography>
-              <a href={`mailto:${state.email}`}>
-                {state.email}
-              </a>
+              <a href={`mailto:${state.email}`}>{state.email}</a>
             </Typography>
           </Grid>
         </Grid>
