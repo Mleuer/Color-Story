@@ -1,11 +1,21 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
 import "./style.css";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  welcome: {
+    marginTop: "40px",
+    marginBottom: "40px",
+  },
+});
 
 function Welcome() {
+  const classes = useStyles();
+  
   return (
     <div>
-      <Typography variant="h1">Welcome</Typography>
+      <Typography className={classes.welcome} variant="h1">Welcome</Typography>
 
       <Typography justify="center" variant="subtitle1">
         Lorem Ipsum is simply dummy text of the printing and typesetting

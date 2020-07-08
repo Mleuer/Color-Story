@@ -13,7 +13,11 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
-    
+    outline: {
+        border: "black solid",
+        borderRadius: "24px",
+        padding: "20px",
+    }
 }));
 
 function Home(props) {
@@ -23,50 +27,54 @@ function Home(props) {
     return (
         <div className={classes.root}>
             <Container maxWidth="xs" >
-                <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
+                <Grid container className={classes.outline}>
+                    <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
 
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#f22c4a" />
+                        <Grid item xs={3} component={Link} to="/colorwall">
+                            <ColorButtons color="#f22c4a" />
+                        </Grid>
+                        <Grid item xs={3} component={Link} to="/colorwall">
+                            <ColorButtons color="#f97116" />
+                        </Grid>
+                        <Grid item xs={3} component={Link} to="/colorwall">
+                            <ColorButtons color="#f9d916" />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#f97116" />
+                    <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
+                        <Grid item xs={3} component={Link} to="/colorwall">
+                            <ColorButtons color="#0fd43a" />
+                        </Grid>
+                        <Grid item xs={3} component={Link} to="/colorwall">
+                            <ColorButtons color="#37c6e5" />
+                        </Grid>
+                        <Grid item xs={3} component={Link} to="/colorwall">
+                            <ColorButtons color="#4c24f9" />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#f9d916" />
-                    </Grid>
-                </Grid>
-                <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#0fd43a" />
-                    </Grid>
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#37c6e5" />
-                    </Grid>
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#4c24f9" />
-                    </Grid>
-                </Grid>
-                <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#b876f0" />
-                    </Grid>
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons color="#2d2a2f" />
-                    </Grid>
-                    <Grid item xs={3} component={Link} to="/colorwall">
-                        <ColorButtons border="black solid" color="#fcfcfc" />
+                    <Grid container direction="row" alignItems="center" justify="space-evenly" spacing={1}>
+                        <Grid item xs={3} component={Link} to="/colorwall">
+                            <ColorButtons color="#b876f0" />
+                        </Grid>
+                        <Grid item xs={3} component={Link} to="/colorwall">
+                            <ColorButtons color="#2d2a2f" />
+                        </Grid>
+                        <Grid item xs={3} component={Link} to="/colorwall">
+                            <ColorButtons border="black solid" color="#fcfcfc" />
+                        </Grid>
                     </Grid>
                 </Grid>
                 <Welcome>
 
                 </Welcome>
                 {user.email ? (<> </>) : (
-                <Grid container direction="row" justify="space-evenly">
-                    <LoginButton />
-                    <SignupButton />
-                </Grid>
+                    <Grid container direction="row" justify="space-evenly">
+                        <LoginButton />
+                        <SignupButton />
+                    </Grid>
                 )}
+
             </Container>
+
 
         </div>
     )
