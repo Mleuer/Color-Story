@@ -77,7 +77,6 @@ function App() {
             <Grid item xs={12}>
               {error && <Error error={error} clearError={clearError} />}
             </Grid>
-            
             <Grid item xs={12}>
               <Switch>
                 <Route exact path={["/", "/home"]}>
