@@ -77,14 +77,13 @@ function App() {
             <Grid item xs={12}>
               {error && <Error error={error} clearError={clearError} />}
             </Grid>
-            
             <Grid item xs={12}>
               <Switch>
                 <Route exact path={["/", "/home"]}>
                   <Home user={user}/>
                 </Route>
                 <Route exact path={["/colorwall"]}>
-                  <ColorWall />
+                  <ColorWall user={user}/>
                 </Route>
                 <PrivateRoute exact user={user} path={["/userpost"]}>
                   <UserPost user={user} setError={setError}/>
