@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
-  
+
   paper: {
     minHeight: "400px",
   },
@@ -174,34 +174,29 @@ function Profile(props) {
             className={classes.avatar}
           />
         </Grid>
-        <Grid xs={12}>
-          <Grid item direction="row">
-            <Typography gutterBottom variant="h3" component="h2">
-              {state.username}
-            </Typography>
-            <Typography gutterBottom variant="h6" component="h2">
-              ({state.name})
-            </Typography>
-
-            <h3>Bio</h3>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {state.biography}
-            </Typography>
-            <h3>Website</h3>
-            <Typography>
-              <a className={classes.profileLink} target="__blank" href={state.userLinks}>
-                {state.userLinks}
-              </a>
-            </Typography>
-            <h3>Email</h3>
-            <Typography>
-              <a className={classes.profileLink} href={`mailto:${state.email}`}>{state.email}</a>
-            </Typography>
+        <Grid item xs={12}>
+          <Grid container direction="row">
+            <Grid item xs={12}>
+              <Typography
+                gutterBottom
+                variant="h3"
+                component="h2"
+                align="center"
+              >
+                {state.username}
+              </Typography>
+              <Typography
+                gutterBottom
+                variant="h6"
+                component="h2"
+                align="center"
+              >
+                ({state.name})
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-
-
 
       <Dialog
         open={open}
@@ -255,42 +250,56 @@ function Profile(props) {
         </DialogActions>
       </Dialog>
       <Grid container direction="row">
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <br></br>
         </Grid>
       </Grid>
 
-      <Grid container direction="row" spacing={3}>
-
-        <Grid item xs={6}>
+      <Grid container direction="row">
+        <Grid container direction="column" alignItems="center" justify="center">
           <Paper className={classes.paper}>
-            <Grid item direction="column">
-              <Typography>
-                <h3 className={classes.font}>My Color Story</h3>
+            <Grid item xs={12}>
+              <Typography variant="h3" className={classes.font}>
+                My Color Story
               </Typography>
             </Grid>
             <Grid item>
-              {state.biography}
+              <Typography variant="body2" color="textSecondary" component="p">
+                {state.biography}
+              </Typography>
             </Grid>
           </Paper>
         </Grid>
 
-        {/* links and buttons paper */}
-
-        <Grid item xs={6}>
+        <Grid container direction="column" alignItems="center" justify="center">
           <Paper className={classes.paper}>
-            <Grid item direction="column">
-              <h3 className={classes.font}>Website:</h3>
-              <Typography>
-                <a target="__blank" href={state.userLinks}>
-                  {state.userLinks}
-                </a>
-              </Typography>
-              <h3 className={classes.font}>Email:</h3>
-              <Typography>
-                <a href={`mailto:${state.email}`}>{state.email}</a>
-              </Typography>
+            <Grid item xs={12}>
+              <Grid container direction="row">
+                <Grid item xs={12}>
+                  <h3>Website</h3>
+                  <Typography align="center">
+                    <a
+                      className={classes.profileLink}
+                      target="__blank"
+                      href={state.userLinks}
+                    >
+                      {state.userLinks}
+                    </a>
+                  </Typography>
+
+                  <h3>Email</h3>
+                  <Typography align="center">
+                    <a
+                      className={classes.profileLink}
+                      href={`mailto:${state.email}`}
+                    >
+                      {state.email}
+                    </a>
+                  </Typography>
+                </Grid>
+              </Grid>
             </Grid>
+
             <Grid container direction="row">
               <Grid item xs={12}>
                 <div className={classes.root}>
@@ -302,7 +311,11 @@ function Profile(props) {
                   >
                     <AddIcon />
                   </Fab>
-                  <Fab color="primary" aria-label="edit" onClick={handleClickOpen}>
+                  <Fab
+                    color="primary"
+                    aria-label="edit"
+                    onClick={handleClickOpen}
+                  >
                     <EditIcon />
                   </Fab>
                   <Fab
@@ -320,7 +333,7 @@ function Profile(props) {
         </Grid>
       </Grid>
       <Grid container direction="row">
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
           <div className={classes.imageSection}>

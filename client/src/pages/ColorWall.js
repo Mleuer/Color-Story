@@ -17,6 +17,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 const useStyles = makeStyles({
   root: {
     width: 345,
+    paddingBottom: "15px",
   },
   media: {
     height: 0,
@@ -85,13 +86,25 @@ const useStyles = makeStyles({
     fontSize: "18px",
     "&:hover": {
       color: "black",
-      backgroundColor: "#c9c4cc"
+      backgroundColor: "#c9c4cc",
+    },
+  },
+  modalSignupBtn: {
+    backgroundColor: "#4d3b58",
+    color: "white",
+    margin: "0px 5px 10px 10px",
+    padding: "5px",
+    borderRadius: "5px",
+    textDecoration: "none",
+    fontSize: "10px",
+    "&:hover": {
+      color: "black",
+      backgroundColor: "#c9c4cc",
     },
   },
 });
 
 function ColorWall(props) {
-
   const user = props.user;
 
   const classes = useStyles();
@@ -127,9 +140,9 @@ function ColorWall(props) {
   };
 
   const addLike = () => {
-    API.Like.create({postId: openedPost.id}).then(result => {
-        console.log(result);
-    })
+    API.Like.create({ postId: openedPost.id }).then((result) => {
+      console.log(result);
+    });
   };
 
   return (
@@ -159,7 +172,6 @@ function ColorWall(props) {
             className={classes.noPostsLink}
             variant="body2"
             color="textSecondary"
-            component="p"
             component={Link}
             to={user.email ? "/userpost" : "/signup"}
           >
@@ -271,15 +283,25 @@ function ColorWall(props) {
                   </span>
                 </Typography>
               </CardContent>
-              {user.email ? (<CardActions disableSpacing>
-                <IconButton
-                  onClick={() => addLike()}
-                  aria-label="Add like"
-                >
-                  <FavoriteIcon style={{ color: "red" }} />
-                </IconButton>
-              </CardActions>) : (
-                <p>Sign in to Like This Post</p>
+              {user.email ? (
+                <CardActions disableSpacing>
+                  <IconButton onClick={() => addLike()} aria-label="Add like">
+                    <FavoriteIcon style={{ color: "red" }} />
+                  </IconButton>
+                </CardActions>
+              ) : (
+                <>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component={Link}
+                    to="/signup"
+                    className={classes.modalSignupBtn}
+                  >
+                    <span>sign up or log in to like this post</span>
+                  </Typography>
+                  <br></br>
+                </>
               )}
             </Card>
           </Dialog>
