@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Avatar, makeStyles, Fab, Grid, Typography } from "@material-ui/core";
+import ButtonRow from "../../components/ButtonRow";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
+
   profileLink: {
     backgroundColor: "black",
     color: "white",
@@ -39,6 +41,25 @@ const useStyles = makeStyles((theme) => ({
       color: "lightblue",
     },
   }
+  imageSection: {
+    width: "100%",
+  },
+  imgColumns: {
+    lineHeight: 0,
+    WebkitColumnCount: 3,
+    WebkitColumnGap: "0px",
+    MozColumnCount: 3,
+    MozColumnGap: "0px",
+    columnCount: 3,
+    columnGap: "0px",
+  },
+  imgStyle: {
+    width: "100%",
+    height: "auto",
+    "&:hover": {
+      opacity: "0.5",
+    },
+  },
 }));
 
 function Profile(props) {
@@ -114,6 +135,23 @@ function Profile(props) {
       }
     );
   }
+  //CollorWall Display
+  const [posts, setPosts] = useState([]);
+  const [color, setColor] = useState("");
+
+  useEffect(() => {
+    API.Post.getAll(`?UserId=${props.user.id}`).then((res) => {
+      console.log(res.data);
+      setPosts(res.data);
+    });
+  }, []);
+
+  const handleClick = (color) => {
+    setColor(color);
+  };
+
+  const filteredPosts = posts.filter((post) => post.colorCategory === color);
+  let displayedPosts = color ? filteredPosts : posts;
 
   const classes = useStyles();
 
@@ -234,6 +272,26 @@ function Profile(props) {
       <Grid container direction="row">
         <Grid xs={12}>
           <br></br>
+        </Grid>
+      </Grid>
+      <Grid container direction="row">
+        <Grid xs={12}>
+          <ButtonRow handleClick={handleClick} />
+          <br></br>
+          <div className={classes.imageSection}>
+            <section className={classes.imgColumns}>
+              {displayedPosts.map((tile) => (
+                <div key={`${tile.id}-imgWithModal`}>
+                  <img
+                    className={classes.imgStyle}
+                    src={tile.imageUrl}
+                    alt={tile.title}
+                    value={tile.id}
+                  ></img>
+                </div>
+              ))}
+            </section>
+          </div>
         </Grid>
       </Grid>
     </>
