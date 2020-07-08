@@ -174,26 +174,14 @@ function Profile(props) {
             className={classes.avatar}
           />
         </Grid>
-        <Grid item xs={12}>
-          <Grid container direction="row">
-            <Grid item xs={12}>
-              <Typography
-                gutterBottom
-                variant="h3"
-                component="h2"
-                align="center"
-              >
-                {state.username}
-              </Typography>
-              <Typography
-                gutterBottom
-                variant="h6"
-                component="h2"
-                align="center"
-              >
-                ({state.name})
-              </Typography>
-            </Grid>
+        <Grid xs={12}>
+          <Grid item direction="row">
+            <Typography gutterBottom variant="h3" component="h2" align="center">
+              {state.username}
+            </Typography>
+            <Typography gutterBottom variant="h6" component="h2" align="center">
+              ({state.name})
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
@@ -250,15 +238,15 @@ function Profile(props) {
         </DialogActions>
       </Dialog>
       <Grid container direction="row">
-        <Grid item xs={12}>
+        <Grid xs={12}>
           <br></br>
         </Grid>
       </Grid>
 
-      <Grid container direction="row">
-        <Grid container direction="column" alignItems="center" justify="center">
+      <Grid container direction="row" spacing={3}>
+        <Grid item xs={6}>
           <Paper className={classes.paper}>
-            <Grid item xs={12}>
+            <Grid item direction="column">
               <Typography variant="h3" className={classes.font}>
                 My Color Story
               </Typography>
@@ -271,35 +259,29 @@ function Profile(props) {
           </Paper>
         </Grid>
 
-        <Grid container direction="column" alignItems="center" justify="center">
+        <Grid item xs={6}>
           <Paper className={classes.paper}>
-            <Grid item xs={12}>
-              <Grid container direction="row">
-                <Grid item xs={12}>
-                  <h3>Website</h3>
-                  <Typography align="center">
-                    <a
-                      className={classes.profileLink}
-                      target="__blank"
-                      href={state.userLinks}
-                    >
-                      {state.userLinks}
-                    </a>
-                  </Typography>
-
-                  <h3>Email</h3>
-                  <Typography align="center">
-                    <a
-                      className={classes.profileLink}
-                      href={`mailto:${state.email}`}
-                    >
-                      {state.email}
-                    </a>
-                  </Typography>
-                </Grid>
-              </Grid>
+            <Grid item direction="column">
+              <h3 className={classes.font}>Website:</h3>
+              <Typography>
+                <a
+                  className={classes.profileLink}
+                  target="__blank"
+                  href={state.userLinks}
+                >
+                  {state.userLinks}
+                </a>
+              </Typography>
+              <h3 className={classes.font}>Email:</h3>
+              <Typography>
+                <a
+                  className={classes.profileLink}
+                  href={`mailto:${state.email}`}
+                >
+                  {state.email}
+                </a>
+              </Typography>
             </Grid>
-
             <Grid container direction="row">
               <Grid item xs={12}>
                 <div className={classes.root}>
@@ -333,7 +315,7 @@ function Profile(props) {
         </Grid>
       </Grid>
       <Grid container direction="row">
-        <Grid item xs={12}>
+        <Grid xs={12}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
           <div className={classes.imageSection}>
