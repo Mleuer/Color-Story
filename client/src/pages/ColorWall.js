@@ -18,6 +18,7 @@ const useStyles = makeStyles({
   root: {
     width: 345,
     paddingBottom: "15px",
+    overflow: "auto"
   },
   media: {
     height: 0,
@@ -51,6 +52,9 @@ const useStyles = makeStyles({
     "&:hover": {
       opacity: "0.5",
     },
+  },
+  cardDescription: {
+    padding: "2% 10% 2% 2%",
   },
   modalUsernameLink: {
     backgroundColor: "black",
@@ -256,11 +260,11 @@ function ColorWall(props) {
                       : ""}
                   </span>
                 </Typography>
-                <hr></hr>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <br></br>
+                <Typography variant="body2" color="textSecondary" component="p" className={classes.cardDescription}>
                   {openedPost.description}
                 </Typography>
-                <hr></hr>
+                <br></br>
                 <Typography variant="body2" color="textSecondary" component="p">
                   <span>website: </span>
                   <a
@@ -283,6 +287,7 @@ function ColorWall(props) {
                   </span>
                 </Typography>
               </CardContent>
+              <br></br>
               {user.email ? (
                 <CardActions disableSpacing>
                   <IconButton onClick={() => addLike()} aria-label="Add like">
