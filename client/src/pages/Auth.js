@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, Redirect } from "react-router-dom";
-import SignupForm from "../components/SignupForm";
-import LoginForm from "../components/LoginForm";
+import SignupForm from "../components/AuthForms/SignupForm";
+import LoginForm from "../components/AuthForms/LoginForm";
 
 function Auth(props) {
     const { user, loginUser, signupUser } = props;
