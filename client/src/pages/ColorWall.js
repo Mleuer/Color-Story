@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   root: {
     width: 345,
     paddingBottom: "15px",
-    overflow: "auto"
+    overflow: "auto",
   },
   media: {
     height: 0,
@@ -231,7 +231,11 @@ function ColorWall(props) {
               />
               <CardMedia
                 className={classes.media}
-                image={openedPost.imageUrl}
+                image={
+                  openedPost.imageUrl
+                    ? openedPost.imageUrl
+                    : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+                }
                 title={openedPost.title}
               />
               <CardContent>
@@ -261,7 +265,12 @@ function ColorWall(props) {
                   </span>
                 </Typography>
                 <br></br>
-                <Typography variant="body2" color="textSecondary" component="p" className={classes.cardDescription}>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  className={classes.cardDescription}
+                >
                   {openedPost.description}
                 </Typography>
                 <br></br>
