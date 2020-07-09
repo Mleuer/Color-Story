@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Home, UserPost, Profile, ColorWall } from "./pages";
+import { Home, UserPost, Profile, ColorWall, Favorite } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
@@ -93,6 +93,9 @@ function App() {
                 </PrivateRoute>
                 <PrivateRoute exact user={user} path={["/profile"]}>
                   <Profile user={user} />
+                </PrivateRoute>
+                <PrivateRoute exact user={user} path={["/favorites"]}>
+                  <Favorite user={user} />
                 </PrivateRoute>
                 <Route exact path={["/login", "/signup"]}>
                   <Auth
