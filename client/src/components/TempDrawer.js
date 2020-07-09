@@ -7,6 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
+import PaletteIcon from '@material-ui/icons/Palette';
 import FaceIcon from "@material-ui/icons/Face";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
@@ -103,7 +104,7 @@ export default function TemporaryDrawer(props) {
         )}
         <ListItem button component={Link} to="/colorwall">
           <ListItemIcon>
-            <FaceIcon />
+            <PaletteIcon />
           </ListItemIcon>
           <ListItemText primary="Color Wall" />
         </ListItem>
