@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     minHeight: "400px",
   },
+  paper2: {
+    height: "100px",
+  },
   font: {
     fontFamily: "Petit Formal Script, cursive",
     fontSize: "30px",
@@ -70,6 +73,10 @@ const useStyles = makeStyles((theme) => ({
       opacity: "0.5",
     },
   },
+  topBottomMargins: {
+    marginTop: "20px",
+    marginBottom: "20px",
+  }
 }));
 
 function Profile(props) {
@@ -172,26 +179,82 @@ function Profile(props) {
 
   return (
     <>
-      <Grid container direction="column" alignItems="center" justify="center">
-        <Grid item xs={12}>
-          <Avatar
-            alt={state.name}
-            src={state.profilePic}
-            className={classes.avatar}
-          />
+      {/* column holds all pieces down to color wall */}
+      <Grid container direction="column">
+        {/* column holds avatar and names */}
+        <Grid container direction="column" alignItems="center" justify="center">
+          {/* Avatar */}
+          <Grid item xs={12}>
+            <Avatar
+              alt={state.name}
+              src={state.profilePic}
+              className={classes.avatar}
+            />
+          </Grid>
+          {/* Username/Real Name */}
+          <Grid item xs={12}>
+            <Grid item direction="row">
+              <Typography className={classes.topBottomMargins} gutterBottom variant="h3" component="h2" align="center">
+                {state.username}
+              </Typography>
+              {/* <Typography gutterBottom variant="h6" component="h2" align="center">
+                ({state.name})
+            </Typography> */}
+            </Grid>
+          </Grid>
         </Grid>
+        <Grid className={classes.topBottomMargins} alignItems="center" justify="center" container direction="row">
+          <Grid item >
+            <Typography variant="h3" className={classes.font}>
+              My Color Story
+          </Typography>
+          </Grid>
+        </Grid>
+        {/* grid item holds Bio Paper */}
         <Grid item xs={12}>
-          <Grid item direction="row">
-            <Typography gutterBottom variant="h3" component="h2" align="center">
-              {state.username}
-            </Typography>
-            <Typography gutterBottom variant="h6" component="h2" align="center">
-              ({state.name})
-            </Typography>
+          <Paper elevation={3} className={classes.paper}>
+            <Grid item>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {state.biography}
+              </Typography>
+            </Grid>
+          </Paper>
+        </Grid>
+        <Grid container justify="space-between" direction="row" xs={12}>
+          <Grid item xs={6}>
+            <Paper elevation={3} className={classes.paper2}>
+              <Grid item>
+                <h3 className={classes.font}>Website:</h3>
+                <Typography>
+                  <a
+                    className={classes.profileLink}
+                    target="__blank"
+                    href={state.userLinks}
+                  >
+                    {state.userLinks}
+                  </a>
+                </Typography>
+              </Grid>
+            </Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper elevation={3} className={classes.paper2}>
+              <Grid item>
+
+                <h3 className={classes.font}>Email:</h3>
+                <Typography>
+                  <a
+                    className={classes.profileLink}
+                    href={`mailto:${state.email}`}
+                  >
+                    {state.email}
+                  </a>
+                </Typography>
+              </Grid>
+            </Paper>
           </Grid>
         </Grid>
       </Grid>
-
       <Dialog
         open={open}
         onClose={handleClose}
@@ -248,78 +311,36 @@ function Profile(props) {
           <br></br>
         </Grid>
       </Grid>
-
-      <Grid container direction="row" spacing={3}>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>
-            <Grid item direction="column">
-              <Typography variant="h3" className={classes.font}>
-                My Color Story
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {state.biography}
-              </Typography>
-            </Grid>
-          </Paper>
-        </Grid>
-
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>
-            <Grid item direction="column">
-              <h3 className={classes.font}>Website:</h3>
-              <Typography>
-                <a
-                  className={classes.profileLink}
-                  target="__blank"
-                  href={state.userLinks}
-                >
-                  {state.userLinks}
-                </a>
-              </Typography>
-              <h3 className={classes.font}>Email:</h3>
-              <Typography>
-                <a
-                  className={classes.profileLink}
-                  href={`mailto:${state.email}`}
-                >
-                  {state.email}
-                </a>
-              </Typography>
-            </Grid>
-            <Grid container direction="row">
-              <Grid item xs={12}>
-                <div className={classes.root}>
-                  <Fab
-                    color="primary"
-                    aria-label="add"
-                    component={Link}
-                    to="/userpost"
-                  >
-                    <AddIcon />
-                  </Fab>
-                  <Fab
-                    color="primary"
-                    aria-label="edit"
-                    onClick={handleClickOpen}
-                  >
-                    <EditIcon />
-                  </Fab>
-                  <Fab
-                    color="secondary"
-                    aria-label="like"
-                    component={Link}
-                    to="/favorites"
-                  >
-                    <FavoriteIcon />
-                  </Fab>
-                </div>
-              </Grid>
-            </Grid>
-          </Paper>
+      <Grid container direction="row">
+        <Grid item xs={12}>
+          <div className={classes.root}>
+            <Fab
+              color="primary"
+              aria-label="add"
+              component={Link}
+              to="/userpost"
+            >
+              <AddIcon />
+            </Fab>
+            <Fab
+              color="primary"
+              aria-label="edit"
+              onClick={handleClickOpen}
+            >
+              <EditIcon />
+            </Fab>
+            <Fab
+              color="secondary"
+              aria-label="like"
+              component={Link}
+              to="/favorites"
+            >
+              <FavoriteIcon />
+            </Fab>
+          </div>
         </Grid>
       </Grid>
+
       <Grid container direction="row">
         <Grid xs={12}>
           <ButtonRow handleClick={handleClick} />
