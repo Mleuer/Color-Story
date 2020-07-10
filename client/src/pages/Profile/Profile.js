@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Avatar, makeStyles, Fab, Grid, Typography } from "@material-ui/core";
+import Menu from "../../components/menu"
 import ButtonRow from "../../components/ColorWall/ButtonRow";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
@@ -148,12 +149,17 @@ function Profile(props) {
   const [posts, setPosts] = useState([]);
   const [color, setColor] = useState("");
 
+
   useEffect(() => {
+    resetPost()
+  }, []);
+
+  const resetPost = () => {
     API.Post.getAll(`?UserId=${props.user.id}`).then((res) => {
       console.log(res.data);
       setPosts(res.data);
     });
-  }, []);
+  }
 
   const handleClick = (color) => {
     setColor(color);
@@ -328,6 +334,7 @@ function Profile(props) {
                     alt={tile.title}
                     value={tile.id}
                   ></img>
+                  <Menu resetPost={resetPost} id={tile.id} />
                 </div>
               ))}
             </section>
