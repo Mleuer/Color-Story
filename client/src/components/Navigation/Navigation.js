@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "./style.css";
 import Grid from "@material-ui/core/Grid";
-import TemporaryDrawer from "../TempDrawer";
+import TemporaryDrawer from "./TempDrawer";
 
 const useStyles = makeStyles({
   bar: {

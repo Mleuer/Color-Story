@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import ButtonRow from "../components/ButtonRow";
+import ButtonRow from "../components/ColorWall/ButtonRow";
 import API from "../utils/API";
-import NoPostsComment from "../components/NoPostsComment";
-import ColorWallModal from "../components/ColorWallModal";
+import NoPostsComment from "../components/ColorWall/NoPostsComment";
+import ColorWallModal from "../components/ColorWall/ColorWallModal";
 
 const useStyles = makeStyles({
   imageSection: {
