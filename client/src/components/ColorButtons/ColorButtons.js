@@ -3,8 +3,11 @@ import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "./style.css";
 
+
+
+
 function ColorButtons(props) {
-  const useStyles = makeStyles({
+  const useStyles = makeStyles(theme => ({
     Button: {
       backgroundColor: props.color,
       border: props.border,
@@ -14,15 +17,25 @@ function ColorButtons(props) {
       "&:hover": {
         backgroundColor: props.color,
       },
-    },
-  });
+      [theme.breakpoints.down("sm")]: {
+        width: "80px",
+        height: "80px",
+      },
+      [theme.breakpoints.down("md")]: {
+        width: "90px",
+        height: "90px",
+      },
+    }
+  }));
 
   const classes = useStyles();
+
   return (
     <Button
       disableFocusRipple={true}
       disableRipple={true}
       className={classes.Button}
+
     ></Button>
   );
 }
