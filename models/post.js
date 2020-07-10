@@ -4,7 +4,9 @@ module.exports = function (sequelize, DataTypes) {
     imageUrl: {
       type: DataTypes.STRING,
       allowNull: false,
-      isUrl: true,
+      validate: {
+        isUrl: true,
+      },
     },
     // image title (up to 25 characters)
     title: {
@@ -22,12 +24,16 @@ module.exports = function (sequelize, DataTypes) {
     // links array
     postLink: {
       type: DataTypes.STRING,
-      isUrl: true,
+      validate: {
+        isUrl: true,
+      },
     },
     // description (500 character limit)
     description: {
       type: DataTypes.TEXT,
-      len: [1, 1000],
+      validate: {
+        len: [0, 1000],
+      },
     },
     // user tags
     postTags: {
@@ -36,7 +42,9 @@ module.exports = function (sequelize, DataTypes) {
     // user-set price
     price: {
       type: DataTypes.INTEGER,
-      isInt: true,
+      validate: {
+        isInt: true,
+      },
     },
     // number of times other users like a particular post;
     // maybe this should be changed to STRING so that we can record which user(s) like the post...

@@ -65,11 +65,8 @@ const useStyles = makeStyles((theme) => ({
   },
   imgStyle: {
     width: "100%",
-    height: "auto",
-    "&:hover": {
-      opacity: "0.5",
-    },
-  },
+    height: "auto"
+  }
 }));
 
 function Profile(props) {

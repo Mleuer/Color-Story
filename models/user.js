@@ -9,12 +9,12 @@ module.exports = function (sequelize, DataTypes) {
       // first name
       firstName: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       // last name
       lastName: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       // The email cannot be null, and must be a proper email before creation
       email: {
@@ -30,34 +30,42 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        len: [3, 25],
         validate: {
+          len: [3, 25],
           is: /^[a-zA-Z0-9]*$/i,
-        }
+        },
       },
       // password; cannot be null and must be at least 8 characters long
       password: {
         type: DataTypes.STRING,
         allowNull: false,
-        len: [8, 120]
+        validate: {
+          len: [8, 120],
+        },
       },
       // user's profile pic taken from a Cloudinary URL
       profilePic: {
         type: DataTypes.STRING,
-        isUrl: true,
+        validate: {
+          isUrl: true,
+        },
       },
       // user bio; length limit of 200 characters
       biography: {
         type: DataTypes.STRING,
-        len: [1, 1000],
+        validate: {
+          len: [0, 1000],
+        },
       },
       userLinks: {
         type: DataTypes.STRING,
-        isUrl: true,
+        validate: {
+          isUrl: true,
+        },
       },
       likedPosts: {
         type: DataTypes.STRING,
-      }
+      },
     },
     {
       // This forces any default 'User' to exclude the password when we query them;
@@ -111,7 +119,6 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     User.hasMany(models.Like);
-
   };
 
   return User;
