@@ -90,7 +90,7 @@ function UserPost(props) {
       props.setError("Please Fill Out Required Fields");
     } else {
       API.Post.create({ ...state, price: price }).then((response) => {
-        console.log(response);
+        // console.log(response);
         setState({
           title: "",
           imageUrl: "",
@@ -98,6 +98,9 @@ function UserPost(props) {
           postLink: "",
           description: "",
           postTags: "",
+        })
+        setPrice({
+          price: 0,
         })
         setMessage("Post Created");
       });
