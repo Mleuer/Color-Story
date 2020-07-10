@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Avatar, makeStyles, Fab, Grid, Typography } from "@material-ui/core";
-import ButtonRow from "../../components/ButtonRow";
 import Menu from "../../components/menu"
+import ButtonRow from "../../components/ColorWall/ButtonRow";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
@@ -215,13 +215,13 @@ function Profile(props) {
             margin="dense"
             id="userLinks"
             label="Link"
-            type="userLinks"
+            type="text"
             fullWidth
           />
           <TextField
             multiline
             variant="outlined"
-            rows={3}
+            rows={5}
             onChange={handleEdit}
             name="biography"
             value={state.biography}
@@ -229,7 +229,7 @@ function Profile(props) {
             margin="dense"
             id="biography"
             label="Bio"
-            type="biography"
+            type="text"
             fullWidth
             helperText="1000 character limit"
           />

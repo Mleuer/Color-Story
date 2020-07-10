@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, Grid } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
-import Welcome from "../../components/Welcome/Welcome";
-import LoginButton from "../../components/LoginButton";
-import SignupButton from "../../components/SignupButton";
+import Welcome from "../../components/HomePage/Welcome/Welcome";
+import LoginButton from "../../components/HomePage/LoginButton";
+import SignupButton from "../../components/HomePage/SignupButton";
 import "./style.css";
-import ColorGrid from "../../components/ColorGrid/ColorGrid";
+import ColorGrid from "../../components/HomePage/ColorGrid/ColorGrid";
 
 const useStyles = makeStyles((theme) => ({
 

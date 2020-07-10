@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import CurrencyTextField from "@unicef/material-ui-currency-textfield";
 import API from "../utils/API";
-import PhotoUrl from "../components/PhotoUrl";
+import PhotoUrl from "../components/Error/PhotoUrl";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
