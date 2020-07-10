@@ -66,9 +66,7 @@ function ColorWall(props) {
   // ==========================================================================
   // "LIKE" BUTTON:
   const addLike = () => {
-    API.Like.create({ postId: openedPost.id }).then((result) => {
-      console.log(result);
-    });
+    API.Like.create({ postId: openedPost.id }).then((result) => {});
   };
   // ==========================================================================
 

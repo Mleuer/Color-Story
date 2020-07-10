@@ -32,7 +32,7 @@ function Favorite(props) {
 
   useEffect(() => {
     API.Like.getAll().then((result) => {
-      console.log(result.data);
+      console.log(result);
       setPosts(result.data);
     });
   }, []);

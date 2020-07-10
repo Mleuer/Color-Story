@@ -25,4 +25,3 @@ export { default as PostTable } from "./ForumPage/PostTable";
 
 // ERROR:
 export { default as Error } from "./Error/Error";
-export { default as PhotoUrl } from "./Error/PhotoUrl";
