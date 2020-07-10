@@ -107,10 +107,13 @@ function UserPost(props) {
           title: "",
           imageUrl: "",
           colorCategory: "",
-          postLink: "",
+          postLink: "External Link",
           description: "",
           postTags: "",
         });
+        setPrice({
+          price: 0.00,
+        })
       }).then((response) => {
         createToast("Post submitted successfully");
       });
@@ -155,7 +158,7 @@ function UserPost(props) {
               <TextField
                 name="postLink"
                 className={classes.linkField}
-                value={state.postLinks}
+                value={state.postLink}
                 onChange={handleChange}
                 id="link-input"
                 label="External Link"
