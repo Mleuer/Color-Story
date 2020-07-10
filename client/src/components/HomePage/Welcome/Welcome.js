@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: "80px",
     [theme.breakpoints.down("sm")]: {
       fontSize: "70px",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "80px",
     }
   },
   textBlock: {
