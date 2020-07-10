@@ -5,7 +5,7 @@ import Welcome from "../../components/Welcome/Welcome";
 import LoginButton from "../../components/LoginButton";
 import SignupButton from "../../components/SignupButton";
 import "./style.css";
-import ColorGrid from "../../components/ColorGrid/ColorGrid";
+import ColorGrid from "../../components/ColorGrid";
 
 const useStyles = makeStyles((theme) => ({
 

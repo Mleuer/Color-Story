@@ -1,12 +1,12 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
-import ColorButtons from "../ColorButtons/ColorButtons";
+import ColorButtons from "./ColorButtons";
 import { Link } from "react-router-dom";
 
 
-const useStyles = makeStyles(theme => ({
-
+const useStyles = makeStyles({
+ 
     outline: {
         border: "black solid",
         borderRadius: "24px",
@@ -17,22 +17,17 @@ const useStyles = makeStyles(theme => ({
     button: {
         marginTop: "4px",
         marginBottom: "4px",
-        [theme.breakpoints.down("sm")]: {
-            width: "60px",
-            height: "60px",
-        },
     },
-}));
+});
 
 function ColorGrid() {
     const classes = useStyles();
-    
     return (
         <Grid container justify="space-evenly" xs={12} className={classes.outline}>
 
             <Grid item direction="row">
-                <Grid item  component={Link} to="/colorwall">
-                    <ColorButtons className={classes.button} color="#f22c4a" />
+                <Grid item className={classes.button} component={Link} to="/colorwall">
+                    <ColorButtons color="#f22c4a" />
                 </Grid>
                 <Grid item className={classes.button} component={Link} to="/colorwall">
                     <ColorButtons color="#f97116" />
