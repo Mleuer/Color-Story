@@ -220,7 +220,7 @@ function Profile(props) {
             </Grid>
           </Paper>
         </Grid>
-        <Grid container justify="space-between" direction="row" xs={12}>
+        <Grid container spacing={1} justify="space-between" direction="row" xs={12}>
           <Grid item xs={6}>
             <Paper elevation={3} className={classes.paper2}>
               <Grid item>
@@ -311,9 +311,9 @@ function Profile(props) {
           <br></br>
         </Grid>
       </Grid>
-      <Grid container direction="row">
-        <Grid item xs={12}>
-          <div className={classes.root}>
+      <Grid className={classes.topBottomMargins} justify="center" container direction="row">
+        
+          <Grid item className={classes.root}>
             <Fab
               color="primary"
               aria-label="add"
@@ -337,8 +337,8 @@ function Profile(props) {
             >
               <FavoriteIcon />
             </Fab>
-          </div>
-        </Grid>
+          </Grid>
+       
       </Grid>
 
       <Grid container direction="row">
