@@ -10,8 +10,8 @@ import {
 } from "@material-ui/core";
 import CurrencyTextField from "@unicef/material-ui-currency-textfield";
 import API from "../utils/API";
-import PhotoUrl from "../components/Error/PhotoUrl";
 import { makeStyles } from "@material-ui/core/styles";
+import Swal from "sweetalert2";
 
 const useStyles = makeStyles({
   titleField: {
@@ -51,7 +51,6 @@ function UserPost(props) {
     postTags: "",
   });
 
-  const [message, setMessage] = useState("");
   const [price, setPrice] = useState(0);
 
   function uploadImage(event) {
@@ -65,14 +64,27 @@ function UserPost(props) {
       (error, result) => {
         if (result.event === "success") {
           setState({ ...state, imageUrl: result.info.secure_url });
-          setMessage("Photo Uploaded Successfully");
+          createToast("Photo uploaded successfully");
         }
-        // } else if (result.event === "abort") {
-        //   setState({ ...state, imageUrl: "" });
-        // }
       }
     );
   }
+
+  const createToast = (message) => {
+    Swal.fire({
+      icon: "success",
+      title: message,
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      onOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+  };
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -98,15 +110,12 @@ function UserPost(props) {
           postLink: "",
           description: "",
           postTags: "",
-        })
-        setMessage("Post Created");
+        });
+      }).then((response) => {
+        createToast("Post submitted successfully");
       });
     }
   };
-
-  function clearMessage() {
-    setMessage("");
-  }
 
   const classes = useStyles();
 
@@ -205,9 +214,6 @@ function UserPost(props) {
               >
                 Upload Image
               </Button>
-              {message && (
-                <PhotoUrl message={message} clearMessage={clearMessage} />
-              )}
             </Grid>
 
             <br></br>

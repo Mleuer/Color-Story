@@ -17,7 +17,6 @@ router.get("/", isAuthenticated, function (req, res) {
 });
 
 router.post("/", isAuthenticated,  function (req, res) {
-  console.log(req.body);
   if(req.user === null || req.user.id === null){
     res.status(401).json("NOT AUTHORIZED");
   }
@@ -27,7 +26,7 @@ router.post("/", isAuthenticated,  function (req, res) {
       PostId: req.body.postId
     }})
     .then(dbModel => {
-      if(dbModel){
+      if(dbModel.length > 0){
         res.status(409).send();
       } else {
         db.Like.create({
