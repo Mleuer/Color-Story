@@ -17,11 +17,15 @@ import API from "../../utils/API";
 import "./style.css";
 import Paper from "@material-ui/core/Paper";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   avatar: {
     height: "400px",
     width: "400px",
     marginTop: "20px",
+    [theme.breakpoints.down("sm")]: {
+      width: "300px",
+      height: "300px",
+    },
   },
   root: {
     "& > *": {
@@ -76,7 +80,8 @@ const useStyles = makeStyles((theme) => ({
   topBottomMargins: {
     marginTop: "20px",
     marginBottom: "20px",
-  }
+  },
+
 }));
 
 function Profile(props) {
@@ -312,33 +317,33 @@ function Profile(props) {
         </Grid>
       </Grid>
       <Grid className={classes.topBottomMargins} justify="center" container direction="row">
-        
-          <Grid item className={classes.root}>
-            <Fab
-              color="primary"
-              aria-label="add"
-              component={Link}
-              to="/userpost"
-            >
-              <AddIcon />
-            </Fab>
-            <Fab
-              color="primary"
-              aria-label="edit"
-              onClick={handleClickOpen}
-            >
-              <EditIcon />
-            </Fab>
-            <Fab
-              color="secondary"
-              aria-label="like"
-              component={Link}
-              to="/favorites"
-            >
-              <FavoriteIcon />
-            </Fab>
-          </Grid>
-       
+
+        <Grid item className={classes.root}>
+          <Fab
+            color="primary"
+            aria-label="add"
+            component={Link}
+            to="/userpost"
+          >
+            <AddIcon />
+          </Fab>
+          <Fab
+            color="primary"
+            aria-label="edit"
+            onClick={handleClickOpen}
+          >
+            <EditIcon />
+          </Fab>
+          <Fab
+            color="secondary"
+            aria-label="like"
+            component={Link}
+            to="/favorites"
+          >
+            <FavoriteIcon />
+          </Fab>
+        </Grid>
+
       </Grid>
 
       <Grid container direction="row">
