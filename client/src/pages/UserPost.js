@@ -107,7 +107,7 @@ function UserPost(props) {
           title: "",
           imageUrl: "",
           colorCategory: "",
-          postLink: "External Link",
+          postLink: "",
           description: "",
           postTags: "",
         });
