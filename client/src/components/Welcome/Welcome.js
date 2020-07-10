@@ -18,7 +18,7 @@ function Welcome() {
   return (
     <div>
       <Grid item>
-        <Typography alignItems="center" className={classes.welcome} variant="h1">Welcome</Typography>
+        <Typography alignitems="center" className={classes.welcome} variant="h1">Welcome</Typography>
       </Grid>
       <Typography className={classes.welcome} justify="center" variant="subtitle1">
         Lorem Ipsum is simply dummy text of the printing and typesetting
