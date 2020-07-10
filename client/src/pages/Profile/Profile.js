@@ -180,7 +180,7 @@ function Profile(props) {
             className={classes.avatar}
           />
         </Grid>
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <Grid item direction="row">
             <Typography gutterBottom variant="h3" component="h2" align="center">
               {state.username}
