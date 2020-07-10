@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import ColorButtons from "../ColorButtons/ColorButtons";
 import { Link } from "react-router-dom";
-import "./style.css";
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -14,10 +14,10 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: "20px",
         flexGrow: 1,
     },
-    button: {
-        marginTop: "4px",
-        marginBottom: "4px",
-    },
+    // button: {
+    //     marginTop: "4px",
+    //     marginBottom: "4px",
+    // },
 }));
 function ColorGrid() {
     const classes = useStyles();
