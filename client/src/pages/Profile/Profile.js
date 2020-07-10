@@ -209,13 +209,13 @@ function Profile(props) {
             margin="dense"
             id="userLinks"
             label="Link"
-            type="userLinks"
+            type="text"
             fullWidth
           />
           <TextField
             multiline
             variant="outlined"
-            rows={3}
+            rows={5}
             onChange={handleEdit}
             name="biography"
             value={state.biography}
@@ -223,7 +223,7 @@ function Profile(props) {
             margin="dense"
             id="biography"
             label="Bio"
-            type="biography"
+            type="text"
             fullWidth
             helperText="1000 character limit"
           />
