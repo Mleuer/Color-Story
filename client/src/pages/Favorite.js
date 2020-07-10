@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import API from "../utils/API";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   imageSection: {
@@ -37,21 +38,21 @@ function Favorite(props) {
     });
   }, []);
 
-  const handleClick = (color) => {};
-
   return (
     <>
       <div className={classes.imageSection}>
         <section className={classes.imgColumns}>
           {posts.map((tile) => (
-            <div key={tile.Post.id}>
-              <img
-                className={classes.imgStyle}
-                src={tile.Post.imageUrl}
-                alt={tile.Post.title}
-                value={tile.Post.id}
-              ></img>
-            </div>
+            <Link to={`/users/${tile.User.id}`}>
+              <div key={tile.Post.id}>
+                <img
+                  className={classes.imgStyle}
+                  src={tile.Post.imageUrl}
+                  alt={tile.Post.title}
+                  value={tile.Post.id}
+                ></img>
+              </div>
+            </Link>
           ))}
         </section>
       </div>
