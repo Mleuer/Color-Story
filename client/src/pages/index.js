@@ -4,3 +4,4 @@ export { default as UserPost } from "./UserPost";
 export { default as Profile } from "./Profile/Profile";
 export { default as ColorWall } from "./ColorWall";
 export { default as Favorite } from "./Favorite";
+export { default as PublicProfile } from "./PublicProfile";

@@ -186,7 +186,7 @@ function ColorWallModal(props) {
           </Typography>
         </CardContent>
         <br></br>
-        {user.email ? (
+        {user !== undefined ? (
           <CardActions disableSpacing>
             <IconButton onClick={() => addLike()} aria-label="Add like">
               <FavoriteIcon style={{ color: "red" }} />
