@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     border: "black solid",
     borderRadius: "24px",
     padding: "20px",
-    backgroundColor: "white",
+    backgroundColor: "#F5F1EE",
   },
  
 });
