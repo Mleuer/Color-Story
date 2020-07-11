@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   bioPaper: {
-    minHeight: "400px",
+    minHeight: "100px",
     padding: "10px",
   },
   websitePaper: {
@@ -334,11 +334,7 @@ function Profile(props) {
           </Button>
         </DialogActions>
       </Dialog>
-      <Grid container direction="row">
-        <Grid xs={12}>
-          <br></br>
-        </Grid>
-      </Grid>
+
       <Grid
         className={classes.topBottomMargins}
         justify="center"
@@ -367,6 +363,9 @@ function Profile(props) {
           </Fab>
         </Grid>
       </Grid>
+
+      <hr></hr>
+      <br></br>
 
       <Grid container direction="row">
         <Grid xs={12}>

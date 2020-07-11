@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   TextField,
   Button,
@@ -7,6 +8,7 @@ import {
   Grid,
   Container,
   InputLabel,
+  Typography,
 } from "@material-ui/core";
 import CurrencyTextField from "@unicef/material-ui-currency-textfield";
 import API from "../utils/API";
@@ -37,6 +39,15 @@ const useStyles = makeStyles({
     "&:hover": {
       backgroundColor: "#c9c4cc",
       color: "black",
+    },
+  },
+  colorwallLink: {
+    marginLeft: "5px",
+    color: "purple",
+    textDecoration: "none",
+    fontWeight: "bold",
+    "&:hover": {
+      color: "#c9c4cc",
     },
   },
 });
@@ -101,22 +112,24 @@ function UserPost(props) {
     if (!state.title || !state.imageUrl || !state.colorCategory) {
       props.setError("Please Fill Out Required Fields");
     } else {
-      API.Post.create({ ...state, price: price }).then((response) => {
-        // console.log(response);
-        setState({
-          title: "",
-          imageUrl: "",
-          colorCategory: "",
-          postLink: "",
-          description: "",
-          postTags: "",
-        });
-        setPrice({
-          price: 0.00,
+      API.Post.create({ ...state, price: price })
+        .then((response) => {
+          // console.log(response);
+          setState({
+            title: "",
+            imageUrl: "",
+            colorCategory: "",
+            postLink: "",
+            description: "",
+            postTags: "",
+          });
+          setPrice({
+            price: 0.0,
+          });
         })
-      }).then((response) => {
-        createToast("Post submitted successfully");
-      });
+        .then((response) => {
+          createToast("Post submitted successfully");
+        });
     }
   };
 
@@ -233,6 +246,21 @@ function UserPost(props) {
             </Grid>
           </Grid>
         </form>
+        <br></br>
+        <hr></hr>
+
+        <Typography variant="body2" component="p" gutterBottom>
+          check out your posts on the
+          <Typography
+            variant="body2"
+            gutterBottom
+            className={classes.colorwallLink}
+            component={Link}
+            to="/colorwall"
+          >
+            ColorWall →
+          </Typography>
+        </Typography>
       </Container>
     </>
   );
