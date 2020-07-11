@@ -5,7 +5,7 @@ import "./style.css";
 import Grid from "@material-ui/core/Grid";
 import TemporaryDrawer from "./TempDrawer";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   bar: {
     backgroundColor: "#FFCCCC",
     borderRadius: "24px",
@@ -18,9 +18,17 @@ const useStyles = makeStyles({
   },
   font: {
     fontFamily: "Petit Formal Script, cursive",
-    marginLeft: "15px",
+    
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "60px",
+      
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "32px",
+      
+    },
   },
-});
+}));
 
 function Navigation(props) {
   const { user, logoutUser } = props;
@@ -30,22 +38,26 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <Grid container direction="row">
-            <Grid item xs={1}>
+          <Grid container justify="space-between">
+            <Grid xs={1} item>
               <TemporaryDrawer
                 user={user}
                 logoutUser={logoutUser}
               ></TemporaryDrawer>
             </Grid>
-            <Grid item xs={11}>
-              <Typography
-                variant="h2"
-                align="center"
-                gutterBottom
-                className={classes.font}
-              >
-                Color Story
+            <Grid item>
+              <Grid item>
+                <Typography
+                  variant="h2"
+                  gutterBottom
+                  className={classes.font}
+                >
+                  Color Story
               </Typography>
+              </Grid>
+            </Grid>
+            <Grid item xs={1}>
+
             </Grid>
           </Grid>
         </Toolbar>
