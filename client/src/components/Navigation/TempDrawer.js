@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   list: {
     width: 300,
   },
@@ -25,8 +25,11 @@ const useStyles = makeStyles({
   },
   font: {
     fontSize: "50px",
-  }
-});
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "30px",
+    }
+  },
+}));
 
 export default function TemporaryDrawer(props) {
   const classes = useStyles();
@@ -87,21 +90,21 @@ export default function TemporaryDrawer(props) {
             </ListItem>
           </>
         ) : (
-          <>
-            <ListItem button component={Link} to="/login">
-              <ListItemIcon>
-                <VpnKeyIcon />
-              </ListItemIcon>
-              <ListItemText primary="Log In" />
-            </ListItem>
-            <ListItem button component={Link} to="/signup">
-              <ListItemIcon>
-                <CreateIcon />
-              </ListItemIcon>
-              <ListItemText primary="Sign Up" />
-            </ListItem>
-          </>
-        )}
+            <>
+              <ListItem button component={Link} to="/login">
+                <ListItemIcon>
+                  <VpnKeyIcon />
+                </ListItemIcon>
+                <ListItemText primary="Log In" />
+              </ListItem>
+              <ListItem button component={Link} to="/signup">
+                <ListItemIcon>
+                  <CreateIcon />
+                </ListItemIcon>
+                <ListItemText primary="Sign Up" />
+              </ListItem>
+            </>
+          )}
         <ListItem button component={Link} to="/colorwall">
           <ListItemIcon>
             <PaletteIcon />
@@ -117,7 +120,7 @@ export default function TemporaryDrawer(props) {
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <IconButton onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon className={classes.font}/>
+            <MenuIcon className={classes.font} />
           </IconButton>
           <Drawer
             anchor={anchor}
