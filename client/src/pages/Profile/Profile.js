@@ -47,13 +47,14 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "100px",
     padding: "10px",
     borderRadius: "24px",
+    padding: "20px",
   },
   websitePaper: {
     height: "150px",
     padding: "10px",
     margin: "10px",
     textAlign: "center",
-     borderRadius: "24px",
+    borderRadius: "24px",
   },
   emailPaper: {
     height: "150px",
@@ -231,7 +232,7 @@ function Profile(props) {
                 {state.fullName ? (
                   state.fullName !== "" ? (
                     <Typography
-                      style={{marginTop: "-30px"}}
+                      style={{ marginTop: "-30px" }}
                       color="textSecondary"
                       gutterBottom
                       variant="h6"
@@ -241,11 +242,11 @@ function Profile(props) {
                       {state.fullName}
                     </Typography>
                   ) : (
-                    <div></div>
-                  )
+                      <div></div>
+                    )
                 ) : (
-                  <div></div>
-                )}
+                    <div></div>
+                  )}
               </Grid>
             </Grid>
           </Grid>
@@ -273,14 +274,16 @@ function Profile(props) {
           </Grid>
         </Grid>
         {/* grid item holds Bio Paper */}
-        <Grid item xs={12}>
-          <Paper elevation={3} className={classes.bioPaper}>
-            <Grid item>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {state.biography}
-              </Typography>
-            </Grid>
-          </Paper>
+        <Grid container alignItems="center" justify="center">
+          <Grid item xs={10}>
+            <Paper elevation={3} className={classes.bioPaper}>
+              <Grid item>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {state.biography}
+                </Typography>
+              </Grid>
+            </Paper>
+          </Grid>
         </Grid>
         <br></br>
         <Grid container justify="space-between" direction="row">
