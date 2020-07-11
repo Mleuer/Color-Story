@@ -18,10 +18,14 @@ const useStyles = makeStyles((theme) => ({
   },
   font: {
     fontFamily: "Petit Formal Script, cursive",
-    marginLeft: "15px",
-    [theme.breakpoints.down("sm")]: {
+    
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "60px",
+      
+    },
+    [theme.breakpoints.down("xs")]: {
       fontSize: "32px",
-      marginTop: "10px",
+      
     },
   },
 }));
@@ -34,22 +38,26 @@ function Navigation(props) {
     <>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <Grid container direction="row">
-            <Grid item xs={1}>
+          <Grid container justify="space-between">
+            <Grid xs={1} item>
               <TemporaryDrawer
                 user={user}
                 logoutUser={logoutUser}
               ></TemporaryDrawer>
             </Grid>
-            <Grid item xs={11}>
-              <Typography
-                variant="h2"
-                align="center"
-                gutterBottom
-                className={classes.font}
-              >
-                Color Story
+            <Grid item>
+              <Grid item>
+                <Typography
+                  variant="h2"
+                  gutterBottom
+                  className={classes.font}
+                >
+                  Color Story
               </Typography>
+              </Grid>
+            </Grid>
+            <Grid item xs={1}>
+
             </Grid>
           </Grid>
         </Toolbar>
