@@ -23,7 +23,10 @@ const useStyles = makeStyles({
     paddingTop: "56.25%",
   },
   avatar: {
-    backgroundColor: "black",
+    backgroundColor: "white",
+    "&:hover": {
+      opacity: "0.5"
+    }
   },
   modalInitialsLogo: {
     textDecoration: "none",
@@ -88,6 +91,12 @@ function ColorWallModal(props) {
         <CardHeader
           avatar={
             <Avatar
+              component={Link}
+              to={
+                openedPost.User !== undefined
+                  ? `/users/${openedPost.User.id}`
+                  : ""
+              }
               aria-label="user"
               className={classes.avatar}
               alt={
@@ -100,13 +109,7 @@ function ColorWallModal(props) {
                   ? openedPost.User.profilePic
                   : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
               }
-            >
-              {openedPost.User !== undefined ? (
-                <Link to={`/users/${openedPost.User.id}`}></Link>
-              ) : (
-                ""
-              )}
-            </Avatar>
+            ></Avatar>
           }
           title={openedPost.title}
         />
