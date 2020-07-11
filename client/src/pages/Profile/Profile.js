@@ -46,18 +46,21 @@ const useStyles = makeStyles((theme) => ({
   bioPaper: {
     minHeight: "100px",
     padding: "10px",
+    borderRadius: "24px",
   },
   websitePaper: {
     height: "150px",
     padding: "10px",
     margin: "10px",
     textAlign: "center",
+     borderRadius: "24px",
   },
   emailPaper: {
     height: "150px",
     padding: "10px",
     margin: "10px",
     textAlign: "center",
+    borderRadius: "24px",
   },
   font: {
     fontFamily: "Petit Formal Script, cursive",
