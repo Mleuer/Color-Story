@@ -50,25 +50,13 @@ function SignupForm(props) {
             <Grid item xs={12}>
               <TextField
                 className={classes.inputField}
-                label="First Name"
-                value={formObject.firstName}
-                name="firstName"
+                label="Full Name"
+                value={formObject.fullName}
+                name="fullName"
                 onChange={handleInputChange}
                 as="input"
                 type="text"
-                helperText="*required"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                className={classes.inputField}
-                label="Last Name"
-                value={formObject.lastName}
-                name="lastName"
-                onChange={handleInputChange}
-                as="input"
-                type="text"
-                helperText="*required"
+                helperText="*optional"
               />
             </Grid>
             <Grid item xs={12}>

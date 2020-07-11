@@ -6,8 +6,7 @@ const router = require("express").Router();
 router.post("/login", passport.authenticate("local"), function (req, res) {
   // Sending back a password, even a hashed password, isn't a good idea
   res.json({
-    firstName: req.user.firstName,
-    lastName: req.user.lastName,
+    fullName: req.user.fullName,
     email: req.user.email,
     username: req.user.username,
     id: req.user.id,
@@ -20,8 +19,7 @@ router.post("/login", passport.authenticate("local"), function (req, res) {
 router.post("/signup", function (req, res) {
   console.log(req.body);
   db.User.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    fullName: req.body.fullName,
     email: req.body.email,
     username: req.body.username,
     password: req.body.password
@@ -49,8 +47,7 @@ router.get("/user_data", function (req, res) {
     // Otherwise send back the user's email and id
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
-      firstName: req.user.firstName,
-      lastName: req.user.lastName,
+      fullName: req.user.fullName,
       email: req.user.email,
       username: req.user.username,
       id: req.user.id

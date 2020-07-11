@@ -30,10 +30,9 @@ function App() {
   const [error, setError] = useState("")
   const classes = useStyles();
 
-  function loginUser(firstName, lastName, email, username, password) {
+  function loginUser(fullName, email, username, password) {
     const data = {
-      firstName: firstName,
-      lastName: lastName,
+      fullName: fullName,
       email: email,
       username: username,
       password: password
@@ -44,10 +43,9 @@ function App() {
     })
   }
 
-  function signupUser(firstName, lastName, email, username, password) {
+  function signupUser(fullName, email, username, password) {
     const data = {
-      firstName: firstName,
-      lastName: lastName,
+      fullName: fullName,
       email: email,
       username: username,
       password: password

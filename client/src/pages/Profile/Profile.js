@@ -27,6 +27,12 @@ const useStyles = makeStyles((theme) => ({
       height: "300px",
     },
   },
+  editAvatarIcon: {
+    backgroundColor: "white",
+    "&:hover": {
+      opacity: "0.5"
+    }
+  },
   root: {
     "& > *": {
       margin: theme.spacing(1),
@@ -96,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Profile(props) {
   const [state, setState] = useState({
-    name: "",
+    fullName: "",
     username: "",
     biography: "",
     userLinks: "",
@@ -111,7 +117,7 @@ function Profile(props) {
       .then((res) => {
         // console.log(res.data)
 
-        let dataName = res.data.firstName + " " + res.data.lastName;
+        let dataFullName = res.data.fullName;
         let dataUsername = res.data.username;
         let dataBiography = res.data.biography;
         let dataUserLinks = res.data.userLinks;
@@ -120,7 +126,7 @@ function Profile(props) {
 
         setState({
           ...state,
-          name: dataName,
+          fullName: dataFullName,
           username: dataUsername,
           biography: dataBiography,
           userLinks: dataUserLinks,
@@ -200,29 +206,56 @@ function Profile(props) {
           {/* Avatar */}
           <Grid item xs={12}>
             <Avatar
-              alt={state.name}
+              alt={state.fullName}
               src={state.profilePic}
               className={classes.avatar}
             />
           </Grid>
           {/* Username/Real Name */}
           <Grid item xs={12}>
-            <Grid direction="row">
-              <Typography
-                className={classes.topBottomMargins}
-                gutterBottom
-                variant="h3"
-                component="h2"
-                align="center"
-              >
-                {state.username}
-              </Typography>
-              {/* <Typography gutterBottom variant="h6" component="h2" align="center">
-                ({state.name})
-            </Typography> */}
+            <Grid container direction="row">
+              <Grid item xs={12}>
+                <Typography
+                  className={classes.topBottomMargins}
+                  gutterBottom
+                  variant="h3"
+                  component="h2"
+                  align="center"
+                >
+                  {state.username}
+                </Typography>
+
+                {state.fullName ? (
+                  state.fullName !== "" ? (
+                    <Typography
+                      style={{marginTop: "-30px"}}
+                      color="textSecondary"
+                      gutterBottom
+                      variant="h6"
+                      component="h2"
+                      align="center"
+                    >
+                      {state.fullName}
+                    </Typography>
+                  ) : (
+                    <div></div>
+                  )
+                ) : (
+                  <div></div>
+                )}
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
+
+        <Grid container direction="row">
+          <Grid item xs={12}>
+            <br></br>
+            <hr></hr>
+            <br></br>
+          </Grid>
+        </Grid>
+
         <Grid
           className={classes.topBottomMargins}
           alignItems="center"
@@ -283,6 +316,7 @@ function Profile(props) {
           </Grid>
         </Grid>
       </Grid>
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -292,11 +326,23 @@ function Profile(props) {
         <DialogContent>
           <DialogContentText>Add Your Color Story</DialogContentText>
           <Avatar
+            className={classes.editAvatarIcon}
             onClick={uploadImage}
             name="profilePic"
             value={state.profilePic}
-            alt={state.name}
+            alt={state.fullName}
             src={state.profilePic}
+          />
+          <TextField
+            onChange={handleEdit}
+            name="fullName"
+            value={state.fullName}
+            autoFocus
+            margin="dense"
+            id="fullName"
+            label="Full Name"
+            type="text"
+            fullWidth
           />
           <TextField
             onChange={handleEdit}
@@ -368,7 +414,7 @@ function Profile(props) {
       <br></br>
 
       <Grid container direction="row">
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
           {displayedPosts.length < 1 ? (
