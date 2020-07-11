@@ -39,7 +39,7 @@ app.use(passport.session());
 // Add all our routes
 app.use(routes);
 
-let config = { force: true };
+let config = { force: false };
 if (process.env.NODE_ENV === "TEST") {
   config.force = true;
 }
