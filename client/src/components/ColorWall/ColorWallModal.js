@@ -23,9 +23,9 @@ const useStyles = makeStyles({
     paddingTop: "56.25%",
   },
   avatar: {
-    backgroundColor: "white",
+    border: "2px solid white",
     "&:hover": {
-      opacity: "0.5"
+      border: "2px solid pink"
     }
   },
   modalInitialsLogo: {
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
     borderRadius: "5px",
     textDecoration: "none",
     "&:hover": {
-      color: "lightblue",
+      color: "pink",
     },
   },
   modalPostLink: {
@@ -55,7 +55,7 @@ const useStyles = makeStyles({
     borderRadius: "5px",
     textDecoration: "none",
     "&:hover": {
-      color: "lightblue",
+      color: "pink",
     },
   },
   modalSignupBtn: {
