@@ -9,6 +9,7 @@ export { default as SignupButton } from "./HomePage/SignupButton";
 export { default as ButtonRow } from "./ColorWall/ButtonRow";
 export { default as ColorWallModal } from "./ColorWall/ColorWallModal";
 export { default as NoPostsComment } from "./ColorWall/NoPostsComment";
+export {default as Menu } from "./ColorWall/menu"
 
 // LOGIN/SIGNUP PAGES:
 export { default as LoginForm } from "./AuthForms/LoginForm";

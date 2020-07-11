@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Avatar, makeStyles, Fab, Grid, Typography } from "@material-ui/core";
-import Menu from "../../components/menu"
+import Menu from "../../components/ColorWall/menu";
 import ButtonRow from "../../components/ColorWall/ButtonRow";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
@@ -17,7 +17,7 @@ import API from "../../utils/API";
 import "./style.css";
 import Paper from "@material-ui/core/Paper";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   avatar: {
     height: "400px",
     width: "400px",
@@ -37,11 +37,21 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1),
   },
 
-  paper: {
+  bioPaper: {
     minHeight: "400px",
+    padding: "10px",
   },
-  paper2: {
-    height: "100px",
+  websitePaper: {
+    height: "150px",
+    padding: "10px",
+    margin: "10px",
+    textAlign: "center",
+  },
+  emailPaper: {
+    height: "150px",
+    padding: "10px",
+    margin: "10px",
+    textAlign: "center",
   },
   font: {
     fontFamily: "Petit Formal Script, cursive",
@@ -72,16 +82,16 @@ const useStyles = makeStyles(theme => ({
   },
   imgStyle: {
     width: "100%",
-    height: "auto",
-    "&:hover": {
-      opacity: "0.5",
-    },
+    height: "100%",
   },
   topBottomMargins: {
     marginTop: "20px",
     marginBottom: "20px",
   },
-
+  noPostComment: {
+    textAlign: "center",
+    fontSize: "15px",
+  },
 }));
 
 function Profile(props) {
@@ -161,9 +171,8 @@ function Profile(props) {
   const [posts, setPosts] = useState([]);
   const [color, setColor] = useState("");
 
-
   useEffect(() => {
-    resetPost()
+    resetPost();
   }, []);
 
   const resetPost = () => {
@@ -171,7 +180,7 @@ function Profile(props) {
       console.log(res.data);
       setPosts(res.data);
     });
-  }
+  };
 
   const handleClick = (color) => {
     setColor(color);
@@ -198,8 +207,14 @@ function Profile(props) {
           </Grid>
           {/* Username/Real Name */}
           <Grid item xs={12}>
-            <Grid item direction="row">
-              <Typography className={classes.topBottomMargins} gutterBottom variant="h3" component="h2" align="center">
+            <Grid direction="row">
+              <Typography
+                className={classes.topBottomMargins}
+                gutterBottom
+                variant="h3"
+                component="h2"
+                align="center"
+              >
                 {state.username}
               </Typography>
               {/* <Typography gutterBottom variant="h6" component="h2" align="center">
@@ -208,16 +223,22 @@ function Profile(props) {
             </Grid>
           </Grid>
         </Grid>
-        <Grid className={classes.topBottomMargins} alignItems="center" justify="center" container direction="row">
-          <Grid item >
+        <Grid
+          className={classes.topBottomMargins}
+          alignItems="center"
+          justify="center"
+          container
+          direction="row"
+        >
+          <Grid item>
             <Typography variant="h3" className={classes.font}>
               My Color Story
-          </Typography>
+            </Typography>
           </Grid>
         </Grid>
         {/* grid item holds Bio Paper */}
         <Grid item xs={12}>
-          <Paper elevation={3} className={classes.paper}>
+          <Paper elevation={3} className={classes.bioPaper}>
             <Grid item>
               <Typography variant="body2" color="textSecondary" component="p">
                 {state.biography}
@@ -225,9 +246,11 @@ function Profile(props) {
             </Grid>
           </Paper>
         </Grid>
-        <Grid container spacing={1} justify="space-between" direction="row" xs={12}>
-          <Grid item xs={6}>
-            <Paper elevation={3} className={classes.paper2}>
+        <br></br>
+        <Grid container justify="space-between" direction="row">
+          <Grid item xs={12} md={6}>
+            {/* website paper */}
+            <Paper elevation={3} className={classes.websitePaper}>
               <Grid item>
                 <h3 className={classes.font}>Website:</h3>
                 <Typography>
@@ -242,10 +265,10 @@ function Profile(props) {
               </Grid>
             </Paper>
           </Grid>
-          <Grid item xs={6}>
-            <Paper elevation={3} className={classes.paper2}>
+          <Grid item xs={12} md={6}>
+            {/* email paper */}
+            <Paper elevation={3} className={classes.emailPaper}>
               <Grid item>
-
                 <h3 className={classes.font}>Email:</h3>
                 <Typography>
                   <a
@@ -316,22 +339,22 @@ function Profile(props) {
           <br></br>
         </Grid>
       </Grid>
-      <Grid className={classes.topBottomMargins} justify="center" container direction="row">
-
+      <Grid
+        className={classes.topBottomMargins}
+        justify="center"
+        container
+        direction="row"
+      >
         <Grid item className={classes.root}>
           <Fab
-            color="primary"
+            color="secondary"
             aria-label="add"
             component={Link}
             to="/userpost"
           >
             <AddIcon />
           </Fab>
-          <Fab
-            color="primary"
-            aria-label="edit"
-            onClick={handleClickOpen}
-          >
+          <Fab color="secondary" aria-label="edit" onClick={handleClickOpen}>
             <EditIcon />
           </Fab>
           <Fab
@@ -343,28 +366,31 @@ function Profile(props) {
             <FavoriteIcon />
           </Fab>
         </Grid>
-
       </Grid>
 
       <Grid container direction="row">
         <Grid xs={12}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
-          <div className={classes.imageSection}>
-            <section className={classes.imgColumns}>
-              {displayedPosts.map((tile) => (
-                <div key={`${tile.id}-imgWithModal`}>
-                  <img
-                    className={classes.imgStyle}
-                    src={tile.imageUrl}
-                    alt={tile.title}
-                    value={tile.id}
-                  ></img>
-                  <Menu resetPost={resetPost} id={tile.id} />
-                </div>
-              ))}
-            </section>
-          </div>
+          {displayedPosts.length < 1 ? (
+            <h6 className={classes.noPostComment}>no posts in this category</h6>
+          ) : (
+            <div className={classes.imageSection}>
+              <section className={classes.imgColumns}>
+                {displayedPosts.map((tile) => (
+                  <div key={`${tile.id}-imgWithModal`}>
+                    <img
+                      className={classes.imgStyle}
+                      src={tile.imageUrl}
+                      alt={tile.title}
+                      value={tile.id}
+                    ></img>
+                    <Menu resetPost={resetPost} id={tile.id} />
+                  </div>
+                ))}
+              </section>
+            </div>
+          )}
         </Grid>
       </Grid>
     </>
