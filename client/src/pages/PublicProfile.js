@@ -89,7 +89,8 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function PublicProfile() {
+function PublicProfile(props) {
+  const user = props.user;
   const classes = useStyles();
   let { id } = useParams();
   const [renderedUser, setRenderedUser] = useState({});
@@ -219,7 +220,7 @@ function PublicProfile() {
           </Grid>
         </Grid>
       </Grid>
-      <ColorWall userId={renderedUser.id}/>
+      <ColorWall user={user} userId={renderedUser.id}/>
     </>
   );
 }
