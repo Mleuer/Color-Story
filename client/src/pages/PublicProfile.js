@@ -63,6 +63,8 @@ const useStyles = makeStyles((theme) => ({
     },
     imageSection: {
       width: "100%",
+      border: "solid 3px black",
+      borderRadius: "5px",
     },
     imgColumns: {
       lineHeight: 0,
