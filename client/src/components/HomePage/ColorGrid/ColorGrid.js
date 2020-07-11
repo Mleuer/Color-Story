@@ -24,7 +24,7 @@ function ColorGrid() {
     return (
         <Grid container justify="space-evenly" className={classes.outline}>
             <Grid item xs={12}>
-                <Grid container justify="center" direction="row">
+                <Grid container spacing={1} justify="center" direction="row">
                     <Grid item className={classes.button} component={Link} to="/colorwall">
                         <ColorButtons color="#f22c4a" />
                     </Grid>
@@ -35,7 +35,7 @@ function ColorGrid() {
                         <ColorButtons color="#f9d916" />
                     </Grid>
                 </Grid>
-                <Grid container justify="center" direction="row">
+                <Grid container spacing={1} justify="center" direction="row">
                     <Grid item className={classes.button} component={Link} to="/colorwall">
                         <ColorButtons color="#0fd43a" />
                     </Grid>
@@ -46,7 +46,7 @@ function ColorGrid() {
                         <ColorButtons color="#4c24f9" />
                     </Grid>
                 </Grid>
-                <Grid container justify="center" direction="row">
+                <Grid container spacing={1} justify="center" direction="row">
                     <Grid item className={classes.button} component={Link} to="/colorwall">
                         <ColorButtons color="#b876f0" />
                     </Grid>
