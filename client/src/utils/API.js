@@ -75,7 +75,7 @@ export default {
             return _create("posts", data);
         },
         update: function (id, data) {
-            return _update("posts", id, data);
+            return _update(id, "posts", data);
         }
     },
     User: {
