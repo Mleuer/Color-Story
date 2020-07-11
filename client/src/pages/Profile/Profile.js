@@ -66,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
   font: {
     fontFamily: "Petit Formal Script, cursive",
     fontSize: "30px",
+    fontWeight: "700",
   },
 
   profileLink: {
@@ -275,7 +276,7 @@ function Profile(props) {
         </Grid>
         {/* grid item holds Bio Paper */}
         <Grid container alignItems="center" justify="center">
-          <Grid item xs={10}>
+          <Grid placeholder="Hello" item xs={10}>
             <Paper elevation={3} className={classes.bioPaper}>
               <Grid item>
                 <Typography variant="body2" color="textSecondary" component="p">
