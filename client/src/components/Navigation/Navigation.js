@@ -5,7 +5,7 @@ import "./style.css";
 import Grid from "@material-ui/core/Grid";
 import TemporaryDrawer from "./TempDrawer";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   bar: {
     backgroundColor: "#FFCCCC",
     borderRadius: "24px",
@@ -19,8 +19,12 @@ const useStyles = makeStyles({
   font: {
     fontFamily: "Petit Formal Script, cursive",
     marginLeft: "15px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "32px",
+      marginTop: "10px",
+    },
   },
-});
+}));
 
 function Navigation(props) {
   const { user, logoutUser } = props;
