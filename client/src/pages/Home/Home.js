@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "4px",
         marginBottom: "4px",
     },
+    buttonMargin: {
+        marginTop: "10px",
+        marginBottom: "10px"
+    }
 }));
 
 function Home(props) {
@@ -35,7 +39,7 @@ function Home(props) {
 
                 </Welcome>
                 {user.email ? (<> </>) : (
-                    <Grid container direction="row" justify="space-evenly">
+                    <Grid container direction="row" justify="space-evenly" className={classes.buttonMargin}>
                         <LoginButton />
                         <SignupButton />
                     </Grid>
