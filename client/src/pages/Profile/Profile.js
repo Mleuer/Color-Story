@@ -28,9 +28,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   editAvatarIcon: {
-    backgroundColor: "white",
+    border: "2px solid white",
     "&:hover": {
-      opacity: "0.5"
+      border: "2px solid pink"
     }
   },
   root: {
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "5px",
     textDecoration: "none",
     "&:hover": {
-      color: "lightblue",
+      color: "pink",
     },
   },
   imageSection: {
