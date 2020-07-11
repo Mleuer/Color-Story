@@ -25,8 +25,8 @@ const useStyles = makeStyles({
   avatar: {
     border: "2px solid white",
     "&:hover": {
-      border: "2px solid pink"
-    }
+      border: "2px solid pink",
+    },
   },
   modalInitialsLogo: {
     textDecoration: "none",
@@ -142,28 +142,41 @@ function ColorWallModal(props) {
                 : ""}
             </span>
           </Typography>
-          <br></br>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            className={classes.cardDescription}
-          >
-            {openedPost.description}
-          </Typography>
-          <br></br>
-          <Typography variant="body2" color="textSecondary" component="p">
-            <span>website: </span>
-            <a
-              className={classes.modalPostLink}
-              target="__blank"
-              href={openedPost.postLink}
-            >
-              {openedPost.postLink
-                ? openedPost.postLink.split("//").pop().split("/")[0]
-                : "website"}
-            </a>
-          </Typography>
+
+          {openedPost.description !== "" ? (
+            <div>
+              <br></br>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                component="p"
+                className={classes.cardDescription}
+              >
+                {openedPost.description}
+              </Typography>
+              <br></br>
+            </div>
+          ) : (
+            <div></div>
+          )}
+
+          {openedPost.postLink !== "" ? (
+            <Typography variant="body2" color="textSecondary" component="p">
+              <span>website: </span>
+              <a
+                className={classes.modalPostLink}
+                target="__blank"
+                href={openedPost.postLink}
+              >
+                {openedPost.postLink
+                  ? openedPost.postLink.split("//").pop().split("/")[0]
+                  : "website"}
+              </a>
+            </Typography>
+          ) : (
+            <div></div>
+          )}
+
           <br></br>
           <Typography variant="body2" color="textSecondary" component="p">
             <span>

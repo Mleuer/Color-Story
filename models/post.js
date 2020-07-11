@@ -24,24 +24,25 @@ module.exports = function (sequelize, DataTypes) {
     // links array
     postLink: {
       type: DataTypes.STRING,
-      validate: {
-        isUrl: true,
-      },
+      allowNull: true,
     },
     // description (500 character limit)
     description: {
       type: DataTypes.TEXT,
+      allowNull: true,
       validate: {
         len: [0, 1000],
       },
     },
     // user tags
     postTags: {
+      allowNull: true,
       type: DataTypes.STRING,
     },
     // user-set price
     price: {
       type: DataTypes.INTEGER,
+      allowNull: true,
       validate: {
         isInt: true,
       },

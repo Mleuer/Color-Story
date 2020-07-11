@@ -174,7 +174,7 @@ function UserPost(props) {
                 value={state.postLink}
                 onChange={handleChange}
                 id="link-input"
-                label="External Link"
+                label="Website URL"
                 helperText="*optional"
               />
             </Grid>
@@ -190,6 +190,7 @@ function UserPost(props) {
                 value={price}
                 currencySymbol="$"
                 outputFormat="number"
+                helperText="*optional"
                 // onBlur={handleChange}
                 onChange={(event, value) => setPrice(value)}
               />
@@ -201,6 +202,7 @@ function UserPost(props) {
               <InputLabel id="color-category">Color Category</InputLabel>
               <Select
                 className={classes.colCatSelect}
+                helperText="*required"
                 placeholderText="Color Category"
                 name="colorCategory"
                 value={state.colorCategory}
