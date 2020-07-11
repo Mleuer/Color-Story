@@ -39,6 +39,8 @@ const useStyles = makeStyles({
     padding: "2% 10% 2% 2%",
   },
   modalUsernameLink: {
+    marginLeft: "2px",
+    marginRight: "2px",
     backgroundColor: "black",
     color: "white",
     padding: "3px",
@@ -124,23 +126,36 @@ function ColorWallModal(props) {
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="h4">
-            <span>
-              posted by{" "}
-              <a
+            posted by{" "}
+            {openedPost.User !== undefined ? (
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                component="h4"
                 className={classes.modalUsernameLink}
-                href={
+                component={Link}
+                to={
                   openedPost.User !== undefined
                     ? `/users/${openedPost.User.id}`
                     : ""
                 }
               >
                 {openedPost.User !== undefined ? openedPost.User.username : ""}
-              </a>{" "}
-              on{" "}
+              </Typography>
+            ) : (
+              <div></div>
+            )}
+            <Typography
+              style={{ marginTop: "10px" }}
+              variant="body2"
+              color="textSecondary"
+              component="h4"
+            >
+              posted on{" "}
               {openedPost.createdAt !== undefined
                 ? openedPost.createdAt.slice(0, 10)
                 : ""}
-            </span>
+            </Typography>
           </Typography>
 
           {openedPost.description !== "" ? (
