@@ -19,16 +19,15 @@ function ColorButtons(props) {
         backgroundColor: props.color,
       },
       [theme.breakpoints.down("sm")]: {
-        width: "80px",
-        height: "80px",
+        width: "70px",
+        height: "70px",
         marginTop: "0px",
         marginBottom: "0px",
       },
-      [theme.breakpoints.down("md")]: {
-        width: "90px",
-        height: "90px",
+      [theme.breakpoints.up("sm")]: {
+         width: "90px",
+         height: "90px",
       },
-      
     }
   }));
 
