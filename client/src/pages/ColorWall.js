@@ -37,10 +37,15 @@ function ColorWall(props) {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    API.Post.getAll().then((result) => {
-      console.log(result.data);
-      setPosts(result.data);
-    });
+    if(props.userId){
+      API.Post.getAll(`?UserId=${props.userId}`).then((result) => {
+        setPosts(result.data);
+      });
+    } else {
+      API.Post.getAll().then((result) => {
+        setPosts(result.data);
+      });
+    }
   }, []);
 
   const filteredPosts = posts.filter((post) => post.colorCategory === color);
@@ -74,7 +79,6 @@ function ColorWall(props) {
     <>
       <ButtonRow handleClick={handleClick} />
       <br></br>
-      {displayedPosts.length < 1 ? <NoPostsComment user={user} /> : <></>}
       <div className={classes.imageSection}>
         <section className={classes.imgColumns}>
           {displayedPosts.length > 0 ? (
