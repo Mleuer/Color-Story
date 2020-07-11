@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   bioPaper: {
-    minHeight: "100px",
+    minHeight: "200px",
     padding: "10px",
     borderRadius: "24px",
     padding: "20px",
@@ -286,8 +286,8 @@ function Profile(props) {
           </Grid>
         </Grid>
         <br></br>
-        <Grid container justify="space-between" direction="row">
-          <Grid item xs={12} md={6}>
+        <Grid container justify="center" spacing={2} direction="row">
+          <Grid item xs={10} md={5}>
             {/* website paper */}
             <Paper elevation={3} className={classes.websitePaper}>
               <Grid item>
@@ -304,7 +304,7 @@ function Profile(props) {
               </Grid>
             </Paper>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={10} md={5}>
             {/* email paper */}
             <Paper elevation={3} className={classes.emailPaper}>
               <Grid item>
