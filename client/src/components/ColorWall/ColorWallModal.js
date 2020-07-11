@@ -87,21 +87,25 @@ function ColorWallModal(props) {
       <Card className={classes.root}>
         <CardHeader
           avatar={
-            <Avatar aria-label="user" className={classes.avatar}>
-              <a
-                className={classes.modalInitialsLogo}
-                href={
-                  openedPost.User !== undefined
-                    ? `/users/${openedPost.User.id}`
-                    : ""
-                }
-              >
-                {openedPost.User !== undefined
-                  ? `${openedPost.User.firstName.charAt(
-                      0
-                    )}${openedPost.User.lastName.charAt(0)}`
-                  : ""}
-              </a>
+            <Avatar
+              aria-label="user"
+              className={classes.avatar}
+              alt={
+                openedPost.User !== undefined
+                  ? `${openedPost.User.username}-modal-${openedPost.id}`
+                  : ""
+              }
+              src={
+                openedPost.User !== undefined
+                  ? openedPost.User.profilePic
+                  : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+              }
+            >
+              {openedPost.User !== undefined ? (
+                <Link to={`/users/${openedPost.User.id}`}></Link>
+              ) : (
+                ""
+              )}
             </Avatar>
           }
           title={openedPost.title}

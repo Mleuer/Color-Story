@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Profile(props) {
   const [state, setState] = useState({
-    name: "",
+    fullName: "",
     username: "",
     biography: "",
     userLinks: "",
@@ -111,7 +111,7 @@ function Profile(props) {
       .then((res) => {
         // console.log(res.data)
 
-        let dataName = res.data.firstName + " " + res.data.lastName;
+        let dataFullName = res.data.fullName;
         let dataUsername = res.data.username;
         let dataBiography = res.data.biography;
         let dataUserLinks = res.data.userLinks;
@@ -120,7 +120,7 @@ function Profile(props) {
 
         setState({
           ...state,
-          name: dataName,
+          fullName: dataFullName,
           username: dataUsername,
           biography: dataBiography,
           userLinks: dataUserLinks,
@@ -200,7 +200,7 @@ function Profile(props) {
           {/* Avatar */}
           <Grid item xs={12}>
             <Avatar
-              alt={state.name}
+              alt={state.fullName}
               src={state.profilePic}
               className={classes.avatar}
             />
@@ -217,9 +217,9 @@ function Profile(props) {
               >
                 {state.username}
               </Typography>
-              {/* <Typography gutterBottom variant="h6" component="h2" align="center">
-                ({state.name})
-            </Typography> */}
+              <Typography gutterBottom variant="h6" component="h2" align="center">
+                ({state.fullName})
+            </Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -295,8 +295,19 @@ function Profile(props) {
             onClick={uploadImage}
             name="profilePic"
             value={state.profilePic}
-            alt={state.name}
+            alt={state.fullName}
             src={state.profilePic}
+          />
+          <TextField
+            onChange={handleEdit}
+            name="fullName"
+            value={state.fullName}
+            autoFocus
+            margin="dense"
+            id="fullName"
+            label="Full Name"
+            type="text"
+            fullWidth
           />
           <TextField
             onChange={handleEdit}
