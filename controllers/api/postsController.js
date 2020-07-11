@@ -44,6 +44,7 @@ router.post("/", isAuthenticated, function (req, res) {
  * Post - Update
  */
 router.put("/:id", isAuthenticated, function (req, res) {
+  console.log("put route", req.body)
   db.Post.update(req.body, { where: { id: req.params.id } })
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));

@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import CurrencyTextField from "@unicef/material-ui-currency-textfield";
 import API from "../../utils/API";
 
-const options = ["Delete"];
+const options = [
+  "Edit",
+  "Delete"];
 
 const ITEM_HEIGHT = 48;
 
@@ -14,17 +24,55 @@ export default function LongMenu(props) {
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
+    event.preventDefault();
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = (id) => {
-    console.log("close happening", id);
+  const handleClose = () => {
+    setAnchorEl(null);
+    setOpenEdit(false);
+    props.resetPost();
+  };
+
+  const handleDelete = (id) => {
+    // console.log("delete", id);
     API.Post.delete(id).then(function (data) {
       console.log("data", data);
       props.resetPost();
     });
     setAnchorEl(null);
   };
+
+  const [state, setState] = useState({
+    title: "",
+    postLink: "",
+    description: "",
+  });
+  const [price, setPrice] = useState(0);
+  const [openEdit, setOpenEdit] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpenEdit(true);
+  };
+
+  const handleSave = (id, e) => {
+    // e.preventDefault();
+    console.log(id)
+    setOpenEdit(false);
+    API.Post.update(id, state, price);
+    setAnchorEl(null);
+  };
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+    // console.log(e.target.name)
+    setState({ ...state, [e.target.name]: e.target.value });
+    // props.resetPost();
+    // console.log(state)
+  };
+
+
+
   var style = {
     container: {
       float: "right",
@@ -62,18 +110,95 @@ export default function LongMenu(props) {
           },
         }}
       >
-        {options.map((option) => (
-          <MenuItem
-            key={option}
-            selected={option === "Pyxis"}
-            onClick={() => {
-              handleClose(props.id);
-            }}
-          >
-            {option}
+
+        <MenuItem
+          key={options.Delete}
+          selected="Delete"
+          onClick={() => {
+            handleDelete(props.id);
+          }}
+        >
+          Delete
           </MenuItem>
-        ))}
+
+        <MenuItem
+          key={options.Edit}
+          selected="Edit"
+          onClick={() => {
+            handleClickOpen(props.id);
+          }}
+        >
+          Edit
+          </MenuItem>
       </Menu>
+
+      <Dialog
+        open={openEdit}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">Edit Post</DialogTitle>
+        <DialogContent>
+          <DialogContentText>Fill in inputs</DialogContentText>
+          <TextField
+            onChange={handleEdit}
+            name="title"
+            value={state.title}
+            autoFocus
+            margin="dense"
+            id="title"
+            label="Title"
+            type="text"
+            fullWidth
+
+          />
+          <TextField
+            onChange={handleEdit}
+            multiline
+            variant="outlined"
+            rows={3}
+            name="description"
+            value={state.description}
+            id="description-input"
+            label="Description"
+            helperText="*optional; 1000 character limit"
+          />
+          <TextField
+            onChange={handleEdit}
+            name="postLink"
+            value={state.postLink}
+            autoFocus
+            margin="dense"
+            id="postLink"
+            label="Link"
+            type="text"
+            fullWidth
+          />
+          <CurrencyTextField
+            label="Amount"
+            variant="standard"
+            name="price"
+            value={price}
+            currencySymbol="$"
+            outputFormat="number"
+            // onBlur={handleChange}
+            onChange={(event, value) => setPrice(value)}
+          />
+
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={(event) => {
+            handleClose(props.id);
+          }} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={(event) => {
+            handleSave(props.id);
+          }} color="primary">
+            Done
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }
