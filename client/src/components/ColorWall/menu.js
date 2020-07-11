@@ -13,9 +13,7 @@ import Button from "@material-ui/core/Button";
 import CurrencyTextField from "@unicef/material-ui-currency-textfield";
 import API from "../../utils/API";
 
-const options = [
-  "Edit",
-  "Delete"];
+const options = ["Edit", "Delete"];
 
 const ITEM_HEIGHT = 48;
 
@@ -44,11 +42,11 @@ export default function LongMenu(props) {
   };
 
   const [state, setState] = useState({
-    title: "",
-    postLink: "",
-    description: "",
+    title: props.tile.title,
+    postLink: props.tile.postLink,
+    description: props.tile.description,
   });
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(props.tile.price);
   const [openEdit, setOpenEdit] = useState(false);
 
   const handleClickOpen = () => {
@@ -57,9 +55,9 @@ export default function LongMenu(props) {
 
   const handleSave = (id, e) => {
     // e.preventDefault();
-    console.log(id)
+    console.log(id);
     setOpenEdit(false);
-    API.Post.update(id, state, price);
+    API.Post.update(id, { ...state, price: price });
     setAnchorEl(null);
   };
 
@@ -70,8 +68,6 @@ export default function LongMenu(props) {
     // props.resetPost();
     // console.log(state)
   };
-
-
 
   var style = {
     container: {
@@ -110,26 +106,23 @@ export default function LongMenu(props) {
           },
         }}
       >
-
         <MenuItem
           key={options.Delete}
-          selected="Delete"
           onClick={() => {
             handleDelete(props.id);
           }}
         >
           Delete
-          </MenuItem>
+        </MenuItem>
 
         <MenuItem
           key={options.Edit}
-          selected="Edit"
           onClick={() => {
             handleClickOpen(props.id);
           }}
         >
           Edit
-          </MenuItem>
+        </MenuItem>
       </Menu>
 
       <Dialog
@@ -145,14 +138,14 @@ export default function LongMenu(props) {
             name="title"
             value={state.title}
             autoFocus
-            margin="dense"
+            margin="normal"
             id="title"
             label="Title"
             type="text"
             fullWidth
-
           />
           <TextField
+            fullWidth
             onChange={handleEdit}
             multiline
             variant="outlined"
@@ -181,20 +174,24 @@ export default function LongMenu(props) {
             value={price}
             currencySymbol="$"
             outputFormat="number"
-            // onBlur={handleChange}
             onChange={(event, value) => setPrice(value)}
           />
-
         </DialogContent>
         <DialogActions>
-          <Button onClick={(event) => {
-            handleClose(props.id);
-          }} color="primary">
+          <Button
+            onClick={(event) => {
+              handleClose(props.id);
+            }}
+            color="primary"
+          >
             Cancel
           </Button>
-          <Button onClick={(event) => {
-            handleSave(props.id);
-          }} color="primary">
+          <Button
+            onClick={(event) => {
+              handleSave(props.id);
+            }}
+            color="primary"
+          >
             Done
           </Button>
         </DialogActions>

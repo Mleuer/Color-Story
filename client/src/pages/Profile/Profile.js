@@ -430,7 +430,7 @@ function Profile(props) {
                         alt={tile.title}
                         value={tile.id}
                       ></img>
-                      <Menu resetPost={resetPost} id={tile.id} />
+                      <Menu tile={tile} resetPost={resetPost} id={tile.id} />
                     </div>
                   ))}
                 </section>
