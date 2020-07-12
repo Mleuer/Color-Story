@@ -202,24 +202,28 @@ function ColorWallModal(props) {
         </CardContent>
         <br></br>
         {user !== undefined ? (
-          <CardActions disableSpacing>
-            <IconButton onClick={() => addLike()} aria-label="Add like">
-              <FavoriteIcon style={{ color: "red" }} />
-            </IconButton>
-          </CardActions>
+          user.email ? (
+            <CardActions disableSpacing>
+              <IconButton onClick={() => addLike()} aria-label="Add like">
+                <FavoriteIcon style={{ color: "red" }} />
+              </IconButton>
+            </CardActions>
+          ) : (
+            <>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                component={Link}
+                to="/signup"
+                className={classes.modalSignupBtn}
+              >
+                <span>sign up or log in to like this post</span>
+              </Typography>
+              <br></br>
+            </>
+          )
         ) : (
-          <>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              component={Link}
-              to="/signup"
-              className={classes.modalSignupBtn}
-            >
-              <span>sign up or log in to like this post</span>
-            </Typography>
-            <br></br>
-          </>
+          <></>
         )}
       </Card>
     </Dialog>
