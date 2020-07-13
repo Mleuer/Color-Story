@@ -26,9 +26,9 @@ const useStyles = makeStyles({
 });
 
 function Favorite(props) {
-  const user = props.user;
+  // const user = props.user;
   const [posts, setPosts] = useState([]);
-  const [color, setColor] = useState("");
+  // const [color, setColor] = useState("");
   const classes = useStyles();
 
   useEffect(() => {

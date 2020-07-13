@@ -39,6 +39,7 @@ const useStyles = makeStyles({
     padding: "2% 10% 2% 2%",
   },
   modalUsernameLink: {
+    fontSize: "15px",
     marginLeft: "2px",
     marginRight: "2px",
     backgroundColor: "black",
@@ -51,6 +52,7 @@ const useStyles = makeStyles({
     },
   },
   modalPostLink: {
+    fontSize: "15px",
     backgroundColor: "black",
     color: "white",
     padding: "3px",
@@ -129,9 +131,6 @@ function ColorWallModal(props) {
             posted by{" "}
             {openedPost.User !== undefined ? (
               <Typography
-                variant="body2"
-                color="textSecondary"
-                component="h4"
                 className={classes.modalUsernameLink}
                 component={Link}
                 to={
@@ -145,17 +144,18 @@ function ColorWallModal(props) {
             ) : (
               <div></div>
             )}
-            <Typography
-              style={{ marginTop: "10px" }}
-              variant="body2"
-              color="textSecondary"
-              component="h4"
-            >
-              posted on{" "}
-              {openedPost.createdAt !== undefined
-                ? openedPost.createdAt.slice(0, 10)
-                : ""}
-            </Typography>
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="h4" style={{marginTop: "10px"}}>
+            posted on{" "}
+            {openedPost.createdAt !== undefined ? (
+              <span>
+                {openedPost.createdAt !== undefined
+                  ? openedPost.createdAt.slice(0, 10)
+                  : ""}
+              </span>
+            ) : (
+              <div></div>
+            )}
           </Typography>
 
           {openedPost.description !== "" ? (

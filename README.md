@@ -15,8 +15,8 @@ https://color-story.herokuapp.com/ hosted by Heroku
 - [Installation](#installation)
 - [Usage](#usage)
 - [Built With](#built-with)
-- [Contributors](#contributors)
 - [License](#license)
+- [Contributors](#contributors)
 
 ---
 
