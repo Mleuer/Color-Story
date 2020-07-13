@@ -24,6 +24,10 @@ const useStyles = makeStyles({
       opacity: "0.5",
     },
   },
+  noPostComment: {
+    textAlign: "center",
+    fontSize: "15px",
+  },
 });
 
 function ColorWall(props) {
@@ -36,7 +40,7 @@ function ColorWall(props) {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    if(props.userId){
+    if (props.userId) {
       API.Post.getAll(`?UserId=${props.userId}`).then((result) => {
         setPosts(result.data);
       });
@@ -78,10 +82,13 @@ function ColorWall(props) {
     <>
       <ButtonRow handleClick={handleClick} />
       <br></br>
-      <div className={classes.imageSection}>
-        <section className={classes.imgColumns}>
-          {displayedPosts.length > 0 ? (
-            displayedPosts.map((tile) => (
+
+      {displayedPosts.length < 1 ? (
+        <h6 className={classes.noPostComment}>no posts in this category</h6>
+      ) : (
+        <div className={classes.imageSection}>
+          <section className={classes.imgColumns}>
+            {displayedPosts.map((tile) => (
               <div key={`${tile.id}-imgWithModal`}>
                 <img
                   onClick={handleClickOpen}
@@ -91,19 +98,17 @@ function ColorWall(props) {
                   value={tile.id}
                 ></img>
               </div>
-            ))
-          ) : (
-            <></>
-          )}
-          <ColorWallModal
-            openedPost={openedPost}
-            user={user}
-            handleClose={handleClose}
-            addLike={addLike}
-            open={open}
-          />
-        </section>
-      </div>
+            ))}
+            <ColorWallModal
+              openedPost={openedPost}
+              user={user}
+              handleClose={handleClose}
+              addLike={addLike}
+              open={open}
+            />
+          </section>
+        </div>
+      )}
     </>
   );
 }
