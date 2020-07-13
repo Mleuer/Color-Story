@@ -43,7 +43,7 @@ function Favorite(props) {
       <div className={classes.imageSection}>
         <section className={classes.imgColumns}>
           {posts.map((tile) => (
-            <Link to={`/users/${tile.User.id}`}>
+            <Link to={tile.Post !== undefined ? (`/users/${tile.Post.UserId}`) : ("/home")}>
               <div key={tile.Post.id}>
                 <img
                   className={classes.imgStyle}
