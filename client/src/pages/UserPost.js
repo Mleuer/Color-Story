@@ -176,6 +176,7 @@ function UserPost(props) {
                 id="link-input"
                 label="Website URL"
                 helperText="*optional"
+                placeholder="ie, 'https://www.userblog.com/homepage'"
               />
             </Grid>
 
