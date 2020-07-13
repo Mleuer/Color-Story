@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import ButtonRow from "../components/ColorWall/ButtonRow";
 import API from "../utils/API";
 import ColorWallModal from "../components/ColorWall/ColorWallModal";
+import Swal from "sweetalert2";
 
 const useStyles = makeStyles({
   imageSection: {
@@ -74,7 +75,25 @@ function ColorWall(props) {
   // ==========================================================================
   // "LIKE" BUTTON:
   const addLike = () => {
-    API.Like.create({ postId: openedPost.id }).then((result) => {});
+    API.Like.create({ postId: openedPost.id }).then((result) => {
+      createToast("Post successfully 'liked'");
+    });
+  };
+
+  const createToast = (message) => {
+    Swal.fire({
+      icon: "success",
+      title: message,
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      onOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
   };
   // ==========================================================================
 
