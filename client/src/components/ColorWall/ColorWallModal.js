@@ -13,6 +13,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    minWidth: 345,
     paddingBottom: "15px",
     overflow: "auto",
     "& .MuiPaper-rounded": {
