@@ -11,11 +11,15 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    width: 345,
+   
     paddingBottom: "15px",
     overflow: "auto",
+    "& .MuiPaper-rounded": {
+      borderRadius: "24px",
+      boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75);"
+    }
   },
   avatar: {
     border: "2px solid white",
@@ -70,7 +74,7 @@ const useStyles = makeStyles({
       backgroundColor: "#c9c4cc",
     },
   },
-});
+}));
 
 function ColorWallModal(props) {
   const openedPost = props.openedPost;
@@ -79,12 +83,15 @@ function ColorWallModal(props) {
   const handleClose = props.handleClose;
   const addLike = props.addLike;
   const classes = useStyles();
-
+  
+  
   return (
     <Dialog
       onClose={handleClose}
       aria-labelledby="simple-dialog-title"
       open={open}
+      className={classes.root}
+      
     >
       <Card className={classes.root}>
         <CardHeader
