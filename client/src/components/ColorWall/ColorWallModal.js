@@ -13,15 +13,16 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-   
     paddingBottom: "15px",
     overflow: "auto",
     "& .MuiPaper-rounded": {
       borderRadius: "24px",
-      boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75);"
-    }
+      boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75);",
+    },
   },
   avatar: {
+    height: "80px",
+    width: "80px",
     border: "2px solid white",
     "&:hover": {
       border: "2px solid pink",
@@ -35,7 +36,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardDescription: {
-    padding: "2% 10% 2% 2%",
+    [theme.breakpoints.down("xs")]: {
+      paddingRight: "10px",
+    },
   },
   modalUsernameLink: {
     fontSize: "15px",
@@ -83,15 +86,13 @@ function ColorWallModal(props) {
   const handleClose = props.handleClose;
   const addLike = props.addLike;
   const classes = useStyles();
-  
-  
+
   return (
     <Dialog
       onClose={handleClose}
       aria-labelledby="simple-dialog-title"
       open={open}
       className={classes.root}
-      
     >
       <Card className={classes.root}>
         <CardHeader
@@ -119,6 +120,29 @@ function ColorWallModal(props) {
           }
           title={openedPost.title}
         />
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          component="h4"
+          style={{ margin: "-15px 10px 10px 15px" }}
+        >
+          posted by{" "}
+          {openedPost.User !== undefined ? (
+            <Typography
+              className={classes.modalUsernameLink}
+              component={Link}
+              to={
+                openedPost.User !== undefined
+                  ? `/users/${openedPost.User.id}`
+                  : ""
+              }
+            >
+              {openedPost.User !== undefined ? openedPost.User.username : ""}
+            </Typography>
+          ) : (
+            <div></div>
+          )}
+        </Typography>
         <img
           style={{ width: "100%" }}
           src={
@@ -130,29 +154,6 @@ function ColorWallModal(props) {
         ></img>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="h4">
-            posted by{" "}
-            {openedPost.User !== undefined ? (
-              <Typography
-                className={classes.modalUsernameLink}
-                component={Link}
-                to={
-                  openedPost.User !== undefined
-                    ? `/users/${openedPost.User.id}`
-                    : ""
-                }
-              >
-                {openedPost.User !== undefined ? openedPost.User.username : ""}
-              </Typography>
-            ) : (
-              <div></div>
-            )}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="h4"
-            style={{ marginTop: "10px" }}
-          >
             posted on{" "}
             {openedPost.createdAt !== undefined ? (
               <span>

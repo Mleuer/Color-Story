@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   imageSection: {
     width: "100%",
   },
@@ -15,6 +15,11 @@ const useStyles = makeStyles({
     MozColumnGap: "0px",
     columnCount: 3,
     columnGap: "0px",
+    [theme.breakpoints.down("xs")]: {
+      WebkitColumnCount: 1,
+      MozColumnCount: 1,
+      columnCount: 1,
+    },
   },
   imgStyle: {
     width: "100%",
@@ -23,7 +28,7 @@ const useStyles = makeStyles({
       opacity: "0.5",
     },
   },
-});
+}));
 
 function Favorite(props) {
   // const user = props.user;
