@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
       border: "2px solid pink",
     },
   },
+  title: {
+    fontWeight: "bold",
+    fontSize: "25px",
+  },
   modalInitialsLogo: {
     textDecoration: "none",
     color: "white",
@@ -118,7 +122,7 @@ function ColorWallModal(props) {
               }
             ></Avatar>
           }
-          title={openedPost.title}
+          title={<Typography className={classes.title}>{openedPost.title}</Typography>}
         />
         <Typography
           variant="body2"
