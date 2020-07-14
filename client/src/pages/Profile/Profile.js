@@ -44,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
 
   bioPaper: {
     minHeight: "200px",
-    padding: "10px",
     borderRadius: "24px",
     padding: "20px",
   },
@@ -74,6 +73,10 @@ const useStyles = makeStyles((theme) => ({
     padding: "5px",
     borderRadius: "5px",
     textDecoration: "none",
+    fontSize: "15px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "10px"
+    },
     "&:hover": {
       color: "pink",
     },

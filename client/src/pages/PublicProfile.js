@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, Paper, makeStyles, Fab, Grid, Typography } from "@material-ui/core";
+import { Avatar, Paper, makeStyles, Grid, Typography } from "@material-ui/core";
 import { useParams } from "react-router-dom";
 import API from "../utils/API";
 import ColorWall from "./ColorWall";

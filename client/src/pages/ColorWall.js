@@ -5,7 +5,7 @@ import API from "../utils/API";
 import ColorWallModal from "../components/ColorWall/ColorWallModal";
 import Swal from "sweetalert2";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   imageSection: {
     width: "100%",
   },
@@ -17,6 +17,11 @@ const useStyles = makeStyles({
     MozColumnGap: "0px",
     columnCount: 3,
     columnGap: "0px",
+    [theme.breakpoints.down("xs")]: {
+      WebkitColumnCount: 1,
+      MozColumnCount: 1,
+      columnCount: 1,
+    },
   },
   imgStyle: {
     width: "100%",
@@ -29,7 +34,7 @@ const useStyles = makeStyles({
     textAlign: "center",
     fontSize: "15px",
   },
-});
+}));
 
 function ColorWall(props) {
   const user = props.user;
