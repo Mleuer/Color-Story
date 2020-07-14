@@ -74,6 +74,11 @@ const useStyles = makeStyles((theme) => ({
       MozColumnGap: "0px",
       columnCount: 3,
       columnGap: "0px",
+      [theme.breakpoints.down("xs")]: {
+        WebkitColumnCount: 1,
+        MozColumnCount: 1,
+        columnCount: 1,
+      },
     },
     imgStyle: {
       width: "100%",
