@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
   editAvatarIcon: {
     border: "2px solid white",
     "&:hover": {
-      border: "2px solid pink",
-    },
+      border: "2px solid pink"
+    }
   },
   root: {
     "& > *": {
@@ -31,24 +31,28 @@ const useStyles = makeStyles((theme) => ({
   },
 
   bioPaper: {
-    minHeight: "100px",
-    padding: "10px",
+    minHeight: "200px",
+    borderRadius: "24px",
+    padding: "20px",
   },
   websitePaper: {
     height: "150px",
     padding: "10px",
     margin: "10px",
     textAlign: "center",
+    borderRadius: "24px",
   },
   emailPaper: {
     height: "150px",
     padding: "10px",
     margin: "10px",
     textAlign: "center",
+    borderRadius: "24px",
   },
   font: {
     fontFamily: "Petit Formal Script, cursive",
     fontSize: "30px",
+    fontWeight: "700",
   },
 
   profileLink: {
@@ -57,6 +61,10 @@ const useStyles = makeStyles((theme) => ({
     padding: "5px",
     borderRadius: "5px",
     textDecoration: "none",
+    fontSize: "15px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "10px"
+    },
     "&:hover": {
       color: "pink",
     },
@@ -132,6 +140,8 @@ function PublicProfile(props) {
                   <Grid item xs={12}>
                     <Typography
                       className={classes.topBottomMargins}
+                      style={{ marginTop: "-30px" }}
+                      color="textSecondary"
                       gutterBottom
                       variant="h3"
                       component="h2"
@@ -139,7 +149,6 @@ function PublicProfile(props) {
                     >
                       {renderedUser.username}
                     </Typography>
-
                     {renderedUser.fullName ? (
                       renderedUser.fullName !== "" ? (
                         <Typography
@@ -163,35 +172,62 @@ function PublicProfile(props) {
               </Grid>
             </Grid>
 
-            <Grid container direction="row">
-              <Grid item xs={12}>
-                <br></br>
-                <hr></hr>
-                <br></br>
-              </Grid>
-            </Grid>
+        <Grid container direction="row">
+          <Grid item xs={12}>
+            <br></br>
+            <hr></hr>
+            <br></br>
+          </Grid>
+        </Grid>
 
-            <Grid
-              className={classes.topBottomMargins}
-              alignItems="center"
-              justify="center"
-              container
-              direction="row"
-            >
+        <Grid
+          className={classes.topBottomMargins}
+          alignItems="center"
+          justify="center"
+          container
+          direction="row"
+        >
+          <Grid item>
+            <Typography variant="h3" className={classes.font}>
+              My Color Story
+            </Typography>
+          </Grid>
+        </Grid>
+        {/* grid item holds Bio Paper */}
+
+        <Grid container alignItems="center" justify="center">
+          <Grid placeholder="Hello" item xs={10}>
+            <Paper elevation={3} className={classes.bioPaper}>
+              <Grid item>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {renderedUser.biography}
+                </Typography>
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
+        <br></br>
+        <Grid container justify="center" direction="row">
+          <Grid item xs={10} md={5}>
+            {/* website paper */}
+            <Paper elevation={3} className={classes.websitePaper}>
               <Grid item>
                 <Typography variant="h3" className={classes.font}>
                   My Color Story
                 </Typography>
               </Grid>
-            </Grid>
-            {/* grid item holds Bio Paper */}
-            <Grid item xs={12}>
-              <Paper elevation={3} className={classes.bioPaper}>
-                <Grid item>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
+            </Paper>
+          </Grid>
+          <Grid item xs={10} md={5}>
+            {/* email paper */}
+            <Paper elevation={3} className={classes.emailPaper}>
+              <Grid item>
+                <h3 className={classes.font}>Email:</h3>
+                <Typography>
+                  <a
+                    className={classes.profileLink}
+                    href={`mailto:${renderedUser.email}`}
+
                   >
                     {renderedUser.biography}
                   </Typography>
@@ -240,6 +276,7 @@ function PublicProfile(props) {
       ) : (
         <h3>User does not exist</h3>
       )}
+
     </>
   );
 }

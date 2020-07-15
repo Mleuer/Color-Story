@@ -429,8 +429,8 @@ function Profile(props) {
       <hr></hr>
       <br></br>
 
-      <Grid container direction="row">
-        <Grid item xs={12}>
+      <Grid container justify="center" direction="row">
+        <Grid item xs={10}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
           {displayedPosts.length < 1 ? (
