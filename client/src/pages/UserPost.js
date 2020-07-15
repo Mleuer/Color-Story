@@ -35,13 +35,16 @@ const useStyles = makeStyles((theme) => ({
   colCatSelect: {
     width: "50%",
     [theme.breakpoints.down("xs")]: {
-      width: "65%",
+      width: "100%",
     },
   },
   userPostButtons: {
     backgroundColor: "#4d3b58",
     color: "white",
     width: "50%",
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+    },
     "&:hover": {
       backgroundColor: "#c9c4cc",
       color: "black",
