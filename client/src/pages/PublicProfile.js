@@ -5,94 +5,102 @@ import API from "../utils/API";
 import ColorWall from "./ColorWall";
 
 const useStyles = makeStyles((theme) => ({
-    avatar: {
-      height: "400px",
-      width: "400px",
-      marginTop: "20px",
-      [theme.breakpoints.down("sm")]: {
-        width: "300px",
-        height: "300px",
-      },
+  avatar: {
+    height: "400px",
+    width: "400px",
+    marginTop: "20px",
+    [theme.breakpoints.down("sm")]: {
+      width: "300px",
+      height: "300px",
     },
-    editAvatarIcon: {
-      border: "2px solid white",
-      "&:hover": {
-        border: "2px solid pink"
-      }
+  },
+  editAvatarIcon: {
+    border: "2px solid white",
+    "&:hover": {
+      border: "2px solid pink"
+    }
+  },
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      backgroundColor: "#FFCCCC",
     },
-    root: {
-      "& > *": {
-        margin: theme.spacing(1),
-        backgroundColor: "#FFCCCC",
-      },
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
+
+  bioPaper: {
+    minHeight: "200px",
+    borderRadius: "24px",
+    padding: "20px",
+  },
+  websitePaper: {
+    height: "150px",
+    padding: "10px",
+    margin: "10px",
+    textAlign: "center",
+    borderRadius: "24px",
+  },
+  emailPaper: {
+    height: "150px",
+    padding: "10px",
+    margin: "10px",
+    textAlign: "center",
+    borderRadius: "24px",
+  },
+  font: {
+    fontFamily: "Petit Formal Script, cursive",
+    fontSize: "30px",
+    fontWeight: "700",
+  },
+
+  profileLink: {
+    backgroundColor: "black",
+    color: "white",
+    padding: "5px",
+    borderRadius: "5px",
+    textDecoration: "none",
+    fontSize: "15px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "10px"
     },
-    extendedIcon: {
-      marginRight: theme.spacing(1),
+    "&:hover": {
+      color: "pink",
     },
-  
-    bioPaper: {
-      minHeight: "100px",
-      padding: "10px",
+  },
+  imageSection: {
+    width: "100%",
+    border: "solid 3px black",
+    borderRadius: "5px",
+  },
+  imgColumns: {
+    lineHeight: 0,
+    WebkitColumnCount: 3,
+    WebkitColumnGap: "0px",
+    MozColumnCount: 3,
+    MozColumnGap: "0px",
+    columnCount: 3,
+    columnGap: "0px",
+    [theme.breakpoints.down("xs")]: {
+      WebkitColumnCount: 1,
+      MozColumnCount: 1,
+      columnCount: 1,
     },
-    websitePaper: {
-      height: "150px",
-      padding: "10px",
-      margin: "10px",
-      textAlign: "center",
-    },
-    emailPaper: {
-      height: "150px",
-      padding: "10px",
-      margin: "10px",
-      textAlign: "center",
-    },
-    font: {
-      fontFamily: "Petit Formal Script, cursive",
-      fontSize: "30px",
-    },
-  
-    profileLink: {
-      backgroundColor: "black",
-      color: "white",
-      padding: "5px",
-      borderRadius: "5px",
-      textDecoration: "none",
-      "&:hover": {
-        color: "pink",
-      },
-    },
-    imageSection: {
-      width: "100%",
-      border: "solid 3px black",
-      borderRadius: "5px",
-    },
-    imgColumns: {
-      lineHeight: 0,
-      WebkitColumnCount: 3,
-      WebkitColumnGap: "0px",
-      MozColumnCount: 3,
-      MozColumnGap: "0px",
-      columnCount: 3,
-      columnGap: "0px",
-      [theme.breakpoints.down("xs")]: {
-        WebkitColumnCount: 1,
-        MozColumnCount: 1,
-        columnCount: 1,
-      },
-    },
-    imgStyle: {
-      width: "100%",
-      height: "100%",
-    },
-    topBottomMargins: {
-      marginTop: "20px",
-      marginBottom: "20px",
-    },
-    noPostComment: {
-      textAlign: "center",
-      fontSize: "15px",
-    },
-  }));
+  },
+  imgStyle: {
+    width: "100%",
+    height: "100%",
+  },
+  topBottomMargins: {
+    marginTop: "20px",
+    marginBottom: "20px",
+  },
+  noPostComment: {
+    textAlign: "center",
+    fontSize: "15px",
+  },
+}));
 
 function PublicProfile(props) {
   const user = props.user;
@@ -109,7 +117,7 @@ function PublicProfile(props) {
 
   return (
     <>
-        <Grid container direction="column">
+      <Grid container direction="column">
         {/* column holds avatar and names */}
         <Grid container direction="column" alignItems="center" justify="center">
           {/* Avatar */}
@@ -137,7 +145,7 @@ function PublicProfile(props) {
                 {renderedUser.fullName ? (
                   renderedUser.fullName !== "" ? (
                     <Typography
-                      style={{marginTop: "-30px"}}
+                      style={{ marginTop: "-30px" }}
                       color="textSecondary"
                       gutterBottom
                       variant="h6"
@@ -147,11 +155,11 @@ function PublicProfile(props) {
                       {renderedUser.fullName}
                     </Typography>
                   ) : (
-                    <div></div>
-                  )
+                      <div></div>
+                    )
                 ) : (
-                  <div></div>
-                )}
+                    <div></div>
+                  )}
               </Grid>
             </Grid>
           </Grid>
@@ -179,18 +187,21 @@ function PublicProfile(props) {
           </Grid>
         </Grid>
         {/* grid item holds Bio Paper */}
-        <Grid item xs={12}>
-          <Paper elevation={3} className={classes.bioPaper}>
-            <Grid item>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {renderedUser.biography}
-              </Typography>
-            </Grid>
-          </Paper>
+
+        <Grid container alignItems="center" justify="center">
+          <Grid placeholder="Hello" item xs={10}>
+            <Paper elevation={3} className={classes.bioPaper}>
+              <Grid item>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {renderedUser.biography}
+                </Typography>
+              </Grid>
+            </Paper>
+          </Grid>
         </Grid>
         <br></br>
-        <Grid container justify="space-between" direction="row">
-          <Grid item xs={12} md={6}>
+        <Grid container justify="center" direction="row">
+          <Grid item xs={10} md={5}>
             {/* website paper */}
             <Paper elevation={3} className={classes.websitePaper}>
               <Grid item>
@@ -207,7 +218,7 @@ function PublicProfile(props) {
               </Grid>
             </Paper>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={10} md={5}>
             {/* email paper */}
             <Paper elevation={3} className={classes.emailPaper}>
               <Grid item>
@@ -225,7 +236,7 @@ function PublicProfile(props) {
           </Grid>
         </Grid>
       </Grid>
-      <ColorWall user={user} userId={renderedUser.id}/>
+      <ColorWall user={user} userId={renderedUser.id} />
     </>
   );
 }

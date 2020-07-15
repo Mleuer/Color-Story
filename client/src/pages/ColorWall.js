@@ -4,6 +4,7 @@ import ButtonRow from "../components/ColorWall/ButtonRow";
 import API from "../utils/API";
 import ColorWallModal from "../components/ColorWall/ColorWallModal";
 import Swal from "sweetalert2";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   imageSection: {
@@ -106,35 +107,39 @@ function ColorWall(props) {
 
   return (
     <>
-      <ButtonRow handleClick={handleClick} />
+      <Grid container justify="center" direction="row">
+        <Grid item xs={10}>
+          <ButtonRow handleClick={handleClick} />
+        </Grid>
+      </Grid>
       <br></br>
 
       {displayedPosts.length < 1 ? (
         <h6 className={classes.noPostComment}>no posts in this category</h6>
       ) : (
-        <div className={classes.imageSection}>
-          <section className={classes.imgColumns}>
-            {displayedPosts.map((tile) => (
-              <div key={`${tile.id}-imgWithModal`}>
-                <img
-                  onClick={handleClickOpen}
-                  className={classes.imgStyle}
-                  src={tile.imageUrl}
-                  alt={tile.title}
-                  value={tile.id}
-                ></img>
-              </div>
-            ))}
-            <ColorWallModal
-              openedPost={openedPost}
-              user={user}
-              handleClose={handleClose}
-              addLike={addLike}
-              open={open}
-            />
-          </section>
-        </div>
-      )}
+          <div className={classes.imageSection}>
+            <section className={classes.imgColumns}>
+              {displayedPosts.map((tile) => (
+                <div key={`${tile.id}-imgWithModal`}>
+                  <img
+                    onClick={handleClickOpen}
+                    className={classes.imgStyle}
+                    src={tile.imageUrl}
+                    alt={tile.title}
+                    value={tile.id}
+                  ></img>
+                </div>
+              ))}
+              <ColorWallModal
+                openedPost={openedPost}
+                user={user}
+                handleClose={handleClose}
+                addLike={addLike}
+                open={open}
+              />
+            </section>
+          </div>
+        )}
     </>
   );
 }
