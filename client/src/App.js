@@ -29,6 +29,11 @@ function App() {
   const [error, setError] = useState("")
   const classes = useStyles();
 
+
+  function clearError() {
+    setError("");
+  }
+
   function loginUser(fullName, email, username, password) {
     const data = {
       fullName: fullName,
@@ -38,7 +43,9 @@ function App() {
     }
     API.Auth.login(data).then(res => {
       setUser(res.data)
-
+      clearError();
+    }).catch(err => {
+      setError("Please try again and ensure that input fits the requirements.");
     })
   }
 
@@ -50,9 +57,10 @@ function App() {
       password: password
     }
     API.Auth.signup(data).then(res => {
-      setUser(res.data)
+      setUser(res.data);
+      clearError();
     }).catch(err => {
-      setError("Please try again and ensure that input fits the requirements.")
+      setError("Please try again and ensure that input fits the requirements.");
     })
   }
 
@@ -60,10 +68,6 @@ function App() {
     API.Auth.logout().then(res => {
       setUser({});
     })
-  }
-
-  function clearError() {
-    setError("");
   }
 
   return (
