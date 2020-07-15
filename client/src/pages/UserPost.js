@@ -145,7 +145,7 @@ function UserPost(props) {
     <>
       <Container maxWidth="xs">
         <form noValidate autoComplete="off">
-          <Grid container spacing={3}>
+          <Grid>
             <Grid item xs={12}>
               <TextField
                 className={classes.titleField}
@@ -198,7 +198,6 @@ function UserPost(props) {
                 currencySymbol="$"
                 outputFormat="number"
                 helperText="*optional"
-                // onBlur={handleChange}
                 onChange={(event, value) => setPrice(value)}
               />
             </Grid>
