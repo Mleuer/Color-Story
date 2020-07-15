@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { Home, UserPost, Profile, ColorWall, Favorite, PublicProfile } from "./pages";
 import Auth from "./pages/Auth"
-import { Navigation, Error } from "./components";
+import { Navigation, Error, DoesNotExist } from "./components";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import API from './utils/API';
@@ -107,6 +107,9 @@ function App() {
                     loginUser={loginUser}
                     signupUser={signupUser}
                   />
+                </Route>
+                <Route path="*">
+                  <DoesNotExist/>
                 </Route>
               </Switch>
             </Grid>

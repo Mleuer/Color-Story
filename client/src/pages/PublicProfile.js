@@ -110,60 +110,67 @@ function PublicProfile(props) {
 
   useEffect(() => {
     API.User.getById(id).then((result) => {
-      console.log(result);
       setRenderedUser(result.data);
     });
-  }, []);
+  }, [id]);
 
   return (
     <>
-      <Grid container direction="column">
-        {/* column holds avatar and names */}
-        <Grid container direction="column" alignItems="center" justify="center">
-          {/* Avatar */}
-          <Grid item xs={12}>
-            <Avatar
-              alt={renderedUser.fullName}
-              src={renderedUser.profilePic}
-              className={classes.avatar}
-            />
-          </Grid>
-          {/* Username/Real Name */}
-          <Grid item xs={12}>
-            <Grid container direction="row">
+      {renderedUser ? (
+        <>
+          <Grid container direction="column">
+            {/* column holds avatar and names */}
+            <Grid
+              container
+              direction="column"
+              alignItems="center"
+              justify="center"
+            >
+              {/* Avatar */}
               <Grid item xs={12}>
-                <Typography
-                  className={classes.topBottomMargins}
-                  gutterBottom
-                  variant="h3"
-                  component="h2"
-                  align="center"
-                >
-                  {renderedUser.username}
-                </Typography>
-
-                {renderedUser.fullName ? (
-                  renderedUser.fullName !== "" ? (
+                <Avatar
+                  alt={renderedUser.fullName}
+                  src={renderedUser.profilePic}
+                  className={classes.avatar}
+                />
+              </Grid>
+              {/* Username/Real Name */}
+              <Grid item xs={12}>
+                <Grid container direction="row">
+                  <Grid item xs={12}>
                     <Typography
+                      className={classes.topBottomMargins}
                       style={{ marginTop: "-30px" }}
                       color="textSecondary"
                       gutterBottom
-                      variant="h6"
+                      variant="h3"
                       component="h2"
                       align="center"
                     >
-                      {renderedUser.fullName}
+                      {renderedUser.username}
                     </Typography>
-                  ) : (
+                    {renderedUser.fullName ? (
+                      renderedUser.fullName !== "" ? (
+                        <Typography
+                          style={{ marginTop: "-30px" }}
+                          color="textSecondary"
+                          gutterBottom
+                          variant="h6"
+                          component="h2"
+                          align="center"
+                        >
+                          {renderedUser.fullName}
+                        </Typography>
+                      ) : (
+                        <div></div>
+                      )
+                    ) : (
                       <div></div>
-                    )
-                ) : (
-                    <div></div>
-                  )}
+                    )}
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </Grid>
 
         <Grid container direction="row">
           <Grid item xs={12}>
@@ -205,15 +212,8 @@ function PublicProfile(props) {
             {/* website paper */}
             <Paper elevation={3} className={classes.websitePaper}>
               <Grid item>
-                <h3 className={classes.font}>Website:</h3>
-                <Typography>
-                  <a
-                    className={classes.profileLink}
-                    target="__blank"
-                    href={renderedUser.userLinks}
-                  >
-                    {renderedUser.userLinks}
-                  </a>
+                <Typography variant="h3" className={classes.font}>
+                  My Color Story
                 </Typography>
               </Grid>
             </Paper>
@@ -227,16 +227,56 @@ function PublicProfile(props) {
                   <a
                     className={classes.profileLink}
                     href={`mailto:${renderedUser.email}`}
+
                   >
-                    {renderedUser.email}
-                  </a>
-                </Typography>
+                    {renderedUser.biography}
+                  </Typography>
+                </Grid>
+              </Paper>
+            </Grid>
+            <br></br>
+            <Grid container justify="space-between" direction="row">
+              <Grid item xs={12} md={6}>
+                {/* website paper */}
+                <Paper elevation={3} className={classes.websitePaper}>
+                  <Grid item>
+                    <h3 className={classes.font}>Website:</h3>
+                    <Typography>
+                      <a
+                        className={classes.profileLink}
+                        target="__blank"
+                        href={renderedUser.userLinks}
+                      >
+                        {renderedUser.userLinks}
+                      </a>
+                    </Typography>
+                  </Grid>
+                </Paper>
               </Grid>
-            </Paper>
+              <Grid item xs={12} md={6}>
+                {/* email paper */}
+                <Paper elevation={3} className={classes.emailPaper}>
+                  <Grid item>
+                    <h3 className={classes.font}>Email:</h3>
+                    <Typography>
+                      <a
+                        className={classes.profileLink}
+                        href={`mailto:${renderedUser.email}`}
+                      >
+                        {renderedUser.email}
+                      </a>
+                    </Typography>
+                  </Grid>
+                </Paper>
+              </Grid>
+            </Grid>
           </Grid>
-        </Grid>
-      </Grid>
-      <ColorWall user={user} userId={renderedUser.id} />
+          <ColorWall user={user} userId={renderedUser.id} />
+        </>
+      ) : (
+        <h3>User does not exist</h3>
+      )}
+
     </>
   );
 }
