@@ -184,7 +184,6 @@ function Profile(props) {
       }
     );
   }
-  //CollorWall Display
   const [posts, setPosts] = useState([]);
   const [color, setColor] = useState("");
 
