@@ -9,14 +9,17 @@ import {
   Typography,
 } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   inputField: {
     width: "100%",
   },
   signupButton: {
     backgroundColor: "#4d3b58",
     color: "white",
-    width: "20%",
+    width: "30%",
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+    },
     "&:hover": {
       backgroundColor: "#c9c4cc",
       color: "black",
@@ -31,7 +34,7 @@ const useStyles = makeStyles({
       color: "#c9c4cc",
     },
   },
-});
+}));
 
 function LoginForm(props) {
   const { formObject, handleFormSubmit, handleInputChange } = props;
