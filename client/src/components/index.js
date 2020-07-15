@@ -1,7 +1,7 @@
 // HOME PAGE:
-export { default as ColorButtons } from "./HomePage/ColorButtons/ColorButtons";
-export { default as ColorGrid } from "./HomePage/ColorGrid/ColorGrid";
-export { default as Welcome } from "./HomePage/Welcome/Welcome";
+export { default as ColorButtons } from "./HomePage/ColorButtons";
+export { default as ColorGrid } from "./HomePage/ColorGrid";
+export { default as Welcome } from "./HomePage/Welcome";
 export { default as LoginButton } from "./HomePage/LoginButton";
 export { default as SignupButton } from "./HomePage/SignupButton";
 
@@ -16,8 +16,8 @@ export { default as LoginForm } from "./AuthForms/LoginForm";
 export { default as SignupForm } from "./AuthForms/SignupForm";
 
 // NAVIGATION BAR:
-export { default as Navigation } from "./Navigation/Navigation";
-export { default as TempDrawer } from "./Navigation/TempDrawer";
+export { default as Navigation } from "./HomePage/Navigation";
+export { default as TempDrawer } from "./HomePage/TempDrawer";
 
 // FORUM PAGE:
 export { default as MessageCard } from "./ForumPage/MessageCard";

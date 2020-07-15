@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Avatar, makeStyles, Fab, Grid, Typography } from "@material-ui/core";
-import Menu from "../../components/ColorWall/menu";
-import ButtonRow from "../../components/ColorWall/ButtonRow";
+import Menu from "../components/ColorWall/menu";
+import ButtonRow from "../components/ColorWall/ButtonRow";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
@@ -13,7 +13,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import API from "../../utils/API";
+import API from "../utils/API";
 import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
