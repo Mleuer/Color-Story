@@ -123,7 +123,6 @@ function UserPost(props) {
     } else {
       API.Post.create({ ...state, price: price })
         .then((response) => {
-          // console.log(response);
           setState({
             title: "",
             imageUrl: "",

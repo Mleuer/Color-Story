@@ -110,7 +110,6 @@ function PublicProfile(props) {
 
   useEffect(() => {
     API.User.getById(id).then((result) => {
-      console.log(result);
       setRenderedUser(result.data);
     });
   }, []);

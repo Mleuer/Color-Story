@@ -15,7 +15,6 @@ router.get("/", isAuthenticated, function (req, res) {
  * User Read - One
  */
 router.get("/:id", function (req, res) {
-  // console.log("get route", req.params.id)
   db.User.findByPk(req.params.id)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
@@ -37,7 +36,6 @@ router.post("/", function (req, res) {
  * User - Update
  */
 router.put("/:id", isAuthenticated, function (req, res) {
-  // console.log("put route", req.body)
   db.User.update(req.body, { where: { id: req.params.id } })
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));

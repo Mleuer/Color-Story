@@ -14,10 +14,7 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: "20px",
         flexGrow: 1,
     },
-    // button: {
-    //     marginTop: "4px",
-    //     marginBottom: "4px",
-    // },
+
 }));
 function ColorGrid() {
     const classes = useStyles();
