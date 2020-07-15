@@ -208,10 +208,9 @@ function UserPost(props) {
             <br></br>
 
             <Grid item xs={12}>
-              <InputLabel id="color-category">Color Category</InputLabel>
+              <InputLabel id="color-category">Color Category (*required)</InputLabel>
               <Select
                 className={classes.colCatSelect}
-                helperText="*required"
                 placeholder="Color Category"
                 name="colorCategory"
                 value={state.colorCategory}

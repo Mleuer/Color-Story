@@ -32,7 +32,7 @@ function Welcome() {
         <Grid item>
           <Typography alignitems="center" className={classes.welcome} variant="h1">Welcome</Typography>
         </Grid>
-        <Grid item justify="center" align="justify" className={classes.textBlock}>
+        <Grid item align="justify" className={classes.textBlock}>
           <Typography  variant="subtitle1">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text ever
