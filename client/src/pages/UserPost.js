@@ -15,7 +15,7 @@ import API from "../utils/API";
 import { makeStyles } from "@material-ui/core/styles";
 import Swal from "sweetalert2";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   titleField: {
     width: "100%",
     marginBottom: "20px",
@@ -28,9 +28,15 @@ const useStyles = makeStyles({
   },
   amountField: {
     width: "50%",
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+    },
   },
   colCatSelect: {
     width: "50%",
+    [theme.breakpoints.down("xs")]: {
+      width: "65%",
+    },
   },
   userPostButtons: {
     backgroundColor: "#4d3b58",
@@ -50,7 +56,7 @@ const useStyles = makeStyles({
       color: "#c9c4cc",
     },
   },
-});
+}));
 
 function UserPost(props) {
   const [state, setState] = useState({
@@ -167,7 +173,7 @@ function UserPost(props) {
               />
             </Grid>
 
-            <Grid item sm={12}>
+            <Grid item xs={12}>
               <TextField
                 name="postLink"
                 className={classes.linkField}
@@ -198,12 +204,12 @@ function UserPost(props) {
 
             <br></br>
 
-            <Grid item sm={12}>
+            <Grid item xs={12}>
               <InputLabel id="color-category">Color Category</InputLabel>
               <Select
                 className={classes.colCatSelect}
                 helperText="*required"
-                placeholderText="Color Category"
+                placeholder="Color Category"
                 name="colorCategory"
                 value={state.colorCategory}
                 onChange={handleChange}
@@ -223,7 +229,7 @@ function UserPost(props) {
 
             <br></br>
 
-            <Grid item sm={12}>
+            <Grid item xs={12}>
               <Button
                 className={classes.userPostButtons}
                 onClick={uploadImage}
@@ -236,7 +242,7 @@ function UserPost(props) {
 
             <br></br>
 
-            <Grid item sm={12}>
+            <Grid item xs={12}>
               <Button
                 className={classes.userPostButtons}
                 onClick={handleSubmit}
