@@ -10,7 +10,8 @@ module.exports = function (sequelize, DataTypes) {
     Like.belongsTo(models.Post, {
       foreignKey: {
         allowNull: false
-      }
+      },
+      onDelete: "CASCADE"
     });
   };
 
