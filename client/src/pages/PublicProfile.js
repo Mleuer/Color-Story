@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
   editAvatarIcon: {
     border: "2px solid white",
     "&:hover": {
-      border: "2px solid pink"
-    }
+      border: "2px solid pink",
+    },
   },
   root: {
     "& > *": {
@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
-
   bioPaper: {
     minHeight: "200px",
     borderRadius: "24px",
@@ -63,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     fontSize: "15px",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "10px"
+      fontSize: "10px",
     },
     "&:hover": {
       color: "pink",
@@ -117,126 +116,141 @@ function PublicProfile(props) {
 
   return (
     <>
-      <Grid container direction="column">
-        {/* column holds avatar and names */}
-        <Grid container direction="column" alignItems="center" justify="center">
-          {/* Avatar */}
-          <Grid item xs={12}>
-            <Avatar
-              alt={renderedUser.fullName}
-              src={renderedUser.profilePic}
-              className={classes.avatar}
-            />
-          </Grid>
-          {/* Username/Real Name */}
-          <Grid item xs={12}>
-            <Grid container direction="row">
+      {renderedUser ? (
+        <>
+          <Grid container direction="column">
+            {/* column holds avatar and names */}
+            <Grid
+              container
+              direction="column"
+              alignItems="center"
+              justify="center"
+            >
+              {/* Avatar */}
               <Grid item xs={12}>
-                <Typography
-                  className={classes.topBottomMargins}
-                  gutterBottom
-                  variant="h3"
-                  component="h2"
-                  align="center"
-                >
-                  {renderedUser.username}
-                </Typography>
-
-                {renderedUser.fullName ? (
-                  renderedUser.fullName !== "" ? (
+                <Avatar
+                  alt={renderedUser.fullName}
+                  src={renderedUser.profilePic}
+                  className={classes.avatar}
+                />
+              </Grid>
+              {/* Username/Real Name */}
+              <Grid item xs={12}>
+                <Grid container direction="row">
+                  <Grid item xs={12}>
                     <Typography
-                      style={{ marginTop: "-30px" }}
-                      color="textSecondary"
+                      className={classes.topBottomMargins}
                       gutterBottom
-                      variant="h6"
+                      variant="h3"
                       component="h2"
                       align="center"
                     >
-                      {renderedUser.fullName}
+                      {renderedUser.username}
                     </Typography>
-                  ) : (
+
+                    {renderedUser.fullName ? (
+                      renderedUser.fullName !== "" ? (
+                        <Typography
+                          style={{ marginTop: "-30px" }}
+                          color="textSecondary"
+                          gutterBottom
+                          variant="h6"
+                          component="h2"
+                          align="center"
+                        >
+                          {renderedUser.fullName}
+                        </Typography>
+                      ) : (
+                        <div></div>
+                      )
+                    ) : (
                       <div></div>
-                    )
-                ) : (
-                    <div></div>
-                  )}
+                    )}
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+
+            <Grid container direction="row">
+              <Grid item xs={12}>
+                <br></br>
+                <hr></hr>
+                <br></br>
+              </Grid>
+            </Grid>
+
+            <Grid
+              className={classes.topBottomMargins}
+              alignItems="center"
+              justify="center"
+              container
+              direction="row"
+            >
+              <Grid item>
+                <Typography variant="h3" className={classes.font}>
+                  My Color Story
+                </Typography>
+              </Grid>
+            </Grid>
+            {/* grid item holds Bio Paper */}
+
+            <Grid container alignItems="center" justify="center">
+              <Grid placeholder="Hello" item xs={10}>
+                <Paper elevation={3} className={classes.bioPaper}>
+                  <Grid item>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {renderedUser.biography}
+                    </Typography>
+                  </Grid>
+                </Paper>
+              </Grid>
+            </Grid>
+            <br></br>
+            <Grid container justify="center" direction="row">
+              <Grid item xs={10} md={5}>
+                {/* website paper */}
+                <Paper elevation={3} className={classes.websitePaper}>
+                  <Grid item>
+                    <h3 className={classes.font}>Website:</h3>
+                    <Typography>
+                      <a
+                        className={classes.profileLink}
+                        target="__blank"
+                        href={renderedUser.userLinks}
+                      >
+                        {renderedUser.userLinks}
+                      </a>
+                    </Typography>
+                  </Grid>
+                </Paper>
+              </Grid>
+              <Grid item xs={10} md={5}>
+                {/* email paper */}
+                <Paper elevation={3} className={classes.emailPaper}>
+                  <Grid item>
+                    <h3 className={classes.font}>Email:</h3>
+                    <Typography>
+                      <a
+                        className={classes.profileLink}
+                        href={`mailto:${renderedUser.email}`}
+                      >
+                        {renderedUser.email}
+                      </a>
+                    </Typography>
+                  </Grid>
+                </Paper>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-
-        <Grid container direction="row">
-          <Grid item xs={12}>
-            <br></br>
-            <hr></hr>
-            <br></br>
-          </Grid>
-        </Grid>
-
-        <Grid
-          className={classes.topBottomMargins}
-          alignItems="center"
-          justify="center"
-          container
-          direction="row"
-        >
-          <Grid item>
-            <Typography variant="h3" className={classes.font}>
-              My Color Story
-            </Typography>
-          </Grid>
-        </Grid>
-        {/* grid item holds Bio Paper */}
-
-        <Grid container alignItems="center" justify="center">
-          <Grid placeholder="Hello" item xs={10}>
-            <Paper elevation={3} className={classes.bioPaper}>
-              <Grid item>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {renderedUser.biography}
-                </Typography>
-              </Grid>
-            </Paper>
-          </Grid>
-        </Grid>
-        <br></br>
-        <Grid container justify="center" direction="row">
-          <Grid item xs={10} md={5}>
-            {/* website paper */}
-            <Paper elevation={3} className={classes.websitePaper}>
-              <Grid item>
-                <h3 className={classes.font}>Website:</h3>
-                <Typography>
-                  <a
-                    className={classes.profileLink}
-                    target="__blank"
-                    href={renderedUser.userLinks}
-                  >
-                    {renderedUser.userLinks}
-                  </a>
-                </Typography>
-              </Grid>
-            </Paper>
-          </Grid>
-          <Grid item xs={10} md={5}>
-            {/* email paper */}
-            <Paper elevation={3} className={classes.emailPaper}>
-              <Grid item>
-                <h3 className={classes.font}>Email:</h3>
-                <Typography>
-                  <a
-                    className={classes.profileLink}
-                    href={`mailto:${renderedUser.email}`}
-                  >
-                    {renderedUser.email}
-                  </a>
-                </Typography>
-              </Grid>
-            </Paper>
-          </Grid>
-        </Grid>
-      </Grid>
-      <ColorWall user={user} userId={renderedUser.id} />
+          <ColorWall user={user} userId={renderedUser.id} />
+        </>
+      ) : (
+        <h3>User Does Not Exist</h3>
+      )}
     </>
   );
 }
