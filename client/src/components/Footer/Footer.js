@@ -11,6 +11,7 @@ function Copyright() {
       {"Copyright © "}
       <Link
         color="inherit"
+        target="__blank"
         href="https://github.com/Mleuer/Color-Story"
         style={{ fontWeight: "bold" }}
       >
@@ -59,6 +60,16 @@ function Footer() {
               <a
                 className={classes.memberLink}
                 target="__blank"
+                href="https://github.com/Linus41"
+              >
+                Linus Schief
+              </a>
+            </span>
+            <span>・</span>
+            <span>
+              <a
+                className={classes.memberLink}
+                target="__blank"
                 href="https://github.com/Mleuer"
               >
                 Matt Leuer
@@ -82,16 +93,6 @@ function Footer() {
                 href="https://github.com/munoze714"
               >
                 Elizabeth Munoz
-              </a>
-            </span>
-            <span>・</span>
-            <span>
-              <a
-                className={classes.memberLink}
-                target="__blank"
-                href="https://github.com/Linus41"
-              >
-                Linus Schief
               </a>
             </span>
           </Typography>
