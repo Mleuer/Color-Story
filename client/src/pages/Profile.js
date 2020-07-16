@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
   editAvatarIcon: {
     border: "2px solid white",
     "&:hover": {
-      border: "2px solid pink"
-    }
+      border: "2px solid pink",
+    },
   },
   root: {
     "& > *": {
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   bioPaper: {
-    minHeight: "200px",
+    minHeight: "50px",
     borderRadius: "24px",
     padding: "20px",
   },
@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     fontSize: "15px",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "10px"
+      fontSize: "10px",
     },
     "&:hover": {
       color: "pink",
@@ -255,11 +255,11 @@ function Profile(props) {
                       {state.fullName}
                     </Typography>
                   ) : (
-                      <div></div>
-                    )
-                ) : (
                     <div></div>
-                  )}
+                  )
+                ) : (
+                  <div></div>
+                )}
               </Grid>
             </Grid>
           </Grid>
@@ -291,9 +291,24 @@ function Profile(props) {
           <Grid placeholder="Hello" item xs={10}>
             <Paper elevation={3} className={classes.bioPaper}>
               <Grid item>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {state.biography}
-                </Typography>
+                {state.biography !== "" ? (
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {state.biography}
+                  </Typography>
+                ) : (
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {/* if you change this text, make sure to change it in PublicProfile.js too */}
+                    Hello, my name is {state.username}.
+                  </Typography>
+                )}
               </Grid>
             </Paper>
           </Grid>
@@ -439,22 +454,22 @@ function Profile(props) {
           {displayedPosts.length < 1 ? (
             <h6 className={classes.noPostComment}>no posts in this category</h6>
           ) : (
-              <div className={classes.imageSection}>
-                <section className={classes.imgColumns}>
-                  {displayedPosts.map((tile) => (
-                    <div key={`${tile.id}-imgWithModal`}>
-                      <img
-                        className={classes.imgStyle}
-                        src={tile.imageUrl}
-                        alt={tile.title}
-                        value={tile.id}
-                      ></img>
-                      <Menu tile={tile} resetPost={resetPost} id={tile.id} />
-                    </div>
-                  ))}
-                </section>
-              </div>
-            )}
+            <div className={classes.imageSection}>
+              <section className={classes.imgColumns}>
+                {displayedPosts.map((tile) => (
+                  <div key={`${tile.id}-imgWithModal`}>
+                    <img
+                      className={classes.imgStyle}
+                      src={tile.imageUrl}
+                      alt={tile.title}
+                      value={tile.id}
+                    ></img>
+                    <Menu tile={tile} resetPost={resetPost} id={tile.id} />
+                  </div>
+                ))}
+              </section>
+            </div>
+          )}
         </Grid>
       </Grid>
     </>

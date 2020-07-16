@@ -59,7 +59,7 @@ function SignupForm(props) {
                 onChange={handleInputChange}
                 as="input"
                 type="text"
-                helperText="*optional"
+                helperText="*optional; will be made public"
               />
             </Grid>
             <Grid item xs={12}>
@@ -71,7 +71,7 @@ function SignupForm(props) {
                 onChange={handleInputChange}
                 as="input"
                 type="email"
-                helperText="*required; enter your email address; must be unique and your own"
+                helperText="*required; must be unique and will be made public"
               />
             </Grid>
             <Grid item xs={12}>
@@ -83,7 +83,7 @@ function SignupForm(props) {
                 onChange={handleInputChange}
                 as="input"
                 type="text"
-                helperText="*required; unique and 3-25 characters; letters (upper/lower) and numbers (0-9) only"
+                helperText="*required; must be unique and 3-25 characters; letters (upper/lower) and numbers (0-9) only"
               />
             </Grid>
             <Grid item xs={12}>

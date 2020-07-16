@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   bioPaper: {
-    minHeight: "200px",
+    minHeight: "50px",
     borderRadius: "24px",
     padding: "20px",
   },
@@ -197,13 +197,24 @@ function PublicProfile(props) {
               <Grid placeholder="Hello" item xs={10}>
                 <Paper elevation={3} className={classes.bioPaper}>
                   <Grid item>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      {renderedUser.biography}
-                    </Typography>
+                    {renderedUser.biography !== "" ? (
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        {renderedUser.biography}
+                      </Typography>
+                    ) : (
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        {/* if you change this text, make sure to change it in Profile.js too */}
+                        Hello, my name is {renderedUser.username}.
+                      </Typography>
+                    )}
                   </Grid>
                 </Paper>
               </Grid>
