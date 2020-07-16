@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
       backgroundColor: "#FFCCCC",
+      "&:hover": {
+        backgroundColor: "gray",
+      },
     },
   },
   extendedIcon: {
@@ -129,6 +132,8 @@ function Profile(props) {
   const getUserInfo = () => {
     API.User.getById(props.user.id)
       .then((res) => {
+        // console.log(res.data)
+
         let dataFullName = res.data.fullName;
         let dataUsername = res.data.username;
         let dataBiography = res.data.biography;
@@ -163,6 +168,7 @@ function Profile(props) {
     API.User.update(props.user.id, state);
   };
   const handleEdit = (e) => {
+    // console.log(e.target.name)
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
@@ -184,6 +190,7 @@ function Profile(props) {
       }
     );
   }
+  //CollorWall Display
   const [posts, setPosts] = useState([]);
   const [color, setColor] = useState("");
 
@@ -193,6 +200,7 @@ function Profile(props) {
 
   const resetPost = () => {
     API.Post.getAll(`?UserId=${props.user.id}`).then((res) => {
+      console.log(res.data);
       setPosts(res.data);
     });
   };

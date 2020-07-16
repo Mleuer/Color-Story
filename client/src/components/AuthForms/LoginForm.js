@@ -14,14 +14,14 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   signupButton: {
-    backgroundColor: "#4d3b58",
-    color: "white",
+    backgroundColor: "white",
+    color: "black",
     width: "30%",
     [theme.breakpoints.down("xs")]: {
       width: "100%",
     },
     "&:hover": {
-      backgroundColor: "#c9c4cc",
+      backgroundColor: "gray",
       color: "black",
     },
   },
@@ -58,7 +58,7 @@ function LoginForm(props) {
                 name="email"
                 onChange={handleInputChange}
                 as="input"
-                type="text"
+                type="text"  
                 helperText="enter your email address or username"
               />
             </Grid>
