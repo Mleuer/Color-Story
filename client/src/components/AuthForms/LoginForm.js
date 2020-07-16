@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "&:hover": {
       backgroundColor: "gray",
-      color: "black",
+      color: "white",
     },
   },
   authLink: {
