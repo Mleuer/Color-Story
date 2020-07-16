@@ -303,8 +303,8 @@ function Profile(props) {
                     your work!! See the three pink buttons below? The left one
                     allows you to create your very own posts and share your
                     artwork with others. The middle one allows you to edit your
-                    profile that others will see (avatar, name, bio, and
-                    website). Lastly, the button on the right will bring you to
+                    profile that others will see (avatar, name, website, and
+                    biography). Lastly, the button on the right will bring you to
                     your "Favorites" page, where you can find all of the images
                     you have "liked". On the bottom of this page, you even have
                     your very own Color Wall, filled with just your posts! Feel
