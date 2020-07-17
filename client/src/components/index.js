@@ -9,7 +9,7 @@ export { default as SignupButton } from "./HomePage/SignupButton";
 export { default as ButtonRow } from "./ColorWall/ButtonRow";
 export { default as ColorWallModal } from "./ColorWall/ColorWallModal";
 export { default as NoPostsComment } from "./ColorWall/NoPostsComment";
-export {default as Menu } from "./ColorWall/menu"
+export { default as Menu } from "./ColorWall/menu";
 
 // LOGIN/SIGNUP PAGES:
 export { default as LoginForm } from "./AuthForms/LoginForm";
@@ -18,6 +18,9 @@ export { default as SignupForm } from "./AuthForms/SignupForm";
 // NAVIGATION BAR:
 export { default as Navigation } from "./HomePage/Navigation";
 export { default as TempDrawer } from "./HomePage/TempDrawer";
+
+// FOOTER:
+export { default as Footer } from "./Footer/Footer";
 
 // FORUM PAGE:
 export { default as MessageCard } from "./ForumPage/MessageCard";
