@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
   },
   font: {
     fontFamily: "Petit Formal Script, cursive",
-    fontSize: "30px",
+    fontSize: "50px",
     fontWeight: "700",
     marginBottom: "10px",
     marginTop: "20px",
@@ -121,8 +121,15 @@ const useStyles = makeStyles((theme) => ({
   bioText: {
     fontSize: "24px",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "14px",
+      fontSize: "16px",
     },
+  },
+  webEmailFont: {
+    fontFamily: "Petit Formal Script, cursive",
+    fontSize: "30px",
+    fontWeight: "700",
+    marginBottom: "10px",
+    marginTop: "20px",
   }
 }));
 
@@ -340,7 +347,7 @@ function Profile(props) {
             {/* website paper */}
             <Paper elevation={3} className={classes.websitePaper}>
               <Grid item>
-                <h3 className={classes.font}>Website:</h3>
+                <h3 className={classes.webEmailFont}>Website:</h3>
                 <Typography>
                   <a
                     className={classes.profileLink}
@@ -357,7 +364,7 @@ function Profile(props) {
             {/* email paper */}
             <Paper elevation={3} className={classes.emailPaper}>
               <Grid item>
-                <h3 className={classes.font}>Email:</h3>
+                <h3 className={classes.webEmailFont}>Email:</h3>
                 <Typography>
                   <a
                     className={classes.profileLink}
@@ -469,7 +476,7 @@ function Profile(props) {
       <br></br>
 
       <Grid container justify="center">
-        <Grid item xs={11}>
+        <Grid justify="center" item xs={10} md={8}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
           {displayedPosts.length < 1 ? (

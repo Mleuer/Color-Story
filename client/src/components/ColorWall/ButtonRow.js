@@ -5,7 +5,6 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
 const useStyles = makeStyles({
   navRoot: {
-    minWidth: 300,
     textAlign: "center",
     backgroundColor: "gray",
     border: "2px solid black",
