@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px",
     textAlign: "center",
     borderRadius: "24px",
+    alignItems: "center",
   },
   emailPaper: {
     height: "150px",
@@ -68,6 +69,8 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Petit Formal Script, cursive",
     fontSize: "30px",
     fontWeight: "700",
+    marginBottom: "10px",
+    marginTop: "20px",
   },
 
   profileLink: {
@@ -291,24 +294,13 @@ function Profile(props) {
           <Grid placeholder="Hello" item xs={10}>
             <Paper elevation={3} className={classes.bioPaper}>
               <Grid item>
-                {state.biography === null || state.biography === "" ? (
+                {state.biography !== "" ? (
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    Hello {state.username}, and welcome to Color Story! This is
-                    your Profile page, where you can tell your story, get in
-                    contact with other artists, and most importantly -- share
-                    your work!! See the three pink buttons below? The left one
-                    allows you to create your very own posts and share your
-                    artwork with others. The middle one allows you to edit your
-                    profile that others will see (avatar, name, website, and
-                    biography). Lastly, the button on the right will bring you to
-                    your "Favorites" page, where you can find all of the images
-                    you have "liked". On the bottom of this page, you even have
-                    your very own Color Wall, filled with just your posts! Feel
-                    free to add, edit, and delete posts as you see fit!
+                    {state.biography}
                   </Typography>
                 ) : (
                   <Typography
@@ -316,7 +308,8 @@ function Profile(props) {
                     color="textSecondary"
                     component="p"
                   >
-                    {state.biography}
+                    {/* if you change this text, make sure to change it in PublicProfile.js too */}
+                    Hello, my name is {state.username}.
                   </Typography>
                 )}
               </Grid>
@@ -458,7 +451,7 @@ function Profile(props) {
       <br></br>
 
       <Grid container justify="center" direction="row">
-        <Grid item xs={12} md={10}>
+        <Grid item xs={10}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
           {displayedPosts.length < 1 ? (
