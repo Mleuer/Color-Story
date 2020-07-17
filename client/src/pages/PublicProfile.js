@@ -197,24 +197,23 @@ function PublicProfile(props) {
               <Grid placeholder="Hello" item xs={10}>
                 <Paper elevation={3} className={classes.bioPaper}>
                   <Grid item>
-                    {renderedUser.biography !== "" ? (
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        {renderedUser.biography}
-                      </Typography>
-                    ) : (
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        {/* if you change this text, make sure to change it in Profile.js too */}
-                        Hello, my name is {renderedUser.username}.
-                      </Typography>
-                    )}
+                  {renderedUser.biography === null || renderedUser.biography === "" ? (
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    Hello, my name is {renderedUser.username}.
+                  </Typography>
+                ) : (
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {renderedUser.biography}
+                  </Typography>
+                )}
                   </Grid>
                 </Paper>
               </Grid>
