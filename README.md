@@ -65,7 +65,7 @@ MIT License.
 
 <img src="https://avatars3.githubusercontent.com/u/46830225?v=4" width="200" height="200"/>
 
-**[Matt Leuer](https://github.com/Mleuer)** at mattleuer@gmail.com
+**[Matt Leuer](https://github.com/Mleuer)** at https://quizzical-archimedes-1b2c3e.netlify.app
 
 <img src="https://avatars0.githubusercontent.com/u/59345254?v=4" width="200" height="200"/>
 
