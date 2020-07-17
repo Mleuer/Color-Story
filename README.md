@@ -69,7 +69,7 @@ MIT License.
 
 <img src="https://avatars0.githubusercontent.com/u/59345254?v=4" width="200" height="200"/>
 
-**[Chyna Davis](https://github.com/CrainDavis)** at https://craindavis.github.io/
+**[Chyna Davis](https://github.com/CrainDavis)** at https://chynadavis-webdevportfolio.netlify.app/
 
 <img src="https://avatars0.githubusercontent.com/u/59346164?v=4" width="200" height="200"/>
 

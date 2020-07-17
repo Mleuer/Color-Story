@@ -45,8 +45,8 @@ function ButtonRow(props) {
               />
             </IconButton>
           ))}
-          <IconButton className={classes.iconColor}>
-            <RefreshIcon style={{ color: "#FFCCCC" }} fontSize="large" onClick={() => props.handleClick(colors.colorCat)} />
+          <IconButton onClick={() => props.handleClick(colors.colorCat)}>
+            <RefreshIcon className={classes.iconColor} style={{ color: "#FFCCCC" }} fontSize="large" />
           </IconButton>
         </CardContent>
       </Card>
