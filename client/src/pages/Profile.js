@@ -294,13 +294,24 @@ function Profile(props) {
           <Grid placeholder="Hello" item xs={10}>
             <Paper elevation={3} className={classes.bioPaper}>
               <Grid item>
-                {state.biography !== "" ? (
+              {state.biography === null || state.biography === "" ? (
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    {state.biography}
+                    Hello {state.username}, and welcome to Color Story! This is
+                    your Profile page, where you can tell your story, get in
+                    contact with other artists, and most importantly -- share
+                    your work!! See the three pink buttons below? The left one
+                    allows you to create your very own posts and share your
+                    artwork with others. The middle one allows you to edit your
+                    profile that others will see (avatar, name, website, and
+                    biography). Lastly, the button on the right will bring you to
+                    your "Favorites" page, where you can find all of the images
+                    you have "liked". On the bottom of this page, you even have
+                    your very own Color Wall, filled with just your posts! Feel
+                    free to add, edit, and delete posts as you see fit!
                   </Typography>
                 ) : (
                   <Typography
@@ -308,8 +319,7 @@ function Profile(props) {
                     color="textSecondary"
                     component="p"
                   >
-                    {/* if you change this text, make sure to change it in PublicProfile.js too */}
-                    Hello, my name is {state.username}.
+                    {state.biography}
                   </Typography>
                 )}
               </Grid>
