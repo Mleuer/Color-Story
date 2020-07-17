@@ -71,6 +71,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "700",
     marginBottom: "10px",
     marginTop: "20px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "40px",
+    },
   },
 
   profileLink: {
