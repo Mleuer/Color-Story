@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px",
     textAlign: "center",
     borderRadius: "24px",
+    alignItems: "center",
   },
   emailPaper: {
     height: "150px",
@@ -66,8 +67,13 @@ const useStyles = makeStyles((theme) => ({
   },
   font: {
     fontFamily: "Petit Formal Script, cursive",
-    fontSize: "30px",
+    fontSize: "50px",
     fontWeight: "700",
+    marginBottom: "10px",
+    marginTop: "20px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "40px",
+    },
   },
 
   profileLink: {
@@ -115,6 +121,19 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontSize: "15px",
   },
+  bioText: {
+    fontSize: "24px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "16px",
+    },
+  },
+  webEmailFont: {
+    fontFamily: "Petit Formal Script, cursive",
+    fontSize: "30px",
+    fontWeight: "700",
+    marginBottom: "10px",
+    marginTop: "20px",
+  }
 }));
 
 function Profile(props) {
@@ -255,11 +274,11 @@ function Profile(props) {
                       {state.fullName}
                     </Typography>
                   ) : (
-                    <div></div>
-                  )
+                      <div></div>
+                    )
                 ) : (
-                  <div></div>
-                )}
+                    <div></div>
+                  )}
               </Grid>
             </Grid>
           </Grid>
@@ -288,11 +307,12 @@ function Profile(props) {
         </Grid>
         {/* grid item holds Bio Paper */}
         <Grid container alignItems="center" justify="center">
-          <Grid placeholder="Hello" item xs={10}>
+          <Grid placeholder="Hello" item xs={12} md={10}>
             <Paper elevation={3} className={classes.bioPaper}>
               <Grid item>
                 {state.biography === null || state.biography === "" ? (
                   <Typography
+                    className={classes.bioText}
                     variant="body2"
                     color="textSecondary"
                     component="p"
@@ -311,14 +331,15 @@ function Profile(props) {
                     free to add, edit, and delete posts as you see fit!
                   </Typography>
                 ) : (
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    {state.biography}
-                  </Typography>
-                )}
+                    <Typography
+                      className={classes.bioText}
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {state.biography}
+                    </Typography>
+                  )}
               </Grid>
             </Paper>
           </Grid>
@@ -329,7 +350,7 @@ function Profile(props) {
             {/* website paper */}
             <Paper elevation={3} className={classes.websitePaper}>
               <Grid item>
-                <h3 className={classes.font}>Website:</h3>
+                <h3 className={classes.webEmailFont}>Website:</h3>
                 <Typography>
                   <a
                     className={classes.profileLink}
@@ -346,7 +367,7 @@ function Profile(props) {
             {/* email paper */}
             <Paper elevation={3} className={classes.emailPaper}>
               <Grid item>
-                <h3 className={classes.font}>Email:</h3>
+                <h3 className={classes.webEmailFont}>Email:</h3>
                 <Typography>
                   <a
                     className={classes.profileLink}
@@ -457,29 +478,29 @@ function Profile(props) {
       <hr></hr>
       <br></br>
 
-      <Grid container justify="center" direction="row">
-        <Grid item xs={12} md={10}>
+      <Grid container justify="center">
+        <Grid justify="center" item xs={10} md={8}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
           {displayedPosts.length < 1 ? (
             <h6 className={classes.noPostComment}>no posts in this category</h6>
           ) : (
-            <div className={classes.imageSection}>
-              <section className={classes.imgColumns}>
-                {displayedPosts.map((tile) => (
-                  <div key={`${tile.id}-imgWithModal`}>
-                    <img
-                      className={classes.imgStyle}
-                      src={tile.imageUrl}
-                      alt={tile.title}
-                      value={tile.id}
-                    ></img>
-                    <Menu tile={tile} resetPost={resetPost} id={tile.id} />
-                  </div>
-                ))}
-              </section>
-            </div>
-          )}
+              <div className={classes.imageSection}>
+                <section className={classes.imgColumns}>
+                  {displayedPosts.map((tile) => (
+                    <div key={`${tile.id}-imgWithModal`}>
+                      <img
+                        className={classes.imgStyle}
+                        src={tile.imageUrl}
+                        alt={tile.title}
+                        value={tile.id}
+                      ></img>
+                      <Menu tile={tile} resetPost={resetPost} id={tile.id} />
+                    </div>
+                  ))}
+                </section>
+              </div>
+            )}
         </Grid>
       </Grid>
     </>

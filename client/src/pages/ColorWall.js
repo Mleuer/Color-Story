@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import ButtonRow from "../components/ColorWall/ButtonRow";
 import API from "../utils/API";
 import ColorWallModal from "../components/ColorWall/ColorWallModal";
-import Swal from "sweetalert2";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
@@ -46,12 +45,14 @@ function ColorWall(props) {
   // ==========================================================================
   // DISPLAY IMAGES:
   const [posts, setPosts] = useState([]);
+  const [likedPosts, setLikedPosts] = useState([]);
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    if (props.userId) {
-      API.Post.getAll(`?UserId=${props.userId}`).then((result) => {
+    if (props.user.id) {
+      API.Post.getAll(`?UserId=${props.user.id}`).then((result) => {
         setPosts(result.data);
+        getLikedPosts();
       });
     } else {
       API.Post.getAll().then((result) => {
@@ -84,25 +85,16 @@ function ColorWall(props) {
   // "LIKE" BUTTON:
   const addLike = () => {
     API.Like.create({ postId: openedPost.id }).then((result) => {
-      createToast("Post successfully 'liked'");
+      getLikedPosts();
     });
   };
 
-  const createToast = (message) => {
-    Swal.fire({
-      icon: "success",
-      title: message,
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      onOpen: (toast) => {
-        toast.addEventListener("mouseenter", Swal.stopTimer);
-        toast.addEventListener("mouseleave", Swal.resumeTimer);
-      },
+  const getLikedPosts = () => {
+    API.Like.getAll().then((result) => {
+      setLikedPosts(result.data);
     });
-  };
+  }
+
   // ==========================================================================
 
   return (
@@ -132,6 +124,7 @@ function ColorWall(props) {
               ))}
               <ColorWallModal
                 openedPost={openedPost}
+                likedPosts={likedPosts}
                 user={user}
                 handleClose={handleClose}
                 addLike={addLike}

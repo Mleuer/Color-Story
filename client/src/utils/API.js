@@ -96,8 +96,8 @@ export default {
         }
     },
     Like: {
-        getAll: function () {
-            return _getAll("likes");
+        getAll: function (query = "") {
+            return _getAll("likes", query);
         },
         create: function (data) {
             return _create("likes", data);

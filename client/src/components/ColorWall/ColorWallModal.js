@@ -1,9 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import Dialog from "@material-ui/core/Dialog";
+import Modal from "@material-ui/core/Modal";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
@@ -13,9 +14,16 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: 300,
+    [theme.breakpoints.down("xs")]: {
+      width: "300px",
+    },
+    width: "400px",
     paddingBottom: "15px",
     overflow: "auto",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     "& .MuiPaper-rounded": {
       borderRadius: "24px",
       boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75);",
@@ -29,16 +37,13 @@ const useStyles = makeStyles((theme) => ({
       border: "2px solid pink",
     },
   },
+  media: {
+    height: 0,
+    paddingTop: "56.25%", // 16:9
+  },
   title: {
     fontWeight: "bold",
     fontSize: "25px",
-  },
-  modalInitialsLogo: {
-    textDecoration: "none",
-    color: "white",
-    "&:hover": {
-      color: "lightblue",
-    },
   },
   cardDescription: {
     [theme.breakpoints.down("xs")]: {
@@ -86,18 +91,26 @@ const useStyles = makeStyles((theme) => ({
 
 function ColorWallModal(props) {
   const openedPost = props.openedPost;
+  const likedPosts = props.likedPosts;
   const user = props.user;
   const open = props.open;
   const handleClose = props.handleClose;
   const addLike = props.addLike;
   const classes = useStyles();
 
+  function determineIfLiked() {
+    return (
+      likedPosts.filter((like) => like.PostId === openedPost.id).length > 0
+    );
+  }
+
   return (
-    <Dialog
+    <Modal
       onClose={handleClose}
-      aria-labelledby="simple-dialog-title"
+      aria-labelledby="simple-modal-title"
+      aria-describedby="simple-modal-description"
       open={open}
-      className={classes.root}
+      style={{ positon: "relative" }}
     >
       <Card className={classes.root}>
         <CardHeader
@@ -123,7 +136,11 @@ function ColorWallModal(props) {
               }
             ></Avatar>
           }
-          title={<Typography className={classes.title}>{openedPost.title}</Typography>}
+          title={
+            <Typography className={classes.title}>
+              {openedPost.title}
+            </Typography>
+          }
         />
         <Typography
           variant="body2"
@@ -148,15 +165,7 @@ function ColorWallModal(props) {
             <div></div>
           )}
         </Typography>
-        <img
-          style={{ width: "100%" }}
-          src={
-            openedPost.imageUrl
-              ? openedPost.imageUrl
-              : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
-          }
-          alt={`${openedPost.title}-img`}
-        ></img>
+        <CardMedia className={classes.media} image={openedPost.imageUrl} />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="h4">
             posted on{" "}
@@ -209,7 +218,7 @@ function ColorWallModal(props) {
           <Typography variant="body2" color="textSecondary" component="p">
             <span>
               price:{" "}
-              <span style={{ fontWeight: "bold" }}>${openedPost.price}</span>
+              {openedPost.price === 0 ? (<span style={{ fontWeight: "bold" }}>N/A</span>) : (<span style={{ fontWeight: "bold" }}>${openedPost.price}</span>)}
             </span>
           </Typography>
         </CardContent>
@@ -218,7 +227,9 @@ function ColorWallModal(props) {
           user.email ? (
             <CardActions disableSpacing>
               <IconButton onClick={() => addLike()} aria-label="Add like">
-                <FavoriteIcon style={{ color: "red" }} />
+                <FavoriteIcon
+                  style={{ color: determineIfLiked() ? "red" : "gray" }}
+                />
               </IconButton>
             </CardActions>
           ) : (
@@ -239,7 +250,7 @@ function ColorWallModal(props) {
           <></>
         )}
       </Card>
-    </Dialog>
+    </Modal>
   );
 }
 
