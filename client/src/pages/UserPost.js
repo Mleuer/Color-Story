@@ -199,7 +199,7 @@ function UserPost(props) {
                 value={price}
                 currencySymbol="$"
                 outputFormat="number"
-                helperText="*optional"
+                helperText="*optional; even dollar amount only"
                 onChange={(event, value) => setPrice(value)}
               />
             </Grid>
