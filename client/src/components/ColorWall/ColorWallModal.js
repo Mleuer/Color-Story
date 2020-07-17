@@ -214,7 +214,7 @@ function ColorWallModal(props) {
           <Typography variant="body2" color="textSecondary" component="p">
             <span>
               price:{" "}
-              <span style={{ fontWeight: "bold" }}>${openedPost.price}</span>
+              {openedPost.price === 0 ? (<span style={{ fontWeight: "bold" }}>N/A</span>) : (<span style={{ fontWeight: "bold" }}>${openedPost.price}</span>)}
             </span>
           </Typography>
         </CardContent>
