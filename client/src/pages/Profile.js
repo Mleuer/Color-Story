@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px",
     textAlign: "center",
     borderRadius: "24px",
+    alignItems: "center",
   },
   emailPaper: {
     height: "150px",
@@ -68,6 +69,8 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Petit Formal Script, cursive",
     fontSize: "30px",
     fontWeight: "700",
+    marginBottom: "10px",
+    marginTop: "20px",
   },
 
   profileLink: {
@@ -291,7 +294,7 @@ function Profile(props) {
           <Grid placeholder="Hello" item xs={10}>
             <Paper elevation={3} className={classes.bioPaper}>
               <Grid item>
-                {state.biography === null || state.biography === "" ? (
+              {state.biography === null || state.biography === "" ? (
                   <Typography
                     variant="body2"
                     color="textSecondary"
@@ -458,7 +461,7 @@ function Profile(props) {
       <br></br>
 
       <Grid container justify="center" direction="row">
-        <Grid item xs={12} md={10}>
+        <Grid item xs={10}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
           {displayedPosts.length < 1 ? (
