@@ -118,6 +118,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontSize: "15px",
   },
+  bioText: {
+    fontSize: "24px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "14px",
+    },
+  }
 }));
 
 function Profile(props) {
@@ -258,11 +264,11 @@ function Profile(props) {
                       {state.fullName}
                     </Typography>
                   ) : (
-                    <div></div>
-                  )
+                      <div></div>
+                    )
                 ) : (
-                  <div></div>
-                )}
+                    <div></div>
+                  )}
               </Grid>
             </Grid>
           </Grid>
@@ -291,11 +297,12 @@ function Profile(props) {
         </Grid>
         {/* grid item holds Bio Paper */}
         <Grid container alignItems="center" justify="center">
-          <Grid placeholder="Hello" item xs={10}>
+          <Grid placeholder="Hello" item xs={12} md={10}>
             <Paper elevation={3} className={classes.bioPaper}>
               <Grid item>
-              {state.biography === null || state.biography === "" ? (
+                {state.biography === null || state.biography === "" ? (
                   <Typography
+                    className={classes.bioText}
                     variant="body2"
                     color="textSecondary"
                     component="p"
@@ -314,14 +321,15 @@ function Profile(props) {
                     free to add, edit, and delete posts as you see fit!
                   </Typography>
                 ) : (
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    {state.biography}
-                  </Typography>
-                )}
+                    <Typography
+                      className={classes.bioText}
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {state.biography}
+                    </Typography>
+                  )}
               </Grid>
             </Paper>
           </Grid>
@@ -461,28 +469,28 @@ function Profile(props) {
       <br></br>
 
       <Grid container justify="center">
-        <Grid item xs={10}>
+        <Grid item xs={11}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
           {displayedPosts.length < 1 ? (
             <h6 className={classes.noPostComment}>no posts in this category</h6>
           ) : (
-            <div className={classes.imageSection}>
-              <section className={classes.imgColumns}>
-                {displayedPosts.map((tile) => (
-                  <div key={`${tile.id}-imgWithModal`}>
-                    <img
-                      className={classes.imgStyle}
-                      src={tile.imageUrl}
-                      alt={tile.title}
-                      value={tile.id}
-                    ></img>
-                    <Menu tile={tile} resetPost={resetPost} id={tile.id} />
-                  </div>
-                ))}
-              </section>
-            </div>
-          )}
+              <div className={classes.imageSection}>
+                <section className={classes.imgColumns}>
+                  {displayedPosts.map((tile) => (
+                    <div key={`${tile.id}-imgWithModal`}>
+                      <img
+                        className={classes.imgStyle}
+                        src={tile.imageUrl}
+                        alt={tile.title}
+                        value={tile.id}
+                      ></img>
+                      <Menu tile={tile} resetPost={resetPost} id={tile.id} />
+                    </div>
+                  ))}
+                </section>
+              </div>
+            )}
         </Grid>
       </Grid>
     </>
