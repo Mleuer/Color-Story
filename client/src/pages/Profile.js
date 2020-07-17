@@ -460,7 +460,7 @@ function Profile(props) {
       <hr></hr>
       <br></br>
 
-      <Grid container justify="center" direction="row">
+      <Grid container justify="center">
         <Grid item xs={10}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
