@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px",
     textAlign: "center",
     borderRadius: "24px",
+    alignItems: "center",
   },
   emailPaper: {
     height: "150px",
@@ -68,6 +69,8 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Petit Formal Script, cursive",
     fontSize: "30px",
     fontWeight: "700",
+    marginBottom: "10px",
+    marginTop: "20px",
   },
 
   profileLink: {
@@ -255,11 +258,11 @@ function Profile(props) {
                       {state.fullName}
                     </Typography>
                   ) : (
-                    <div></div>
-                  )
+                      <div></div>
+                    )
                 ) : (
-                  <div></div>
-                )}
+                    <div></div>
+                  )}
               </Grid>
             </Grid>
           </Grid>
@@ -311,14 +314,14 @@ function Profile(props) {
                     free to add, edit, and delete posts as you see fit!
                   </Typography>
                 ) : (
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    {state.biography}
-                  </Typography>
-                )}
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {state.biography}
+                    </Typography>
+                  )}
               </Grid>
             </Paper>
           </Grid>
@@ -464,22 +467,22 @@ function Profile(props) {
           {displayedPosts.length < 1 ? (
             <h6 className={classes.noPostComment}>no posts in this category</h6>
           ) : (
-            <div className={classes.imageSection}>
-              <section className={classes.imgColumns}>
-                {displayedPosts.map((tile) => (
-                  <div key={`${tile.id}-imgWithModal`}>
-                    <img
-                      className={classes.imgStyle}
-                      src={tile.imageUrl}
-                      alt={tile.title}
-                      value={tile.id}
-                    ></img>
-                    <Menu tile={tile} resetPost={resetPost} id={tile.id} />
-                  </div>
-                ))}
-              </section>
-            </div>
-          )}
+              <div className={classes.imageSection}>
+                <section className={classes.imgColumns}>
+                  {displayedPosts.map((tile) => (
+                    <div key={`${tile.id}-imgWithModal`}>
+                      <img
+                        className={classes.imgStyle}
+                        src={tile.imageUrl}
+                        alt={tile.title}
+                        value={tile.id}
+                      ></img>
+                      <Menu tile={tile} resetPost={resetPost} id={tile.id} />
+                    </div>
+                  ))}
+                </section>
+              </div>
+            )}
         </Grid>
       </Grid>
     </>
