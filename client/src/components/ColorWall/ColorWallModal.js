@@ -86,11 +86,16 @@ const useStyles = makeStyles((theme) => ({
 
 function ColorWallModal(props) {
   const openedPost = props.openedPost;
+  const likedPosts = props.likedPosts;
   const user = props.user;
   const open = props.open;
   const handleClose = props.handleClose;
   const addLike = props.addLike;
   const classes = useStyles();
+
+  function determineIfLiked(){
+    return likedPosts.filter(like => like.PostId === openedPost.id).length > 0;
+  }
 
   return (
     <Dialog
@@ -218,7 +223,7 @@ function ColorWallModal(props) {
           user.email ? (
             <CardActions disableSpacing>
               <IconButton onClick={() => addLike()} aria-label="Add like">
-                <FavoriteIcon style={{ color: "red" }} />
+                <FavoriteIcon style={{ color: determineIfLiked() ? "red" : "gray" }} />
               </IconButton>
             </CardActions>
           ) : (
