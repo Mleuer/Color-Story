@@ -22,8 +22,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "18px",
   },
   clickHere: {
-    font: "24px",
+    font: "30px",
+    fontWeight: "500",
   },
+  link: {
+    color: "red",
+  }
 }));
 
 function Welcome() {
@@ -46,7 +50,7 @@ function Welcome() {
           alignItems="center"
           className={classes.clickHere}
           >
-            Check out our Color Wall here, or see what we're about
+           Check out the Color Wall <a href="./Colorwall" className={classes.link}>here</a>, or see what we're <a href="./About">about</a>!
           </Typography>
         </Grid>
       </Grid>
