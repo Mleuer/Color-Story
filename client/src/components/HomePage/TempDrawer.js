@@ -111,6 +111,12 @@ export default function TemporaryDrawer(props) {
           </ListItemIcon>
           <ListItemText primary="Color Wall" />
         </ListItem>
+        <ListItem button component={Link} to="/about">
+          <ListItemIcon>
+            <PaletteIcon />
+          </ListItemIcon>
+          <ListItemText primary="About" />
+        </ListItem>
       </List>
     </div>
   );
