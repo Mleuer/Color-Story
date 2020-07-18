@@ -128,7 +128,7 @@ function UserPost(props) {
       props.setError("Please Fill Out Required Fields");
     } else {
       // console.log(typeof postLink);
-      API.Post.create({ ...state, postLink: (postLink.includes("http") ? (postLink) : (`http://${postLink}`)), price: price })
+      API.Post.create({ ...state, postLink: (postLink.includes("://") ? (postLink) : (`http://${postLink}`)), price: price })
         .then((response) => {
           setState({
             title: "",

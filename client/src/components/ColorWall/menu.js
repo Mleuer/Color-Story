@@ -61,7 +61,7 @@ export default function LongMenu(props) {
     // e.preventDefault();
     // console.log(id);
     setOpenEdit(false);
-    API.Post.update(id, { ...state, postLink: (postLink.includes("http") ? (postLink) : (`http://${postLink}`)), price: price });
+    API.Post.update(id, { ...state, postLink: (postLink.includes("://") ? (postLink) : (`http://${postLink}`)), price: price });
     setAnchorEl(null);
   };
 
