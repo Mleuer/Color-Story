@@ -22,9 +22,12 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "18px",
         marginLeft: "60px",
         marginRight: "60px",
-        image: {
-            width: "400px",
-        }
+    },
+    image: {
+        width: "400px",
+    },
+    imgWidth: {
+        width: "100%",
     },
 }));
 
@@ -46,11 +49,11 @@ function About() {
             free platform for those who make creative work from a variety of media and want ONE website to show it all off! It's also for users to visit and browse your work by scrolling through the Color Wall, which displays as a beautiful quilt of objects, designs, illustrations...whatever visual art you would like to share. For those who want to browse by color, the Color Wall can become a monochromatic experience with the click of a button. Feel free to check it out right now by clicking on the color circles above!
             <br></br>
                     </Typography>
-
-                    <Grid className={classes.image}>
-                        <img src={BlackColorWall}/>
+                    <Grid container justify="center" >
+                        <Grid className={classes.image}>
+                            <img className={classes.imgWidth} src={BlackColorWall} />
+                        </Grid>
                     </Grid>
-
                     <Typography>
                         <br></br>
                         <h3><strong>Why sign up?</strong></h3>
