@@ -35,7 +35,7 @@ export default function LongMenu(props) {
   const handleDelete = (id) => {
     // console.log("delete", id);
     API.Post.delete(id).then(function (data) {
-      console.log("data", data);
+      // console.log("data", data);
       props.resetPost();
     });
     setAnchorEl(null);
@@ -55,7 +55,7 @@ export default function LongMenu(props) {
 
   const handleSave = (id, e) => {
     // e.preventDefault();
-    console.log(id);
+    // console.log(id);
     setOpenEdit(false);
     API.Post.update(id, { ...state, price: price });
     setAnchorEl(null);
@@ -107,21 +107,20 @@ export default function LongMenu(props) {
         }}
       >
         <MenuItem
-          key={options.Delete}
-          onClick={() => {
-            handleDelete(props.id);
-          }}
-        >
-          Delete
-        </MenuItem>
-
-        <MenuItem
           key={options.Edit}
           onClick={() => {
             handleClickOpen(props.id);
           }}
         >
           Edit
+        </MenuItem>
+        <MenuItem
+          key={options.Delete}
+          onClick={() => {
+            handleDelete(props.id);
+          }}
+        >
+          Delete
         </MenuItem>
       </Menu>
 
@@ -166,6 +165,7 @@ export default function LongMenu(props) {
             label="Link"
             type="text"
             fullWidth
+            helperText="*optional; input full URL (ie, 'https://www.userblog.com/homepage')"
           />
           <CurrencyTextField
             label="Amount"

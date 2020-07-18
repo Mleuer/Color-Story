@@ -14,11 +14,12 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    [theme.breakpoints.down("xs")]: {
-      width: "300px",
-    },
     width: "400px",
     maxHeight: "98vh",
+    [theme.breakpoints.down("xs")]: {
+      width: "300px",
+      maxHeight: "90vh",
+    },
     overflow: "auto",
     paddingBottom: "15px",
     position: "absolute",
@@ -167,7 +168,7 @@ function ColorWallModal(props) {
           )}
         </Typography>
         <CardMedia className={classes.media} image={openedPost.imageUrl} />
-        <CardContent>
+        <CardContent style={{ marginBottom: "0px" }}>
           <Typography variant="body2" color="textSecondary" component="h4">
             posted on{" "}
             {openedPost.createdAt !== undefined ? (
@@ -204,7 +205,7 @@ function ColorWallModal(props) {
               <a
                 className={classes.modalPostLink}
                 target="__blank"
-                href={openedPost.postLink}
+                href={openedPost.postLink ? (openedPost.postLink.includes("://") ? (openedPost.postLink) : (`http://${openedPost.postLink}`)) : ("/404")}
               >
                 {openedPost.postLink
                   ? openedPost.postLink.split("//").pop().split("/")[0]
@@ -219,15 +220,22 @@ function ColorWallModal(props) {
           <Typography variant="body2" color="textSecondary" component="p">
             <span>
               price:{" "}
-              {openedPost.price === 0 ? (<span style={{ fontWeight: "bold" }}>N/A</span>) : (<span style={{ fontWeight: "bold" }}>${openedPost.price}</span>)}
+              {openedPost.price === 0 ? (
+                <span style={{ fontWeight: "bold" }}>N/A</span>
+              ) : (
+                <span style={{ fontWeight: "bold" }}>${openedPost.price}</span>
+              )}
             </span>
           </Typography>
         </CardContent>
-        <br></br>
         {user !== undefined ? (
           user.email ? (
             <CardActions disableSpacing>
-              <IconButton onClick={() => addLike()} aria-label="Add like">
+              <IconButton
+                style={{ margin: "-20px 0px -20px 0px" }}
+                onClick={() => addLike()}
+                aria-label="Add like"
+              >
                 <FavoriteIcon
                   style={{ color: determineIfLiked() ? "red" : "gray" }}
                 />

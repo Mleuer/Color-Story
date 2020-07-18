@@ -213,7 +213,7 @@ function Profile(props) {
       }
     );
   }
-  //CollorWall Display
+  // ColorWall Display
   const [posts, setPosts] = useState([]);
   const [color, setColor] = useState("");
 
@@ -223,7 +223,7 @@ function Profile(props) {
 
   const resetPost = () => {
     API.Post.getAll(`?UserId=${props.user.id}`).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setPosts(res.data);
     });
   };
@@ -362,7 +362,13 @@ function Profile(props) {
                   <a
                     className={classes.profileLink}
                     target="__blank"
-                    href={state.userLinks}
+                    href={
+                      state.userLinks
+                        ? state.userLinks.includes("://")
+                          ? state.userLinks
+                          : `http://${state.userLinks}`
+                        : "/404"
+                    }
                   >
                     {state.userLinks}
                   </a>
@@ -426,6 +432,7 @@ function Profile(props) {
             label="Link"
             type="text"
             fullWidth
+            helperText="input full URL (ie, 'https://www.userblog.com/homepage')"
           />
           <TextField
             multiline
