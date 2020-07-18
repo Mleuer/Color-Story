@@ -50,8 +50,11 @@ const useStyles = makeStyles((theme) => ({
   },
   font: {
     fontFamily: "Petit Formal Script, cursive",
-    fontSize: "30px",
+    fontSize: "40px",
     fontWeight: "700",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "30px",
+    },
   },
 
   profileLink: {
@@ -98,6 +101,22 @@ const useStyles = makeStyles((theme) => ({
   noPostComment: {
     textAlign: "center",
     fontSize: "15px",
+  },
+  bioText: {
+    fontSize: "24px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "16px",
+    },
+  },
+  webEmailFont: {
+    fontFamily: "Petit Formal Script, cursive",
+    fontSize: "30px",
+    fontWeight: "700",
+    marginBottom: "10px",
+    marginTop: "20px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "24px",
+    },
   },
 }));
 
@@ -194,7 +213,7 @@ function PublicProfile(props) {
             {/* grid item holds Bio Paper */}
 
             <Grid container alignItems="center" justify="center">
-              <Grid placeholder="Hello" item xs={10}>
+              <Grid placeholder="Hello" item xs={12} md={10}>
                 <Paper elevation={3} className={classes.bioPaper}>
                   <Grid item>
                   {renderedUser.biography === null || renderedUser.biography === "" ? (
@@ -202,6 +221,7 @@ function PublicProfile(props) {
                     variant="body2"
                     color="textSecondary"
                     component="p"
+                    className={classes.bioText}
                   >
                     Hello, my name is {renderedUser.username}.
                   </Typography>
@@ -210,6 +230,7 @@ function PublicProfile(props) {
                     variant="body2"
                     color="textSecondary"
                     component="p"
+                    className={classes.bioText}
                   >
                     {renderedUser.biography}
                   </Typography>
@@ -220,11 +241,11 @@ function PublicProfile(props) {
             </Grid>
             <br></br>
             <Grid container justify="center" direction="row">
-              <Grid item xs={10} md={5}>
+              <Grid xs={12}  sm={5} md={5}>
                 {/* website paper */}
                 <Paper elevation={3} className={classes.websitePaper}>
                   <Grid item>
-                    <h3 className={classes.font}>Website:</h3>
+                    <h3 className={classes.webEmailFont}>Website:</h3>
                     <Typography>
                       <a
                         className={classes.profileLink}
@@ -237,11 +258,11 @@ function PublicProfile(props) {
                   </Grid>
                 </Paper>
               </Grid>
-              <Grid item xs={10} md={5}>
+              <Grid  xs={12} sm={5} md={5}>
                 {/* email paper */}
                 <Paper elevation={3} className={classes.emailPaper}>
                   <Grid item>
-                    <h3 className={classes.font}>Email:</h3>
+                    <h3 className={classes.webEmailFont}>Email:</h3>
                     <Typography>
                       <a
                         className={classes.profileLink}

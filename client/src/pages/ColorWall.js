@@ -100,7 +100,7 @@ function ColorWall(props) {
   return (
     <>
       <Grid container justify="center" direction="row">
-        <Grid item xs={12} md={10}>
+        <Grid item xs={10} md={8}>
           <ButtonRow handleClick={handleClick} />
         </Grid>
       </Grid>
