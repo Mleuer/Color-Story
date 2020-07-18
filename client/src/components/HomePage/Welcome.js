@@ -40,34 +40,30 @@ function Welcome() {
         </Grid>
         <Grid item align="justify" className={classes.textBlock}>
           <Typography variant="subtitle1">
-            Hello color enthusiasts! If you are a visual artist, chances are you
+            <strong>Hello color enthusiasts!</strong> <br></br><br></br>If you are a visual artist, chances are you
             care about color. If you are not an artist, chances are you have a
-            favorite one. Or two, or three...
+            favorite color. Or two, or three...
             <br></br>
             <br></br>
-            Color Story is a way for artists and designers to post their work in
-            a community “Color Wall” along with other artists. It's a simple,
-            free, streamlined platform for those who have got their hands in
-            many pots, and want ONE website to show it all off. From digital
-            illustration to handmade goods, paintings, drawings, clothing, etc.,
-            you can showcase it all here, through the lens of COLOR.
+            Color Story is a way to connect artists and designers to each other, as well as to art/design lovers via 
+            a community “Color Wall." It's a simple,
+            free platform for those who make creative work from a variety of media and want ONE website to show it all off! It's also for users to visit and browse your work by scrolling through the Color Wall, which displays as a beautiful quilt of objects, designs, illustrations...whatever visual art you would like to share. For those who want to browse by color, the Color Wall can become a monochromatic experience with the click of a button. Feel free to check it out right now by clicking on the color circles above!
+        
             <br></br>
             <br></br>
-            Why sign up?
+            <strong>Why sign up?</strong>
             <br></br>
             <br></br>
             If you are an artist or designer, this is a great place to promote
-            and sell your work. Color Story is free, easy to use, and may lead
-            to more sales, exposure, even collaborations!
+          your work and provide viewers with links to sites where they may purchase directly from you. No fussing with filling out extensive forms here! Think of Color Story as a social media site for your creativity; a fun, colorful place to share your story and what you're excited about. Works in progress are welcome, as are process shots! Our hope is that Color Story will lead you to more sales, exposure, and collaborations.
             <br></br>
             <br></br>
-            If you are here simply to gain exposure to more artists that you can
-            support directly, signing up for a profile means you can curate your
+            If you are here to browse artists and find new things to love, signing up for a profile means you can curate your
             own collection of favorites to your personalized Color Wall for easy
-            retrieval/admiration.
+            retrieval and admiration! And of course, even if you are not an artist, we still want to hear your "Color Story"!
             <br></br>
             <br></br>
-            How it all works:
+            <strong>Nuts & Bolts</strong>
             <br></br>
             <br></br>
             When an artist makes a post, it is displayed on a community “Color
