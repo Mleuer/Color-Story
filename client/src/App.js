@@ -19,6 +19,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import API from "./utils/API";
 import { makeStyles } from "@material-ui/core";
+import About from "./pages/About";
 
 const useStyles = makeStyles({
   outline: {
@@ -114,6 +115,9 @@ function App() {
                     </Route>
                     <Route exact path={["/colorwall"]}>
                       <ColorWall user={user} />
+                    </Route>
+                    <Route exact path={["/about"]}>
+                      <About user={user} />
                     </Route>
                     <Route path="/users/:id">
                       <PublicProfile user={user} />

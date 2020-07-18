@@ -21,6 +21,13 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "20px",
     fontSize: "18px",
   },
+  clickHere: {
+    font: "30px",
+    fontWeight: "500",
+  },
+  link: {
+    color: "red",
+  }
 }));
 
 function Welcome() {
@@ -38,49 +45,12 @@ function Welcome() {
             Welcome
           </Typography>
         </Grid>
-        <Grid item align="justify" className={classes.textBlock}>
-          <Typography variant="subtitle1">
-            Hello color enthusiasts! If you are a visual artist, chances are you
-            care about color. If you are not an artist, chances are you have a
-            favorite one. Or two, or three...
-            <br></br>
-            <br></br>
-            Color Story is a way for artists and designers to post their work in
-            a community “Color Wall” along with other artists. It's a simple,
-            free, streamlined platform for those who have got their hands in
-            many pots, and want ONE website to show it all off. From digital
-            illustration to handmade goods, paintings, drawings, clothing, etc.,
-            you can showcase it all here, through the lens of COLOR.
-            <br></br>
-            <br></br>
-            Why sign up?
-            <br></br>
-            <br></br>
-            If you are an artist or designer, this is a great place to promote
-            and sell your work. Color Story is free, easy to use, and may lead
-            to more sales, exposure, even collaborations!
-            <br></br>
-            <br></br>
-            If you are here simply to gain exposure to more artists that you can
-            support directly, signing up for a profile means you can curate your
-            own collection of favorites to your personalized Color Wall for easy
-            retrieval/admiration.
-            <br></br>
-            <br></br>
-            How it all works:
-            <br></br>
-            <br></br>
-            When an artist makes a post, it is displayed on a community “Color
-            Wall” where images are sorted by a single color, multi-color, black,
-            or white. Anyone who visits the site can scroll through the color
-            wall for an immediate representation of all the artists, filtered by
-            color if they choose. Click on the image and you will be shown the
-            price, description, external links, and the artist's Color Story
-            profile. <br></br>
-            <br></br>
-            To check it out right now, click above on the color circles, or sign
-            up now to get your profile going! We'd LOVE to hear your "Color
-            Story," whatever that means to you!
+        <Grid item>
+          <Typography
+          alignItems="center"
+          className={classes.clickHere}
+          >
+           Check out the Color Wall <a href="./Colorwall" className={classes.link}>here</a>, or see what we're <a href="./About">about</a>!
           </Typography>
         </Grid>
       </Grid>
