@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "10px",
     marginTop: "20px",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "40px",
+      fontSize: "30px",
     },
   },
 
@@ -133,6 +133,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "700",
     marginBottom: "10px",
     marginTop: "20px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "24px",
+    },
   }
 }));
 
@@ -346,7 +349,7 @@ function Profile(props) {
         </Grid>
         <br></br>
         <Grid container justify="center" spacing={2} direction="row">
-          <Grid item xs={10} md={5}>
+          <Grid item xs={12} md={5}>
             {/* website paper */}
             <Paper elevation={3} className={classes.websitePaper}>
               <Grid item>
@@ -363,7 +366,7 @@ function Profile(props) {
               </Grid>
             </Paper>
           </Grid>
-          <Grid item xs={10} md={5}>
+          <Grid item xs={12} md={5}>
             {/* email paper */}
             <Paper elevation={3} className={classes.emailPaper}>
               <Grid item>
