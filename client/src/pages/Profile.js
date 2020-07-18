@@ -84,9 +84,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "5px",
     textDecoration: "none",
     fontSize: "15px",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "10px",
-    },
     "&:hover": {
       color: "pink",
     },
@@ -264,11 +261,11 @@ function Profile(props) {
                 >
                   {state.username}
                 </Typography>
-
+            
                 {state.fullName ? (
                   state.fullName !== "" ? (
                     <Typography
-                      style={{ marginTop: "-30px" }}
+                      style={{ marginTop: "-15px" }}
                       color="textSecondary"
                       gutterBottom
                       variant="h6"
@@ -311,7 +308,7 @@ function Profile(props) {
         </Grid>
         {/* grid item holds Bio Paper */}
         <Grid container alignItems="center" justify="center">
-          <Grid placeholder="Hello" item xs={12} md={10}>
+          <Grid placeholder="Hello" item xs={12} sm={10}>
             <Paper elevation={3} className={classes.bioPaper}>
               <Grid item>
                 {state.biography === null || state.biography === "" ? (
@@ -322,15 +319,15 @@ function Profile(props) {
                     component="p"
                   >
                     Hello {state.username}, and welcome to Color Story! This is
-                    your Profile page, where you can tell your story, get in
+                    your Profile Page, where you can tell your story, get in
                     contact with other artists, and most importantly -- share
-                    your work!! See the three pink buttons below? The left-most
+                    your work!! See the four pink buttons below? The left-most
                     one allows you to create your very own posts and share your
-                    artwork with others. The second one allows you to edit your
-                    profile that others will see (avatar, name, website, and
+                    artwork to the Color Wall. The second one allows you to edit your
+                    Public Profile (avatar, name, website, and
                     biography). The third button will bring you to your
-                    "Favorites" page where you can find all of the images you
-                    have "liked", while the last button will let you view your
+                    Favorites Page where you can find all of the images you
+                    have "liked," while the last button will let you view your
                     Public Profile and see exactly what other users will see
                     when they visit your page. On the bottom of this page, you
                     even have your very own Color Wall, filled with just your
@@ -353,7 +350,7 @@ function Profile(props) {
         </Grid>
         <br></br>
         <Grid container justify="center" spacing={2} direction="row">
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} sm={5}>
             {/* website paper */}
             <Paper elevation={3} className={classes.websitePaper}>
               <Grid item>
@@ -376,7 +373,7 @@ function Profile(props) {
               </Grid>
             </Paper>
           </Grid>
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} sm={5}>
             {/* email paper */}
             <Paper elevation={3} className={classes.emailPaper}>
               <Grid item>
@@ -502,7 +499,7 @@ function Profile(props) {
       <br></br>
 
       <Grid container justify="center">
-        <Grid justify="center" item xs={10} md={8}>
+        <Grid item xs={10} md={8}>
           <ButtonRow handleClick={handleClick} />
           <br></br>
           {displayedPosts.length < 1 ? (

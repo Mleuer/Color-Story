@@ -64,9 +64,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "5px",
     textDecoration: "none",
     fontSize: "15px",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "10px",
-    },
     "&:hover": {
       color: "pink",
     },
@@ -169,7 +166,7 @@ function PublicProfile(props) {
                     {renderedUser.fullName ? (
                       renderedUser.fullName !== "" ? (
                         <Typography
-                          style={{ marginTop: "-30px" }}
+                          style={{ marginTop: "-15px" }}
                           color="textSecondary"
                           gutterBottom
                           variant="h6"
@@ -213,7 +210,7 @@ function PublicProfile(props) {
             {/* grid item holds Bio Paper */}
 
             <Grid container alignItems="center" justify="center">
-              <Grid placeholder="Hello" item xs={12} md={10}>
+              <Grid placeholder="Hello" item xs={12} sm={10}>
                 <Paper elevation={3} className={classes.bioPaper}>
                   <Grid item>
                   {renderedUser.biography === null || renderedUser.biography === "" ? (
@@ -241,7 +238,7 @@ function PublicProfile(props) {
             </Grid>
             <br></br>
             <Grid container justify="center" direction="row">
-              <Grid xs={12}  sm={5} md={5}>
+              <Grid item xs={12} sm={5}>
                 {/* website paper */}
                 <Paper elevation={3} className={classes.websitePaper}>
                   <Grid item>
@@ -258,7 +255,7 @@ function PublicProfile(props) {
                   </Grid>
                 </Paper>
               </Grid>
-              <Grid  xs={12} sm={5} md={5}>
+              <Grid item xs={12} sm={5}>
                 {/* email paper */}
                 <Paper elevation={3} className={classes.emailPaper}>
                   <Grid item>
