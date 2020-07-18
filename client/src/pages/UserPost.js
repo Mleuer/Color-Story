@@ -66,12 +66,10 @@ function UserPost(props) {
     title: "",
     imageUrl: "",
     colorCategory: "",
-    // postLink: "",
+    postLink: "",
     description: "",
     postTags: "",
   });
-
-  const [postLink, setPostLink] = useState("");
 
   const [price, setPrice] = useState(0);
 
@@ -114,11 +112,7 @@ function UserPost(props) {
     const name = event.target.name;
     const value = event.target.value;
 
-    if (name === "postLink") {
-      setPostLink(value);
-    } else {
-      setState({ ...state, [name]: value });
-    }
+    setState({ ...state, [name]: value });
   };
 
   const handleSubmit = (event) => {
@@ -127,20 +121,16 @@ function UserPost(props) {
     if (!state.title || !state.imageUrl || !state.colorCategory) {
       props.setError("Please Fill Out Required Fields");
     } else {
-      // console.log(typeof postLink);
-      API.Post.create({ ...state, postLink: (postLink.includes("://") ? (postLink) : (`http://${postLink}`)), price: price })
+      API.Post.create({ ...state, price: price })
         .then((response) => {
           setState({
             title: "",
             imageUrl: "",
             colorCategory: "",
-            // postLink: "",
+            postLink: "",
             description: "",
             postTags: "",
           });
-          setPostLink({
-            postLink: "",
-          })
           setPrice({
             price: 0.0,
           });
@@ -189,7 +179,7 @@ function UserPost(props) {
               <TextField
                 name="postLink"
                 className={classes.linkField}
-                value={postLink}
+                value={state.postLink}
                 onChange={handleChange}
                 id="link-input"
                 label="Website URL"

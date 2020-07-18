@@ -362,7 +362,13 @@ function Profile(props) {
                   <a
                     className={classes.profileLink}
                     target="__blank"
-                    href={state.userLinks}
+                    href={
+                      state.userLinks
+                        ? state.userLinks.includes("://")
+                          ? state.userLinks
+                          : `http://${state.userLinks}`
+                        : "/404"
+                    }
                   >
                     {state.userLinks}
                   </a>

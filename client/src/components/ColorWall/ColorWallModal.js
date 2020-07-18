@@ -205,7 +205,7 @@ function ColorWallModal(props) {
               <a
                 className={classes.modalPostLink}
                 target="__blank"
-                href={openedPost.postLink}
+                href={openedPost.postLink ? (openedPost.postLink.includes("://") ? (openedPost.postLink) : (`http://${openedPost.postLink}`)) : ("/404")}
               >
                 {openedPost.postLink
                   ? openedPost.postLink.split("//").pop().split("/")[0]

@@ -43,14 +43,10 @@ export default function LongMenu(props) {
 
   const [state, setState] = useState({
     title: props.tile.title,
-    // postLink: props.tile.postLink,
+    postLink: props.tile.postLink,
     description: props.tile.description,
   });
-
-  const [postLink, setPostLink] = useState(props.tile.postLink);
-
   const [price, setPrice] = useState(props.tile.price);
-
   const [openEdit, setOpenEdit] = useState(false);
 
   const handleClickOpen = () => {
@@ -61,21 +57,16 @@ export default function LongMenu(props) {
     // e.preventDefault();
     // console.log(id);
     setOpenEdit(false);
-    API.Post.update(id, { ...state, postLink: (postLink.includes("://") ? (postLink) : (`http://${postLink}`)), price: price });
+    API.Post.update(id, { ...state, price: price });
     setAnchorEl(null);
   };
 
   const handleEdit = (e) => {
     e.preventDefault();
     // console.log(e.target.name)
-
-    if (e.target.name === "postLink") {
-      setPostLink(e.target.value);
-    } else {
-      setState({ ...state, [e.target.name]: e.target.value });
-      // props.resetPost();
-      // console.log(state)
-    }
+    setState({ ...state, [e.target.name]: e.target.value });
+    // props.resetPost();
+    // console.log(state)
   };
 
   var style = {
@@ -167,13 +158,14 @@ export default function LongMenu(props) {
           <TextField
             onChange={handleEdit}
             name="postLink"
-            value={postLink}
+            value={state.postLink}
             autoFocus
             margin="dense"
             id="postLink"
             label="Link"
             type="text"
             fullWidth
+            helperText="*optional; input full URL (ie, 'https://www.userblog.com/homepage')"
           />
           <CurrencyTextField
             label="Amount"

@@ -250,7 +250,7 @@ function PublicProfile(props) {
                       <a
                         className={classes.profileLink}
                         target="__blank"
-                        href={renderedUser.userLinks}
+                        href={renderedUser.userLinks ? (renderedUser.userLinks.includes("://") ? (renderedUser.userLinks) : (`http://${renderedUser.userLinks}`)) : ("/404")}
                       >
                         {renderedUser.userLinks}
                       </a>
