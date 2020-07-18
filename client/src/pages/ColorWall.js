@@ -49,8 +49,13 @@ function ColorWall(props) {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    if (props.user.id) {
-      API.Post.getAll(`?UserId=${props.user.id}`).then((result) => {
+    if (props.userId) {
+      API.Post.getAll(`?UserId=${props.userId}`).then((result) => {
+        setPosts(result.data);
+        getLikedPosts();
+      });
+    } else if (props.user.id) {
+      API.Post.getAll().then((result) => {
         setPosts(result.data);
         getLikedPosts();
       });
@@ -93,7 +98,7 @@ function ColorWall(props) {
     API.Like.getAll().then((result) => {
       setLikedPosts(result.data);
     });
-  }
+  };
 
   // ==========================================================================
 
@@ -109,33 +114,32 @@ function ColorWall(props) {
       {displayedPosts.length < 1 ? (
         <h6 className={classes.noPostComment}>no posts in this category</h6>
       ) : (
-          <div className={classes.imageSection}>
-            <section className={classes.imgColumns}>
-              {displayedPosts.map((tile) => (
-                <div key={`${tile.id}-imgWithModal`}>
-                  <img
-                    onClick={handleClickOpen}
-                    className={classes.imgStyle}
-                    src={tile.imageUrl}
-                    alt={tile.title}
-                    value={tile.id}
-                  ></img>
-                </div>
-              ))}
-              <ColorWallModal
-                openedPost={openedPost}
-                likedPosts={likedPosts}
-                user={user}
-                handleClose={handleClose}
-                addLike={addLike}
-                open={open}
-              />
-            </section>
-          </div>
-        )}
+        <div className={classes.imageSection}>
+          <section className={classes.imgColumns}>
+            {displayedPosts.map((tile) => (
+              <div key={`${tile.id}-imgWithModal`}>
+                <img
+                  onClick={handleClickOpen}
+                  className={classes.imgStyle}
+                  src={tile.imageUrl}
+                  alt={tile.title}
+                  value={tile.id}
+                ></img>
+              </div>
+            ))}
+            <ColorWallModal
+              openedPost={openedPost}
+              likedPosts={likedPosts}
+              user={user}
+              handleClose={handleClose}
+              addLike={addLike}
+              open={open}
+            />
+          </section>
+        </div>
+      )}
     </>
   );
 }
-
 
 export default ColorWall;

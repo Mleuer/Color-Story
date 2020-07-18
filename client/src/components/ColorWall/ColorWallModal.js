@@ -168,7 +168,7 @@ function ColorWallModal(props) {
           )}
         </Typography>
         <CardMedia className={classes.media} image={openedPost.imageUrl} />
-        <CardContent>
+        <CardContent style={{ marginBottom: "0px" }}>
           <Typography variant="body2" color="textSecondary" component="h4">
             posted on{" "}
             {openedPost.createdAt !== undefined ? (
@@ -228,11 +228,14 @@ function ColorWallModal(props) {
             </span>
           </Typography>
         </CardContent>
-        <br></br>
         {user !== undefined ? (
           user.email ? (
             <CardActions disableSpacing>
-              <IconButton onClick={() => addLike()} aria-label="Add like">
+              <IconButton
+                style={{ margin: "-20px 0px -20px 0px" }}
+                onClick={() => addLike()}
+                aria-label="Add like"
+              >
                 <FavoriteIcon
                   style={{ color: determineIfLiked() ? "red" : "gray" }}
                 />
