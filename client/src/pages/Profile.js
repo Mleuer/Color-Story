@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -136,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       fontSize: "24px",
     },
-  }
+  },
 }));
 
 function Profile(props) {
@@ -277,11 +278,11 @@ function Profile(props) {
                       {state.fullName}
                     </Typography>
                   ) : (
-                      <div></div>
-                    )
-                ) : (
                     <div></div>
-                  )}
+                  )
+                ) : (
+                  <div></div>
+                )}
               </Grid>
             </Grid>
           </Grid>
@@ -323,26 +324,29 @@ function Profile(props) {
                     Hello {state.username}, and welcome to Color Story! This is
                     your Profile page, where you can tell your story, get in
                     contact with other artists, and most importantly -- share
-                    your work!! See the three pink buttons below? The left one
-                    allows you to create your very own posts and share your
-                    artwork with others. The middle one allows you to edit your
+                    your work!! See the three pink buttons below? The left-most
+                    one allows you to create your very own posts and share your
+                    artwork with others. The second one allows you to edit your
                     profile that others will see (avatar, name, website, and
-                    biography). Lastly, the button on the right will bring you to
-                    your "Favorites" page, where you can find all of the images
-                    you have "liked". On the bottom of this page, you even have
-                    your very own Color Wall, filled with just your posts! Feel
-                    free to add, edit, and delete posts as you see fit!
+                    biography). The third button will bring you to your
+                    "Favorites" page where you can find all of the images you
+                    have "liked", while the last button will let you view your
+                    Public Profile and see exactly what other users will see
+                    when they visit your page. On the bottom of this page, you
+                    even have your very own Color Wall, filled with just your
+                    posts! Feel free to add, edit, and delete posts as you see
+                    fit!
                   </Typography>
                 ) : (
-                    <Typography
-                      className={classes.bioText}
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      {state.biography}
-                    </Typography>
-                  )}
+                  <Typography
+                    className={classes.bioText}
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {state.biography}
+                  </Typography>
+                )}
               </Grid>
             </Paper>
           </Grid>
@@ -475,6 +479,15 @@ function Profile(props) {
           >
             <FavoriteIcon />
           </Fab>
+
+          <Fab
+            color="secondary"
+            aria-label="publicProfile"
+            component={Link}
+            to={`/users/${props.user.id}`}
+          >
+            <AccountCircleIcon />
+          </Fab>
         </Grid>
       </Grid>
 
@@ -488,22 +501,22 @@ function Profile(props) {
           {displayedPosts.length < 1 ? (
             <h6 className={classes.noPostComment}>no posts in this category</h6>
           ) : (
-              <div className={classes.imageSection}>
-                <section className={classes.imgColumns}>
-                  {displayedPosts.map((tile) => (
-                    <div key={`${tile.id}-imgWithModal`}>
-                      <img
-                        className={classes.imgStyle}
-                        src={tile.imageUrl}
-                        alt={tile.title}
-                        value={tile.id}
-                      ></img>
-                      <Menu tile={tile} resetPost={resetPost} id={tile.id} />
-                    </div>
-                  ))}
-                </section>
-              </div>
-            )}
+            <div className={classes.imageSection}>
+              <section className={classes.imgColumns}>
+                {displayedPosts.map((tile) => (
+                  <div key={`${tile.id}-imgWithModal`}>
+                    <img
+                      className={classes.imgStyle}
+                      src={tile.imageUrl}
+                      alt={tile.title}
+                      value={tile.id}
+                    ></img>
+                    <Menu tile={tile} resetPost={resetPost} id={tile.id} />
+                  </div>
+                ))}
+              </section>
+            </div>
+          )}
         </Grid>
       </Grid>
     </>
