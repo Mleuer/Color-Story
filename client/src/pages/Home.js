@@ -34,9 +34,13 @@ function Home(props) {
         <div className={classes.root}>
             <Container maxWidth="xs" >
                 <ColorGrid />
+            </Container>
+            <Container maxWidth="sm">
                 <Welcome>
 
                 </Welcome>
+            </Container>
+            <Container maxWidth="xs">
                 {user.email ? (<> </>) : (
                     <Grid container direction="row" justify="space-evenly" className={classes.buttonMargin}>
                         <LoginButton />
