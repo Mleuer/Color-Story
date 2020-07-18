@@ -426,6 +426,7 @@ function Profile(props) {
             label="Link"
             type="text"
             fullWidth
+            helperText="input full URL (ie, 'https://www.userblog.com/homepage')"
           />
           <TextField
             multiline

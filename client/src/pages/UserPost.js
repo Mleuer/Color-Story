@@ -183,8 +183,7 @@ function UserPost(props) {
                 onChange={handleChange}
                 id="link-input"
                 label="Website URL"
-                helperText="*optional"
-                placeholder="ie, 'https://www.userblog.com/homepage'"
+                helperText="*optional; input full URL (ie, 'https://www.userblog.com/homepage')"
               />
             </Grid>
 
