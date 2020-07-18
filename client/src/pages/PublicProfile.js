@@ -210,7 +210,7 @@ function PublicProfile(props) {
             {/* grid item holds Bio Paper */}
 
             <Grid container alignItems="center" justify="center">
-              <Grid placeholder="Hello" item xs={12} md={10}>
+              <Grid placeholder="Hello" item xs={12} sm={10}>
                 <Paper elevation={3} className={classes.bioPaper}>
                   <Grid item>
                   {renderedUser.biography === null || renderedUser.biography === "" ? (
@@ -238,7 +238,7 @@ function PublicProfile(props) {
             </Grid>
             <br></br>
             <Grid container justify="center" direction="row">
-              <Grid item xs={12} md={5}>
+              <Grid item xs={12} sm={5}>
                 {/* website paper */}
                 <Paper elevation={3} className={classes.websitePaper}>
                   <Grid item>
@@ -255,7 +255,7 @@ function PublicProfile(props) {
                   </Grid>
                 </Paper>
               </Grid>
-              <Grid item xs={12} md={5}>
+              <Grid item xs={12} sm={5}>
                 {/* email paper */}
                 <Paper elevation={3} className={classes.emailPaper}>
                   <Grid item>
