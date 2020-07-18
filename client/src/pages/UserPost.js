@@ -127,8 +127,8 @@ function UserPost(props) {
     if (!state.title || !state.imageUrl || !state.colorCategory) {
       props.setError("Please Fill Out Required Fields");
     } else {
-      console.log(typeof postLink);
-      API.Post.create({ ...state, postLink: (postLink.includes("//") ? (postLink) : (`http://${postLink}`)), price: price })
+      // console.log(typeof postLink);
+      API.Post.create({ ...state, postLink: (postLink.includes("http") ? (postLink) : (`http://${postLink}`)), price: price })
         .then((response) => {
           setState({
             title: "",

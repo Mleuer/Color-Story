@@ -213,7 +213,7 @@ function Profile(props) {
       }
     );
   }
-  //CollorWall Display
+  // ColorWall Display
   const [posts, setPosts] = useState([]);
   const [color, setColor] = useState("");
 
@@ -223,7 +223,7 @@ function Profile(props) {
 
   const resetPost = () => {
     API.Post.getAll(`?UserId=${props.user.id}`).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setPosts(res.data);
     });
   };

@@ -35,7 +35,7 @@ export default function LongMenu(props) {
   const handleDelete = (id) => {
     // console.log("delete", id);
     API.Post.delete(id).then(function (data) {
-      console.log("data", data);
+      // console.log("data", data);
       props.resetPost();
     });
     setAnchorEl(null);
@@ -59,9 +59,9 @@ export default function LongMenu(props) {
 
   const handleSave = (id, e) => {
     // e.preventDefault();
-    console.log(id);
+    // console.log(id);
     setOpenEdit(false);
-    API.Post.update(id, { ...state, postLink: (postLink.includes("//") ? (postLink) : (`http://${postLink}`)), price: price });
+    API.Post.update(id, { ...state, postLink: (postLink.includes("http") ? (postLink) : (`http://${postLink}`)), price: price });
     setAnchorEl(null);
   };
 
