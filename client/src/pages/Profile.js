@@ -191,11 +191,7 @@ function Profile(props) {
     // console.log(e.target.name)
     setState({ ...state, [e.target.name]: e.target.value });
   };
-
-  useEffect(() => {
-    getUserInfo();
-  }, []);
-
+  
   function uploadImage(event) {
     event.preventDefault();
     window.cloudinary.openUploadWidget(
@@ -214,16 +210,17 @@ function Profile(props) {
   const [posts, setPosts] = useState([]);
   const [color, setColor] = useState("");
 
-  useEffect(() => {
-    resetPost();
-  }, []);
-
   const resetPost = () => {
     API.Post.getAll(`?UserId=${props.user.id}`).then((res) => {
       // console.log(res.data);
       setPosts(res.data);
     });
   };
+
+  useEffect(() => {
+    getUserInfo();
+    resetPost();
+  }, []);
 
   const handleClick = (color) => {
     setColor(color);

@@ -64,7 +64,7 @@ function ColorWall(props) {
         setPosts(result.data);
       });
     }
-  }, [props.userId]);
+  }, [props.userId, props.user.id]);
 
   const filteredPosts = posts.filter((post) => post.colorCategory === color);
   let displayedPosts = color ? filteredPosts : posts;
