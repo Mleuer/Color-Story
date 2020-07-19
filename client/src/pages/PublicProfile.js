@@ -127,7 +127,7 @@ function PublicProfile(props) {
     API.User.getById(id).then((result) => {
       setRenderedUser(result.data);
     });
-  }, []);
+  }, [id]);
 
   return (
     <>
