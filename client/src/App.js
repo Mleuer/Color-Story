@@ -20,6 +20,7 @@ import Grid from "@material-ui/core/Grid";
 import API from "./utils/API";
 import { makeStyles } from "@material-ui/core";
 import About from "./pages/About";
+import "./scrollbar.css";
 
 const useStyles = makeStyles({
   outline: {

@@ -11,7 +11,6 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import "./modal-style.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +30,19 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: "24px",
       boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75);",
     },
+    // modal scrollbar
+    '&::-webkit-scrollbar': {
+      width: '0.4em',
+      display: "none",
+    },
+    '&::-webkit-scrollbar-track': {
+      boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+      webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(0,0,0,.1)',
+      outline: '1px solid slategrey'
+    }
   },
   avatar: {
     height: "80px",
