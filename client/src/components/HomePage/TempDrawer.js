@@ -15,7 +15,7 @@ import CreateIcon from "@material-ui/icons/Create";
 import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from "@material-ui/icons/Info";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -39,6 +39,11 @@ const useStyles = makeStyles((theme) => ({
   },
   iconColor: {
     color: "#ffffff",
+  },
+  listItem: {
+    "&:hover": {
+      backgroundColor: "gray",
+    },
   },
 }));
 
@@ -73,13 +78,23 @@ export default function TemporaryDrawer(props) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List component="nav" aria-label="main mailbox folders">
-        <ListItem button component={Link} to="/home">
+        <ListItem
+          className={classes.listItem}
+          button
+          component={Link}
+          to="/home"
+        >
           <ListItemIcon className={classes.iconColor}>
             <HomeIcon />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
-        <ListItem button component={Link} to="/about">
+        <ListItem
+          className={classes.listItem}
+          button
+          component={Link}
+          to="/about"
+        >
           <ListItemIcon className={classes.iconColor}>
             <InfoIcon />
           </ListItemIcon>
@@ -87,19 +102,35 @@ export default function TemporaryDrawer(props) {
         </ListItem>
         {user.email ? (
           <>
-            <ListItem button component={Link} to="/profile">
+            <ListItem
+              className={classes.listItem}
+              button
+              component={Link}
+              to="/profile"
+            >
               <ListItemIcon className={classes.iconColor}>
                 <FaceIcon />
               </ListItemIcon>
               <ListItemText primary="My Profile" />
             </ListItem>
-            <ListItem button component={Link} to="/userpost">
+            <ListItem
+              className={classes.listItem}
+              button
+              component={Link}
+              to="/userpost"
+            >
               <ListItemIcon className={classes.iconColor}>
                 <AddCircleOutlineIcon />
               </ListItemIcon>
               <ListItemText primary="Create Post" />
             </ListItem>
-            <ListItem button component={Link} to="/home" onClick={logoutUser}>
+            <ListItem
+              className={classes.listItem}
+              button
+              component={Link}
+              to="/home"
+              onClick={logoutUser}
+            >
               <ListItemIcon className={classes.iconColor}>
                 <VpnKeyIcon />
               </ListItemIcon>
@@ -108,13 +139,23 @@ export default function TemporaryDrawer(props) {
           </>
         ) : (
           <>
-            <ListItem button component={Link} to="/login">
+            <ListItem
+              className={classes.listItem}
+              button
+              component={Link}
+              to="/login"
+            >
               <ListItemIcon className={classes.iconColor}>
                 <VpnKeyIcon />
               </ListItemIcon>
               <ListItemText primary="Log In" />
             </ListItem>
-            <ListItem button component={Link} to="/signup">
+            <ListItem
+              className={classes.listItem}
+              button
+              component={Link}
+              to="/signup"
+            >
               <ListItemIcon className={classes.iconColor}>
                 <CreateIcon />
               </ListItemIcon>
@@ -122,7 +163,12 @@ export default function TemporaryDrawer(props) {
             </ListItem>
           </>
         )}
-        <ListItem button component={Link} to="/colorwall">
+        <ListItem
+          className={classes.listItem}
+          button
+          component={Link}
+          to="/colorwall"
+        >
           <ListItemIcon className={classes.iconColor}>
             <PaletteIcon />
           </ListItemIcon>
