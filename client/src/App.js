@@ -20,6 +20,7 @@ import Grid from "@material-ui/core/Grid";
 import API from "./utils/API";
 import { makeStyles } from "@material-ui/core";
 import About from "./pages/About";
+import "./scrollbar.css";
 
 const useStyles = makeStyles({
   outline: {
@@ -30,16 +31,16 @@ const useStyles = makeStyles({
   },
   pageContainer: {
     position: "relative",
-    minHeight: "100vh"
+    minHeight: "100vh",
   },
   contentWrap: {
-    paddingBottom: "2.5rem"
+    paddingBottom: "2.5rem",
   },
   footer: {
     position: "absolute",
     bottom: 0,
     width: "100%",
-  }
+  },
 });
 
 function App() {
