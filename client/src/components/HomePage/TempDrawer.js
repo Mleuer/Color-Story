@@ -32,8 +32,9 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     "& .MuiPaper-root": {
-      backgroundColor: "black",
+      backgroundColor: "#222222",
       borderRight: "white solid 10px",
+      color: "white",
     },
   },
 }));
