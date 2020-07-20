@@ -30,6 +30,13 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "20px",
     },
   },
+  drawer: {
+    "& .MuiPaper-root": {
+      backgroundColor: "#222222",
+      borderRight: "white solid 10px",
+      color: "white",
+    },
+  },
 }));
 
 export default function TemporaryDrawer(props) {
@@ -133,6 +140,7 @@ export default function TemporaryDrawer(props) {
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
+            className={classes.drawer}
           >
             {list(anchor)}
           </Drawer>
