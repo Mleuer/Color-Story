@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import Modal from "@material-ui/core/Modal";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
+// import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import "./modal-style.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,10 +40,10 @@ const useStyles = makeStyles((theme) => ({
       border: "2px solid pink",
     },
   },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-  },
+  // media: {
+  //   height: 0,
+  //   paddingTop: "56.25%", // 16:9
+  // },
   title: {
     fontWeight: "bold",
     fontSize: "25px",
@@ -167,7 +168,8 @@ function ColorWallModal(props) {
             <div></div>
           )}
         </Typography>
-        <CardMedia className={classes.media} image={openedPost.imageUrl} />
+        {/* <CardMedia className={classes.media} image={openedPost.imageUrl} /> */}
+        <img style={{width: "100%"}} src={openedPost.imageUrl} alt={`${openedPost.title}-id${openedPost.id}-by-${openedPost.username}`}></img>
         <CardContent style={{ marginBottom: "0px" }}>
           <Typography variant="body2" color="textSecondary" component="h4">
             posted on{" "}
