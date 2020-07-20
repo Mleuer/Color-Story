@@ -33,9 +33,12 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     "& .MuiPaper-root": {
       backgroundColor: "#222222",
-      borderRight: "white solid 10px",
-      color: "white",
+      borderRight: "#ffffff solid 10px",
+      color: "#ffffff",
     },
+  },
+  iconColor: {
+    color: "#ffffff",
   },
 }));
 
@@ -71,13 +74,13 @@ export default function TemporaryDrawer(props) {
     >
       <List component="nav" aria-label="main mailbox folders">
         <ListItem button component={Link} to="/home">
-          <ListItemIcon>
+          <ListItemIcon className={classes.iconColor}>
             <HomeIcon />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
         <ListItem button component={Link} to="/about">
-          <ListItemIcon>
+          <ListItemIcon className={classes.iconColor}>
             <InfoIcon />
           </ListItemIcon>
           <ListItemText primary="About" />
@@ -85,19 +88,19 @@ export default function TemporaryDrawer(props) {
         {user.email ? (
           <>
             <ListItem button component={Link} to="/profile">
-              <ListItemIcon>
+              <ListItemIcon className={classes.iconColor}>
                 <FaceIcon />
               </ListItemIcon>
               <ListItemText primary="My Profile" />
             </ListItem>
             <ListItem button component={Link} to="/userpost">
-              <ListItemIcon>
+              <ListItemIcon className={classes.iconColor}>
                 <AddCircleOutlineIcon />
               </ListItemIcon>
               <ListItemText primary="Create Post" />
             </ListItem>
             <ListItem button component={Link} to="/home" onClick={logoutUser}>
-              <ListItemIcon>
+              <ListItemIcon className={classes.iconColor}>
                 <VpnKeyIcon />
               </ListItemIcon>
               <ListItemText primary="Logout" />
@@ -106,13 +109,13 @@ export default function TemporaryDrawer(props) {
         ) : (
           <>
             <ListItem button component={Link} to="/login">
-              <ListItemIcon>
+              <ListItemIcon className={classes.iconColor}>
                 <VpnKeyIcon />
               </ListItemIcon>
               <ListItemText primary="Log In" />
             </ListItem>
             <ListItem button component={Link} to="/signup">
-              <ListItemIcon>
+              <ListItemIcon className={classes.iconColor}>
                 <CreateIcon />
               </ListItemIcon>
               <ListItemText primary="Sign Up" />
@@ -120,7 +123,7 @@ export default function TemporaryDrawer(props) {
           </>
         )}
         <ListItem button component={Link} to="/colorwall">
-          <ListItemIcon>
+          <ListItemIcon className={classes.iconColor}>
             <PaletteIcon />
           </ListItemIcon>
           <ListItemText primary="Color Wall" />
