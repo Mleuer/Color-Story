@@ -7,7 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
-import PaletteIcon from '@material-ui/icons/Palette';
+import PaletteIcon from "@material-ui/icons/Palette";
 import FaceIcon from "@material-ui/icons/Face";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
@@ -15,6 +15,7 @@ import CreateIcon from "@material-ui/icons/Create";
 import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "50px",
     [theme.breakpoints.down("xs")]: {
       fontSize: "20px",
-    }
+    },
   },
 }));
 
@@ -68,6 +69,12 @@ export default function TemporaryDrawer(props) {
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
+        <ListItem button component={Link} to="/about">
+          <ListItemIcon>
+            <InfoIcon />
+          </ListItemIcon>
+          <ListItemText primary="About" />
+        </ListItem>
         {user.email ? (
           <>
             <ListItem button component={Link} to="/profile">
@@ -90,32 +97,26 @@ export default function TemporaryDrawer(props) {
             </ListItem>
           </>
         ) : (
-            <>
-              <ListItem button component={Link} to="/login">
-                <ListItemIcon>
-                  <VpnKeyIcon />
-                </ListItemIcon>
-                <ListItemText primary="Log In" />
-              </ListItem>
-              <ListItem button component={Link} to="/signup">
-                <ListItemIcon>
-                  <CreateIcon />
-                </ListItemIcon>
-                <ListItemText primary="Sign Up" />
-              </ListItem>
-            </>
-          )}
+          <>
+            <ListItem button component={Link} to="/login">
+              <ListItemIcon>
+                <VpnKeyIcon />
+              </ListItemIcon>
+              <ListItemText primary="Log In" />
+            </ListItem>
+            <ListItem button component={Link} to="/signup">
+              <ListItemIcon>
+                <CreateIcon />
+              </ListItemIcon>
+              <ListItemText primary="Sign Up" />
+            </ListItem>
+          </>
+        )}
         <ListItem button component={Link} to="/colorwall">
           <ListItemIcon>
             <PaletteIcon />
           </ListItemIcon>
           <ListItemText primary="Color Wall" />
-        </ListItem>
-        <ListItem button component={Link} to="/about">
-          <ListItemIcon>
-            <PaletteIcon />
-          </ListItemIcon>
-          <ListItemText primary="About" />
         </ListItem>
       </List>
     </div>
