@@ -38,7 +38,6 @@ function Welcome() {
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item>
           <Typography
-            alignitems="center"
             className={classes.welcome}
             variant="h1"
           >
@@ -47,7 +46,6 @@ function Welcome() {
         </Grid>
         <Grid item>
           <Typography
-          alignItems="center"
           className={classes.clickHere}
           >
            Check out the Color Wall <a href="./Colorwall" className={classes.link}>here</a>, or see what we're <a href="./About">about</a>!

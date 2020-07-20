@@ -11,7 +11,6 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import "./modal-style.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +29,19 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiPaper-rounded": {
       borderRadius: "24px",
       boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75);",
+    },
+    // modal scrollbar
+    "&::-webkit-scrollbar": {
+      width: "0.4em",
+      display: "none",
+    },
+    "&::-webkit-scrollbar-track": {
+      boxShadow: "inset 0 0 6px rgba(0,0,0,0.00)",
+      webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,0.00)",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "rgba(0,0,0,.1)",
+      outline: "1px solid slategrey",
     },
   },
   avatar: {
@@ -169,7 +181,11 @@ function ColorWallModal(props) {
           )}
         </Typography>
         {/* <CardMedia className={classes.media} image={openedPost.imageUrl} /> */}
-        <img style={{width: "100%"}} src={openedPost.imageUrl} alt={`${openedPost.title}-id${openedPost.id}-by-${openedPost.username}`}></img>
+        <img
+          style={{ width: "100%" }}
+          src={openedPost.imageUrl}
+          alt={`${openedPost.title}-id${openedPost.id}-by-${openedPost.username}`}
+        ></img>
         <CardContent style={{ marginBottom: "0px" }}>
           <Typography variant="body2" color="textSecondary" component="h4">
             posted on{" "}
@@ -207,7 +223,13 @@ function ColorWallModal(props) {
               <a
                 className={classes.modalPostLink}
                 target="__blank"
-                href={openedPost.postLink ? (openedPost.postLink.includes("://") ? (openedPost.postLink) : (`http://${openedPost.postLink}`)) : ("/404")}
+                href={
+                  openedPost.postLink
+                    ? openedPost.postLink.includes("://")
+                      ? openedPost.postLink
+                      : `http://${openedPost.postLink}`
+                    : "/404"
+                }
               >
                 {openedPost.postLink
                   ? openedPost.postLink.split("//").pop().split("/")[0]

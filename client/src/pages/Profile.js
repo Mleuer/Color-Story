@@ -217,10 +217,12 @@ function Profile(props) {
     });
   };
 
-  useEffect(() => {
+  const loadUserData = () => {
     getUserInfo();
     resetPost();
-  }, []);
+  };
+
+  useEffect(loadUserData, []);
 
   const handleClick = (color) => {
     setColor(color);
