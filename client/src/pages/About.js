@@ -4,7 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import ColorWallModal from "../Images/ColorWallModal.png";
 import Profile from "../Images/ColorStoryProfile.jpg";
-import Profile2 from "../Images/ColorStoryProfile2.jpg";
+import BlackColorWall from "../Images/BlackColorWall.png";
+
 
 const useStyles = makeStyles((theme) => ({
     text: {
@@ -29,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75);",
         marginBottom: "20px",
-        marginTop: "10px",
     },
     link: {
         color: "blue",
@@ -41,8 +41,8 @@ function About() {
 
     return (
         <div>
-            <Grid container direction="row" justify="center" spacing={3} alignItems="center">
-                <Grid item xs={12} sm={6} md={8} lg={8}>
+            <Grid container direction="row" justify="center" spacing={1} alignItems="flex-start">
+                <Grid item xs={12} sm={7} md={8} lg={8}>
 
                     <Paper className={classes.text}>
                         <Typography
@@ -71,11 +71,11 @@ function About() {
                     </Paper>
                 </Grid>
                 <Grid item xs={12} sm={5} md={4} lg={4}>
-                    <img className={classes.image} src={ColorWallModal} alt="colorwall-modal-img" />
+                    <img className={classes.image} src={BlackColorWall} alt="colorwall-modal-img" />
                 </Grid>
             </Grid>
-            <Grid container direction="row" justify="center" spacing={3} alignItems="center">
-                <Grid item xs={12} sm={6} md={8} lg={8}>
+            <Grid container direction="row" justify="center" spacing={3} alignItems="flex-start">
+                <Grid item xs={12} sm={7} md={8} lg={8}>
 
                     <Paper className={classes.text}>
                         <Typography variant="h6" className={classes.headerText}>Why sign up?</Typography>
@@ -102,8 +102,8 @@ function About() {
                     <img className={classes.image} src={Profile} alt="profile-page-img" />
                 </Grid>
             </Grid>
-            <Grid container direction="row" justify="center" spacing={3} alignItems="center">
-                <Grid item xs={12} sm={6} md={8} lg={8}>
+            <Grid container direction="row" justify="center" spacing={3} alignItems="flex-start">
+                <Grid item xs={12} sm={7} md={8} lg={8}>
                     <Paper className={classes.text}>
                         <Typography variant="h6" className={classes.headerText}>Nuts & Bolts</Typography>
                         <Typography variant="body2" className={classes.bodyText}>
@@ -125,7 +125,7 @@ function About() {
 
                 <Grid item xs={12} sm={5} md={4} lg={4}>
 
-                    <img className={classes.image} src={Profile2} alt="profile-page-img" />
+                    <img className={classes.image} src={ColorWallModal} alt="profile-page-img" />
 
                 </Grid>
 
