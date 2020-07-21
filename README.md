@@ -22,6 +22,14 @@ https://color-story.herokuapp.com/ hosted by Heroku
 
 ## Description:
 
+Color Story is an app for artists and designers who work in multiple media to showcase all their work in one place, from digital media to material objects. If they made it, it can be shared on the site via a community wall of images. The Color Wall can be sorted by color category, and renders in a responsive image grid for a seamless, quilt-like appearance. Users who visit the Color Wall will browse images and connect directly to the artists via a modal that contains the artist's website link, description of the work, and price. 
+
+Artists must sign up for an account. Their profile page contains their email address, website, bio, portrait, and personal Color Wall featuring all images they've contributed to the site. These entries can be edited or deleted easily.
+
+Other users may sign up for an account as well to share some words about themselves in terms of a "Color Story" (left up to interpretation), save their favorites to a personal favorites page
+
+The site is designed for mobile as well as desktop, and renders nicely in all screen sizes. Browsing the Color Wall on a mobile device is a similar experience to a social media site. Simple, scrollable content which can be "liked" and saved to an account-holder's "Favorites" page.
+
 ## Installation:
 
 No installation
