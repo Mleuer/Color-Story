@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "20px",
         marginTop: "10px",
     },
+    link: {
+        color: "blue",
+    }
 }));
 
 function About() {
@@ -51,7 +54,7 @@ function About() {
                         <Typography variant="body2" className={classes.bodyText}>
                             If you are a visual artist, chances are you care about color. If
                             you are not an artist, chances are you have a favorite color. Or
-                two, or three...<br></br>
+                two, or three...<br></br><br></br>
                 Color Story is a way to connect artists and designers to each
                 other, as well as to art/design lovers via a community “Color
                 Wall." It's a simple, free platform for those who make creative
@@ -112,8 +115,8 @@ function About() {
                             image and you will be shown the price, description, external
                 links, and the artist's Color Story profile. <br></br>
                             <br></br>
-                To check it out right now, click above on the color circles, or
-                sign up now to get your profile going! We'd LOVE to hear your
+                To check out the Color Wall now, click <a href="./Colorwall" className={classes.link}>here</a>, or 
+                <a href="./Signup" className={classes.link}> sign up</a> now to get your profile going. We can't wait to hear your
                 "Color Story," whatever that means to you!
               </Typography>
                     </Paper>
