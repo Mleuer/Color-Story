@@ -365,7 +365,7 @@ function Profile(props) {
                         : "/404"
                     }
                   >
-                    {state.userLinks}
+                    {state.userLinks ? "My Website" : ""}
                   </a>
                 </Typography>
               </Grid>
@@ -381,7 +381,7 @@ function Profile(props) {
                     className={classes.profileLink}
                     href={`mailto:${state.email}`}
                   >
-                    {state.email}
+                    {state.email ? "My Email" : ""}
                   </a>
                 </Typography>
               </Grid>

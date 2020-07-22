@@ -248,7 +248,7 @@ function PublicProfile(props) {
                         target="__blank"
                         href={renderedUser.userLinks ? (renderedUser.userLinks.includes("://") ? (renderedUser.userLinks) : (`http://${renderedUser.userLinks}`)) : ("/404")}
                       >
-                        {renderedUser.userLinks}
+                        {renderedUser.userLinks ? "Website" : ""}
                       </a>
                     </Typography>
                   </Grid>
@@ -264,7 +264,7 @@ function PublicProfile(props) {
                         className={classes.profileLink}
                         href={`mailto:${renderedUser.email}`}
                       >
-                        {renderedUser.email}
+                        {renderedUser.email ? "Email" : ""}
                       </a>
                     </Typography>
                   </Grid>
