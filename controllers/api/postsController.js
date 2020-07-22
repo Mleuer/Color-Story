@@ -8,7 +8,8 @@ const isAuthenticated = require("../../config/middleware/isAuthenticated");
 router.get("/", function (req, res) {
   db.Post.findAll({
     include: db.User,
-    where: req.query
+    where: req.query,
+    order: [["createdAt", "DESC"]]
   })
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
