@@ -60,7 +60,7 @@ function Footer() {
               <a
                 className={classes.memberLink}
                 target="__blank"
-                href="https://github.com/Linus41"
+                href="https://color-story.herokuapp.com/users/15"
               >
                 Linus Schief
               </a>
@@ -70,7 +70,7 @@ function Footer() {
               <a
                 className={classes.memberLink}
                 target="__blank"
-                href="https://github.com/Mleuer"
+                href="https://color-story.herokuapp.com/users/14"
               >
                 Matt Leuer
               </a>
@@ -80,7 +80,7 @@ function Footer() {
               <a
                 className={classes.memberLink}
                 target="__blank"
-                href="https://github.com/CrainDavis"
+                href="https://color-story.herokuapp.com/users/4"
               >
                 Chyna Davis
               </a>
@@ -90,7 +90,7 @@ function Footer() {
               <a
                 className={classes.memberLink}
                 target="__blank"
-                href="https://github.com/munoze714"
+                href="https://color-story.herokuapp.com/users/13"
               >
                 Elizabeth Munoz
               </a>
