@@ -58,12 +58,11 @@ const useStyles = makeStyles((theme) => ({
   },
 
   profileLink: {
-    backgroundColor: "black",
-    color: "white",
+    color: "#43464b",
+    textDecoration: "underline",
     padding: "5px",
     borderRadius: "5px",
-    textDecoration: "none",
-    fontSize: "15px",
+    fontSize: "24px",
     "&:hover": {
       color: "pink",
     },
