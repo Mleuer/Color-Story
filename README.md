@@ -85,4 +85,4 @@ MIT License.
 
 <img src="https://avatars0.githubusercontent.com/u/59541141?v=4" width="200" height="200"/>
 
-**[Linus Schief](https://github.com/Linus41)** at schief.craft@gmail.com
+**[Linus Schief](https://github.com/Linus41)** at https://github.com/Linus41
