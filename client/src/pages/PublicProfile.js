@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Avatar, Paper, makeStyles, Grid, Typography } from "@material-ui/core";
 import { useParams } from "react-router-dom";
+import LinkIcon from '@material-ui/icons/Link';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import API from "../utils/API";
 import ColorWall from "./ColorWall";
 
@@ -248,7 +250,7 @@ function PublicProfile(props) {
                         target="__blank"
                         href={renderedUser.userLinks ? (renderedUser.userLinks.includes("://") ? (renderedUser.userLinks) : (`http://${renderedUser.userLinks}`)) : ("/404")}
                       >
-                        {renderedUser.userLinks ? "Website" : ""}
+                        {renderedUser.userLinks ? <LinkIcon fontSize="large"/> : ""}
                       </a>
                     </Typography>
                   </Grid>
@@ -264,7 +266,7 @@ function PublicProfile(props) {
                         className={classes.profileLink}
                         href={`mailto:${renderedUser.email}`}
                       >
-                        {renderedUser.email ? "Email" : ""}
+                        {renderedUser.email ? <MailOutlineIcon fontSize="large"/> : ""}
                       </a>
                     </Typography>
                   </Grid>

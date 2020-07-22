@@ -59,7 +59,6 @@ function Footer() {
             <span>
               <a
                 className={classes.memberLink}
-                target="__blank"
                 href="https://color-story.herokuapp.com/users/15"
               >
                 Linus Schief
@@ -69,7 +68,6 @@ function Footer() {
             <span>
               <a
                 className={classes.memberLink}
-                target="__blank"
                 href="https://color-story.herokuapp.com/users/14"
               >
                 Matt Leuer
@@ -79,7 +77,6 @@ function Footer() {
             <span>
               <a
                 className={classes.memberLink}
-                target="__blank"
                 href="https://color-story.herokuapp.com/users/4"
               >
                 Chyna Davis
@@ -89,7 +86,6 @@ function Footer() {
             <span>
               <a
                 className={classes.memberLink}
-                target="__blank"
                 href="https://color-story.herokuapp.com/users/13"
               >
                 Elizabeth Munoz

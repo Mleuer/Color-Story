@@ -4,6 +4,8 @@ import { Avatar, makeStyles, Fab, Grid, Typography } from "@material-ui/core";
 import Menu from "../components/ColorWall/menu";
 import ButtonRow from "../components/ColorWall/ButtonRow";
 import Button from "@material-ui/core/Button";
+import LinkIcon from "@material-ui/icons/Link";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -16,6 +18,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import API from "../utils/API";
 import Paper from "@material-ui/core/Paper";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -190,7 +193,7 @@ function Profile(props) {
     // console.log(e.target.name)
     setState({ ...state, [e.target.name]: e.target.value });
   };
-  
+
   function uploadImage(event) {
     event.preventDefault();
     window.cloudinary.openUploadWidget(
@@ -259,7 +262,7 @@ function Profile(props) {
                 >
                   {state.username}
                 </Typography>
-            
+
                 {state.fullName ? (
                   state.fullName !== "" ? (
                     <Typography
@@ -321,16 +324,15 @@ function Profile(props) {
                     contact with other artists, and most importantly -- share
                     your work!! See the four pink buttons below? The left-most
                     one allows you to create your very own posts and share your
-                    artwork to the Color Wall. The second one allows you to edit your
-                    Public Profile (avatar, name, website, and
-                    biography). The third button will bring you to your
-                    Favorites Page where you can find all of the images you
-                    have "liked," while the last button will let you view your
-                    Public Profile and see exactly what other users will see
-                    when they visit your page. On the bottom of this page, you
-                    even have your very own Color Wall, filled with just your
-                    posts! Feel free to add, edit, and delete posts as you see
-                    fit!
+                    artwork to the Color Wall. The second one allows you to edit
+                    your Public Profile (avatar, name, website, and biography).
+                    The third button will bring you to your Favorites Page where
+                    you can find all of the images you have "liked," while the
+                    last button will let you view your Public Profile and see
+                    exactly what other users will see when they visit your page.
+                    On the bottom of this page, you even have your very own
+                    Color Wall, filled with just your posts! Feel free to add,
+                    edit, and delete posts as you see fit!
                   </Typography>
                 ) : (
                   <Typography
@@ -365,7 +367,7 @@ function Profile(props) {
                         : "/404"
                     }
                   >
-                    {state.userLinks ? "My Website" : ""}
+                    {state.userLinks ? <LinkIcon fontSize="large" /> : ""}
                   </a>
                 </Typography>
               </Grid>
@@ -381,7 +383,7 @@ function Profile(props) {
                     className={classes.profileLink}
                     href={`mailto:${state.email}`}
                   >
-                    {state.email ? "My Email" : ""}
+                    {state.email ? <MailOutlineIcon fontSize="large" /> : ""}
                   </a>
                 </Typography>
               </Grid>
@@ -432,7 +434,7 @@ function Profile(props) {
           <TextField
             multiline
             variant="outlined"
-            rows={5}
+            rows={8}
             onChange={handleEdit}
             name="biography"
             value={state.biography}
@@ -462,34 +464,44 @@ function Profile(props) {
         direction="row"
       >
         <Grid item className={classes.root}>
-          <Fab
-            color="secondary"
-            aria-label="add"
-            component={Link}
-            to="/userpost"
-          >
-            <AddIcon />
-          </Fab>
-          <Fab color="secondary" aria-label="edit" onClick={handleClickOpen}>
-            <EditIcon />
-          </Fab>
-          <Fab
-            color="secondary"
-            aria-label="like"
-            component={Link}
-            to="/favorites"
-          >
-            <FavoriteIcon />
-          </Fab>
+          <Tooltip title="create post">
+            <Fab
+              color="secondary"
+              aria-label="add"
+              component={Link}
+              to="/userpost"
+            >
+              <AddIcon />
+            </Fab>
+          </Tooltip>
 
-          <Fab
-            color="secondary"
-            aria-label="publicProfile"
-            component={Link}
-            to={`/users/${props.user.id}`}
-          >
-            <AccountCircleIcon />
-          </Fab>
+          <Tooltip title="edit profile">
+            <Fab color="secondary" aria-label="edit" onClick={handleClickOpen}>
+              <EditIcon />
+            </Fab>
+          </Tooltip>
+
+          <Tooltip title="my favorites">
+            <Fab
+              color="secondary"
+              aria-label="like"
+              component={Link}
+              to="/favorites"
+            >
+              <FavoriteIcon />
+            </Fab>
+          </Tooltip>
+
+          <Tooltip title="public profile">
+            <Fab
+              color="secondary"
+              aria-label="publicProfile"
+              component={Link}
+              to={`/users/${props.user.id}`}
+            >
+              <AccountCircleIcon />
+            </Fab>
+          </Tooltip>
         </Grid>
       </Grid>
 
