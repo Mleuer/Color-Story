@@ -1,22 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
 
 function Copyright() {
+  const classes = useStyles();
   return (
     <Typography variant="body2" color="textSecondary">
       {"Copyright © "}
-      <Link
-        color="inherit"
-        target="__blank"
+      <a
         href="https://github.com/Mleuer/Color-Story"
-        style={{ fontWeight: "bold" }}
+        target="__blank"
+        className={classes.repoLink}
       >
         Color Story
-      </Link>{" "}
+      </a>{" "}
       2020
     </Typography>
   );
@@ -31,69 +31,78 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3, 2),
     backgroundColor: "#FFCCCC",
   },
-  memberText: {
+  repoLink: {
     fontWeight: "bold",
-    fontSize: "15px",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "10px",
+    color: "gray",
+    textDecoration: "none",
+    "&:hover": {
+      color: "whitesmoke",
     },
+  },
+  memberText: {
+    display: "flex",
+    justifyContent: "center",
+    fontSize: "15px",
   },
   memberLink: {
     color: "black",
     textDecoration: "none",
+    fontSize: "15px",
+    fontWeight: "bold",
     "&:hover": {
       color: "darkred",
     },
   },
 }));
 
-function Footer() {
+function Footer(props) {
   const classes = useStyles();
+  // const user = props.user;
 
   return (
     <div className={classes.root}>
       <CssBaseline />
       <footer className={classes.footer}>
-        <Container maxWidth="md">
+        <Container>
           <Typography variant="body1" className={classes.memberText}>
             <span>
-              <a
+              <Typography
                 className={classes.memberLink}
-                target="__blank"
-                href="https://color-story.herokuapp.com/users/15"
+                component={Link}
+                to={"/users/15"}
               >
                 Linus Schief
-              </a>
+              </Typography>
             </span>
             <span>・</span>
             <span>
-              <a
+              <Typography
                 className={classes.memberLink}
-                target="__blank"
-                href="https://color-story.herokuapp.com/users/14"
+                component={Link}
+                to={"/users/14"}
               >
                 Matt Leuer
-              </a>
+              </Typography>
             </span>
             <span>・</span>
             <span>
-              <a
+              <Typography
                 className={classes.memberLink}
-                target="__blank"
-                href="https://color-story.herokuapp.com/users/4"
+                component={Link}
+                to={"/users/4"}
               >
                 Chyna Davis
-              </a>
+              </Typography>
             </span>
             <span>・</span>
             <span>
-              <a
+              <Typography
                 className={classes.memberLink}
-                target="__blank"
-                href="https://color-story.herokuapp.com/users/13"
+                component={Link}
+                to={"/users/13"}
               >
                 Elizabeth Munoz
-              </a>
+              </Typography>
             </span>
           </Typography>
           <Copyright />

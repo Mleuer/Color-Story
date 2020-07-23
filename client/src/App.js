@@ -155,9 +155,14 @@ function App() {
             <br></br>
           </Grid>
         </Grid>
+        <Grid container>
+          <Grid item xs={12}>
+            <br></br>
+          </Grid>
+        </Grid>
         <Grid container className={classes.footer}>
           <Grid item xs={12}>
-            <Footer />
+            <Footer user={user} />
           </Grid>
         </Grid>
       </Router>

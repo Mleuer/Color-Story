@@ -79,6 +79,7 @@ export default function LongMenu(props) {
       background: "white",
       borderRadius: "61px",
       marginBottom: "-50px",
+      boxShadow: "1px 1px 10px #888888",
     },
   };
 
