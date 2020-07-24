@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -25,9 +26,6 @@ const useStyles = makeStyles((theme) => ({
     font: "30px",
     fontWeight: "500",
   },
-  link: {
-    color: "red",
-  }
 }));
 
 function Welcome() {
@@ -37,18 +35,33 @@ function Welcome() {
     <div>
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item>
-          <Typography
-            className={classes.welcome}
-            variant="h1"
-          >
+          <Typography className={classes.welcome} variant="h1">
             Welcome
           </Typography>
         </Grid>
         <Grid item>
-          <Typography
-          className={classes.clickHere}
-          >
-           Check out the Color Wall <a href="./Colorwall" className={classes.link}>here</a>, or see what we're <a href="./About">about</a>!
+          <Typography className={classes.clickHere}>
+            <span>Check out the Color Wall </span>
+            <span>
+              <Typography
+                style={{ color: "red" }}
+                component={Link}
+                to={"/colorwall"}
+              >
+                here
+              </Typography>
+            </span>
+            <span>, or see what we're </span>
+            <span>
+              <Typography
+                style={{ color: "blue" }}
+                component={Link}
+                to={"/about"}
+              >
+                about
+              </Typography>
+            </span>
+            <span>!</span>
           </Typography>
         </Grid>
       </Grid>
