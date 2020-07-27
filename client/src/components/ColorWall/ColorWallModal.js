@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
       width: "300px",
       maxHeight: "90vh",
     },
-    overflow: "auto",
+    overflowY: "auto",
     paddingBottom: "15px",
     position: "absolute",
     top: "50%",
@@ -228,8 +228,8 @@ function ColorWallModal(props) {
                 }
               >
                 {openedPost.postLink
-                  ? openedPost.postLink.split("//").pop().split("/")[0]
-                  : "website"}
+                  ? (openedPost.postLink.split("//").pop())
+                  : "no website"}
               </a>
             </Typography>
           ) : (
